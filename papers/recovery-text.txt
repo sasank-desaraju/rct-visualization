@@ -1,0 +1,1087 @@
+The  new england journal of  medicine
+n engl j med   nejm.org 1
+The members of the writing committee  
+(Peter Horby, F.R.C.P., Wei Shen Lim, 
+F.R.C.P., Jonathan R. Emberson, Ph.D., 
+Marion Mafham, M.D., Jennifer L. Bell, 
+M.Sc., Louise Linsell, D.Phil., Natalie Sta-
+plin, Ph.D., Christopher Brightling, F.Med.
+Sci., Andrew Ustianowski, Ph.D., Einas 
+Elmahi, M.Phil., Benjamin Prudon, F.R.C.P., 
+Christopher Green, D.Phil., Timothy Fel -
+ton, Ph.D., David Chadwick, Ph.D., Kan -
+chan Rege, F.R.C.Path., Christopher Fe -
+gan, M.D., Lucy C. Chappell, Ph.D., 
+Saul N. Faust, F.R.C.P.C.H., Thomas Jaki, 
+Ph.D., Katie Jeffery, Ph.D., Alan Mont -
+gomery, Ph.D., Kathryn Rowan, Ph.D., 
+Edmund Juszczak, M.Sc., J. Kenneth Bail -
+lie, M.D., Ph.D., Richard Haynes, D.M., 
+and Martin J. Landray, Ph.D.) assume re -
+sponsibility for the overall content and 
+integrity of this article. 
+The affiliations of the members of the 
+writing committee are listed in the Ap -
+pendix. Address reprint requests to Drs. 
+Horby and Landray at RECOVERY Central 
+Coordinating Office, Richard Doll Bldg., 
+Old Road Campus, Roosevelt Drive, Ox -
+ford OX3 7LF, United Kingdom, or at 
+ recoverytrial@  ndph . ox . ac . uk.
+*A complete list of collaborators in the 
+RECOVERY trial is provided in the 
+Supplementary Appendix, available at 
+NEJM.org.
+Drs. Horby, Lim, and Emberson and Drs. 
+Haynes and Landray contributed equally 
+to this article.
+This article was published on July 17, 
+2020, at NEJM.org.
+DOI: 10.1056/NEJMoa2021436
+Copyright © 2020 Massachusetts Medical Society.
+BACKGROUND
+Coronavirus disease 2019 (Covid-19) is associated with diffuse lung damage. Gluco-
+corticoids may modulate inflammation-mediated lung injury and thereby reduce 
+progression to respiratory failure and death.
+METHODS
+In this controlled, open-label trial comparing a range of possible treatments in 
+patients who were hospitalized with Covid-19, we randomly assigned patients to 
+receive oral or intravenous dexamethasone (at a dose of 6 mg once daily) for up to 
+10 days or to receive usual care alone. The primary outcome was 28-day mortality. 
+Here, we report the preliminary results of this comparison.
+RESULTS
+A total of 2104 patients were assigned to receive dexamethasone and 4321 to re -
+ceive usual care. Overall, 482 patients (22.9%) in the dexamethasone group and 
+1110 patients (25.7%) in the usual care group died within 28 days after randomiza-
+tion (age-adjusted rate ratio, 0.83; 95% confidence interval [CI], 0.75 to 0.93; 
+P<0.001). The proportional and absolute between-group differences in mortality 
+varied considerably according to the level of respiratory support that the patients 
+were receiving at the time of randomization. In the dexamethasone group, the inci-
+dence of death was lower than that in the usual care group among patients receiving 
+invasive mechanical ventilation (29.3% vs. 41.4%; rate ratio, 0.64; 95% CI, 0.51 
+to 0.81) and among those receiving oxygen without invasive mechanical ventilation 
+(23.3% vs. 26.2%; rate ratio, 0.82; 95% CI, 0.72 to 0.94) but not among those who 
+were receiving no respiratory support at randomization (17.8% vs. 14.0%; rate ratio, 
+1.19; 95% CI, 0.91 to 1.55).
+CONCLUSIONS
+In patients hospitalized with Covid-19, the use of dexamethasone resulted in lower 
+28-day mortality among those who were receiving either invasive mechanical ven-
+tilation or oxygen alone at randomization but not among those receiving no respi-
+ratory support. (Funded by the Medical Research Council and National Institute for 
+Health Research and others; RECOVERY ClinicalTrials.gov number, NCT04381936; 
+ISRCTN number, 50189673.)
+ABSTRACT
+Dexamethasone in Hospitalized Patients 
+with Covid-19 — Preliminary Report
+The RECOVERY Collaborative Group*  
+Original Article
+n engl j med   nejm.org 2
+The  new england journal of  medicine
+S
+evere acute respiratory syndrome 
+coronavirus 2 (SARS-CoV-2), the cause of 
+coronavirus disease 2019 (Covid-19), 
+emerged in China in late 2019 from a zoonotic 
+source.1 The majority of Covid-19 cases either are 
+asymptomatic or result in only mild disease. 
+However, in a substantial percentage of patients, 
+a respiratory illness requiring hospital care de -
+velops,2 and such infections can progress to criti-
+cal illness with hypoxemic respiratory failure re-
+quiring prolonged ventilatory support.3-6 Among 
+patients with Covid-19 who have been admitted 
+to hospitals in the United Kingdom, the case 
+fatality rate has been approximately 26%, a per-
+centage that has increased to more than 37% 
+among patients who were undergoing invasive 
+mechanical ventilation.7 Although remdesivir has 
+been shown to shorten the time until recovery in 
+hospitalized patients,8 no therapeutic agents have 
+been shown to reduce mortality.
+The pathophysiological features of severe 
+Covid-19 are dominated by an acute pneumonic 
+process with extensive radiologic opacity and, on 
+autopsy, diffuse alveolar damage, inflammatory 
+infiltrates, and microvascular thrombosis. 9 In 
+other severe viral pneumonias, such as highly 
+pathogenic avian influenza, 10 SARS,11 and pan -
+demic and seasonal influenza,12 the host immune 
+response is thought to play a key role in the 
+pathophysiological effects of organ failure. In -
+flammatory organ injury may occur in severe 
+Covid-19, with a subgroup of patients having 
+markedly elevated levels of inflammatory mark -
+ers, including C-reactive protein, ferritin, inter -
+leukin-1, and interleukin-6. 6,13,14 Several thera -
+peutic interventions have been proposed to mitigate 
+inflammatory organ injury in viral pneumonia, 
+but the value of glucocorticoids has been widely 
+debated.15,16
+Although one small trial has reported improved 
+clinical outcomes in patients with Covid-19 who 
+were given methylprednisolone,17 the absence of 
+reliable evidence from large-scale randomized 
+clinical trials means there is uncertainty about 
+the effectiveness of glucocorticoids in patients 
+with Covid-19. Many guidelines for the treatment 
+of such patients have stated that glucocorticoids 
+were either contraindicated or not recommend -
+ed,18 although in China, glucocorticoids have been 
+recommended for severe cases.19 However, practice 
+has varied widely across the world: in some series, 
+as many as 50% of patients have been treated 
+with glucocorticoids. 20,21 Here, we report the 
+preliminary results of the controlled, open-label 
+Randomized Evaluation of Covid-19 Therapy 
+(RECOVERY) trial of dexamethasone in patients 
+hospitalized with Covid-19.
+Methods
+Trial Design and Oversight
+The RECOVERY trial was designed to evaluate the 
+effects of potential treatments in patients hospital-
+ized with Covid-19 at 176 National Health Service 
+organizations in the United Kingdom and was 
+supported by the National Institute for Health 
+Research Clinical Research Network. (Details re-
+garding this trial are provided in the Supplemen-
+tary Appendix, available with the full text of this 
+article at NEJM.org.) The trial is being coordi -
+nated by the Nuffield Department of Population 
+Health at the University of Oxford, the trial spon-
+sor. Although the randomization of patients to 
+receive dexamethasone, hydroxychloroquine, or 
+lopinavir–ritonavir has now been stopped, the 
+trial continues randomization to groups receiv -
+ing azithromycin, tocilizumab, or convalescent 
+plasma.
+Hospitalized patients were eligible for the 
+trial if they had clinically suspected or laboratory-
+confirmed SARS-CoV-2 infection and no medical 
+history that might, in the opinion of the attend-
+ing clinician, put patients at substantial risk if 
+they were to participate in the trial. Initially, 
+recruitment was limited to patients who were at 
+least 18 years of age, but the age limit was removed 
+starting on May 9, 2020. Pregnant or breast-
+feeding women were eligible.
+Written informed consent was obtained from 
+all the patients or from a legal representative if 
+they were unable to provide consent. The trial 
+was conducted in accordance with the principles 
+of the Good Clinical Practice guidelines of the 
+International Conference on Harmonisation and 
+was approved by the U.K. Medicines and Health-
+care Products Regulatory Agency and the Cam -
+bridge East Research Ethics Committee. The pro-
+tocol with its statistical analysis plan is available 
+at NEJM.org and on the trial website at www  
+.recoverytrial.net.
+The initial version of the manuscript was 
+drafted by the first and last authors, developed by 
+the writing committee, and approved by all mem-
+bers of the trial steering committee. The funders 
+n engl j med   nejm.org 3
+Dexamethasone in Hospitalized Patients with Covid-19
+had no role in the analysis of the data, in the 
+preparation or approval of the manuscript, or in 
+the decision to submit the manuscript for publi-
+cation. The first and last members of the writing 
+committee vouch for the completeness and accu-
+racy of the data and for the fidelity of the trial to 
+the protocol and statistical analysis plan.
+Randomization
+We collected baseline data using a Web-based 
+case-report form that included demographic data, 
+the level of respiratory support, major coexisting 
+illnesses, suitability of the trial treatment for a 
+particular patient, and treatment availability at 
+the trial site. Randomization was performed with 
+the use of a Web-based system with concealment 
+of the trial-group assignment. Eligible and con-
+senting patients were assigned in a 2:1 ratio to 
+receive either the usual standard of care alone or 
+the usual standard of care plus oral or intrave -
+nous dexamethasone (at a dose of 6 mg once 
+daily) for up to 10 days (or until hospital dis -
+charge if sooner) or to receive one of the other 
+suitable and available treatments that were being 
+evaluated in the trial.
+For some patients, dexamethasone was un -
+available at the hospital at the time of enroll -
+ment or was considered by the managing physi-
+cian to be either definitely indicated or definitely 
+contraindicated. These patients were excluded 
+from entry in the randomized comparison be -
+tween dexamethasone and usual care and hence 
+were not included in this report. The randomly 
+assigned treatment was prescribed by the treating 
+clinician. Patients and local members of the trial 
+staff were aware of the assigned treatments.
+Procedures
+A single online follow-up form was to be com -
+pleted when the patients were discharged or had 
+died or at 28 days after randomization, which -
+ever occurred first. Information was recorded re-
+garding the patients’ adherence to the assigned 
+treatment, receipt of other trial treatments, du -
+ration of admission, receipt of respiratory sup -
+port (with duration and type), receipt of renal 
+support, and vital status (including the cause of 
+death). In addition, we obtained routine health 
+care and registry data, including information on 
+vital status (with date and cause of death), dis -
+charge from the hospital, and respiratory and 
+renal support therapy.
+Outcome Measures
+The primary outcome was all-cause mortality 
+within 28 days after randomization; further anal-
+yses were specified at 6 months. Secondary out-
+comes were the time until discharge from the 
+hospital and, among patients not receiving inva-
+sive mechanical ventilation at the time of random-
+ization, subsequent receipt of invasive mechanical 
+ventilation (including extracorporeal membrane 
+oxygenation) or death. Other prespecified clini -
+cal outcomes included cause-specific mortality, 
+receipt of renal hemodialysis or hemofiltration, 
+major cardiac arrhythmia (recorded in a subgroup), 
+and receipt and duration of ventilation.
+Statistical Analysis
+As stated in the protocol, appropriate sample 
+sizes could not be estimated when the trial was 
+being planned at the start of the Covid-19 pan -
+demic. As the trial progressed, the trial steering 
+committee, whose members were unaware of the 
+results of the trial comparisons, determined that 
+if 28-day mortality was 20%, then the enrollment 
+of at least 2000 patients in the dexamethasone 
+group and 4000 in the usual care group would 
+provide a power of at least 90% at a two-sided 
+P value of 0.01 to detect a clinically relevant pro-
+portional reduction of 20% (an absolute differ -
+ence of 4 percentage points) between the two 
+groups. Consequently, on June 8, 2020, the steer-
+ing committee closed recruitment to the dexa -
+methasone group, since enrollment had exceed-
+ed 2000 patients.
+For the primary outcome of 28-day mortality, 
+the hazard ratio from Cox regression was used 
+to estimate the mortality rate ratio. Among the 
+few patients (0.1%) who had not been followed 
+for 28 days by the time of the data cutoff on July 
+6, 2020, data were censored either on that date or 
+on day 29 if the patient had already been dis -
+charged. That is, in the absence of any informa-
+tion to the contrary, these patients were assumed 
+to have survived for 28 days. Kaplan–Meier sur-
+vival curves were constructed to show cumulative 
+mortality over the 28-day period. Cox regression 
+was used to analyze the secondary outcome of 
+hospital discharge within 28 days, with censor -
+ing of data on day 29 for patients who had died 
+during hospitalization. For the prespecified com-
+posite secondary outcome of invasive mechanical 
+ventilation or death within 28 days (among pa -
+tients who were not receiving invasive mechani-
+n engl j med   nejm.org 4
+The  new england journal of  medicine
+cal ventilation at randomization), the precise date 
+of invasive mechanical ventilation was not avail-
+able, so a log-binomial regression model was 
+used to estimate the risk ratio.
+Through the play of chance in the unstrati -
+fied randomization, the mean age was 1.1 years 
+older among patients in the dexamethasone group 
+than among those in the usual care group (Ta -
+ble 1). To account for this imbalance in an im -
+portant prognostic factor, estimates of rate ratios 
+were adjusted for the baseline age in three catego-
+ries (<70 years, 70 to 79 years, and ≥80 years). 
+This adjustment was not specified in the first 
+version of the statistical analysis plan but was 
+added once the imbalance in age became appar-
+ent. Results without age adjustment (correspond-
+ing to the first version of the analysis plan) are 
+provided in the Supplementary Appendix.
+Prespecified analyses of the primary outcome 
+were performed in five subgroups, as defined by 
+characteristics at randomization: age, sex, level 
+of respiratory support, days since symptom onset, 
+and predicted 28-day mortality risk. (One further 
+prespecified subgroup analysis regarding race will 
+be conducted once the data collection has been 
+completed.) In prespecified subgroups, we esti-
+mated rate ratios (or risk ratios in some analy -
+ses) and their confidence intervals using regres-
+sion models that included an interaction term 
+between the treatment assignment and the sub-
+group of interest. Chi-square tests for linear trend 
+across the subgroup-specific log estimates were 
+then performed in accordance with the prespeci-
+fied plan.
+All P values are two-sided and are shown 
+without adjustment for multiple testing. All anal-
+yses were performed according to the intention-
+to-treat principle. The full database is held by 
+the trial team, which collected the data from trial 
+sites and performed the analyses at the Nuffield 
+Department of Population Health, University of 
+Oxford.
+Results
+Patients
+Of the 11,303 patients who underwent random-
+ization from March 19 to June 8, 2020, a total of 
+9355 patients (83%) were eligible to receive dexa-
+methasone (i.e., the drug was available in the 
+hospital at the time and the patient had no 
+known indication for or contraindication to 
+dexamethasone). Of these patients, 6425 under-
+went randomization to receive either dexameth-
+asone (2104 patients) or usual care alone (4321 
+patients) (Fig. 1). The remaining patients were 
+randomly assigned to one of the other treatment 
+groups being evaluated in the trial.
+The mean (±SD) age of the patients in this 
+comparison was 66.1±15.7 years, and 36% of the 
+patients were female (Table 1). A history of dia-
+betes was present in 24% of the patients, heart 
+disease in 27%, and chronic lung disease in 21%, 
+with 56% having at least one major coexisting 
+illness recorded. In this analysis, 89% of the pa-
+tients had laboratory-confirmed SARS-CoV-2 in-
+fection, and 0.4% were currently awaiting the 
+result. At randomization, 16% were receiving 
+invasive mechanical ventilation or extracorporeal 
+membrane oxygenation, 60% were receiving oxy-
+gen only (with or without noninvasive ventila -
+tion), and 24% were receiving neither.
+Follow-up information for the primary out -
+come was complete for 6418 patients (99.9%) who 
+had undergone randomization. In the dexametha-
+sone group, 95% of the patients received at least 
+one dose of the drug (Table S1). The median 
+duration of treatment was 7 days (interquartile 
+range, 3 to 10). In the usual care group, 8% of the 
+patients received dexamethasone as part of their 
+clinical care. The use of azithromycin during the 
+follow-up period was similar in the dexametha -
+sone group and the usual care group (24% vs. 
+25%), and 0 to 3% of patients received hydroxy-
+chloroquine, lopinavir–ritonavir, or interleukin-6 
+antagonists during follow-up (Table S1 in the 
+Supplementary Appendix). After remdesivir be -
+came available in the United Kingdom on May 26, 
+2020, the drug was administered to 3 patients in 
+the dexamethasone group and 2 patients in the 
+usual care group.
+Primary Outcome
+Mortality at 28 days was significantly lower in 
+the dexamethasone group than in the usual care 
+group, with deaths reported in 482 of 2104 pa -
+tients (22.9%) and in 1110 of 4321 patients 
+(25.7%), respectively (rate ratio, 0.83; 95% con-
+fidence interval [CI], 0.75 to 0.93; P<0.001) 
+(Fig. 2A). In a prespecified analysis according to 
+n engl j med   nejm.org 5
+Dexamethasone in Hospitalized Patients with Covid-19
+Table 1. Characteristics of the Patients at Baseline, According to Treatment Assignment and Level of Respiratory Support.*
+Characteristic Treatment Assignment
+Respiratory Support Received 
+at Randomization
+Dexamethasone 
+(N = 2104)
+Usual Care 
+(N = 4321)
+No Receipt of 
+Oxygen 
+(N = 1535)
+Oxygen 
+Only 
+(N = 3883)
+Invasive 
+Mechanical 
+Ventilation 
+(N = 1007)
+Age†
+Mean — yr 66.9±15.4 65.8±15.8 69.4±17.5 66.7±15.3 59.1±11.4
+Distribution — no. (%)
+<70 yr 1141 (54) 2504 (58) 659 (43) 2148 (55) 838 (83)
+70 to 79 yr 469 (22) 859 (20) 338 (22) 837 (22) 153 (15)
+≥80 yr 494 (23) 958 (22) 538 (35) 898 (23) 16 (2)
+Sex — no. (%)
+Male 1338 (64) 2749 (64) 891 (58) 2462 (63) 734 (73)
+Female‡ 766 (36) 1572 (36) 644 (42) 1421 (37) 273 (27)
+Median no. of days since symptom on-
+set (IQR)§
+8 (5–13) 9 (5–13) 6 (3–10) 9 (5–12) 13 (8–18)
+Median no. of days since hospitalization 
+(IQR)
+2 (1–5) 2 (1–5) 2 (1–6) 2 (1–4) 5 (3–9)
+Respiratory support received — no. (%)
+No oxygen 501 (24) 1034 (24) 1535 (100) NA NA
+Oxygen only 1279 (61) 2604 (60) NA 3883 (100) NA
+Invasive mechanical ventilation 324 (15) 683 (16) NA NA 1007 (100)
+Previous coexisting disease
+Any 1174 (56) 2417 (56) 911 (59) 2175 (56) 505 (50)
+Diabetes 521 (25) 1025 (24) 342 (22) 950 (24) 254 (25)
+Heart disease 586 (28) 1171 (27) 519 (34) 1074 (28) 164 (16)
+Chronic lung disease 415 (20) 931 (22) 351 (23) 883 (23) 112 (11)
+Tuberculosis 6 (<1) 19 (<1) 8 (1) 11 (<1) 6 (1)
+HIV infection 12 (1) 20 (<1) 5 (<1) 21 (1) 6 (1)
+Severe liver disease¶ 37 (2) 82 (2) 32 (2) 72 (2) 15 (1)
+Severe kidney impairment‖ 166 (8) 358 (8) 119 (8) 253 (7) 152 (15)
+SARS-CoV-2 test result
+Positive 1850 (88) 3848 (89) 1333 (87) 3416 (88) 949 (94)
+Negative 247 (12) 453 (10) 193 (13) 452 (12) 55 (5)
+Test result not yet known 7 (<1) 20 (<1) 9 (1) 15 (<1) 3 (<1)
+*  Plus–minus values are means ±SD. HIV denotes human immunodeficiency virus, IQR interquartile range, NA not applicable, and SARS-
+CoV-2 severe acute respiratory syndrome coronavirus 2.
+†  There was a significant (P = 0.01) difference in the mean age between patients in the dexamethasone group and those in the usual care 
+group, but there were no significant differences between the groups in any other baseline characteristic.
+‡  Included in this category were 6 pregnant women.
+§  Data regarding the number of days since symptom onset were missing for 4 patients in the dexamethasone group and 13 patients in the 
+usual care group; these patients were excluded from estimates of the median number of days since onset.
+¶  Severe liver disease was defined as requiring ongoing specialist care.
+‖  Severe kidney impairment was defined as an estimated glomerular filtration rate of less than 30 ml per minute per 1.73 m 2.
+n engl j med   nejm.org 6
+The  new england journal of  medicine
+the level of respiratory support that the patients 
+were receiving at randomization, there was a 
+trend showing the greatest absolute and propor-
+tional benefit among patients who were receiving 
+invasive mechanical ventilation (11.5 by chi-
+square test for trend) (Fig. 3). In the dexametha-
+sone group, the incidence of death was lower 
+than that in the usual care group among pa -
+tients receiving invasive mechanical ventilation 
+(29.3% vs. 41.4%; rate ratio, 0.64; 95% CI, 0.51 
+to 0.81) and in those receiving oxygen without 
+invasive mechanical ventilation (23.3% vs. 26.2%; 
+rate ratio, 0.82; 95% CI, 0.72 to 0.94) (Fig. 2B 
+and 2C). However, there was no clear effect of 
+dexamethasone among patients who were not 
+receiving any respiratory support at randomiza -
+tion (17.8% vs. 14.0%; rate ratio, 1.19; 95% CI, 
+0.91 to 1.55) (Fig. 2D). The results were similar 
+in a post hoc exploratory analysis restricted to the 
+5698 patients (89%) with a positive SARS-CoV-2 
+test result. Likewise, sensitivity analyses without 
+adjustment for age resulted in similar findings 
+(Table S2).
+Patients who were receiving invasive mechan-
+Figure 1. Enrollment, Randomization, and Inclusion in the Primary Analysis.
+At the time of this analysis, completed follow-up forms were available for 2079 of 2104 patients (98.8%) in the dexa -
+methasone group and 4278 of 4321 patients (99.0%) in the usual care group. The subgroup of patients who later  
+underwent a second randomization to tocilizumab versus usual care in the RECOVERY trial included 95 of 2104  
+patients (4.5%) in the dexamethasone group and 276 of 4321 patients (6.4%) in the usual care group. In addition,  
+13 patients were randomly assigned to receive either convalescent plasma or usual care alone.
+9355 (83%) Underwent randomization
+between dexamethasone and
+other treatments
+11,303 Patients were recruited
+1948 Were excluded (could have >1 reason)
+357 (3%) Did not have dexamethasone
+available
+1707 (15%) Were not considered suitable
+for randomization to dexamethasone
+6425 (57%) Underwent randomization
+between dexamethasone and usual
+care alone
+2930 Were assigned to receive other active
+treatment
+2104 (100%) Were assigned to receive dexa-
+methasone
+1975/2079 (95%) Received dexamethasone
+4321 (100%) Were assigned to receive usual
+care alone
+336/4278 (8%) Received dexamethasone
+6 Withdrew consent1 Withdrew consent
+2104 (100%) Were included in the 28-day
+intention-to-treat analysis
+4321 (100%) Were included in the 28-day
+intention-to-treat analysis
+95 (4.5%) Proceeded to second
+randomization
+276 (6.4%) Proceeded to second
+randomization
+n engl j med   nejm.org 7
+Dexamethasone in Hospitalized Patients with Covid-19
+ical ventilation at randomization were on aver -
+age 10 years younger than those not receiving 
+any respiratory support and had a history of 
+symptoms before randomization for an average 
+of 7 days longer (Table 1 and Table S3). The age-
+adjusted absolute reductions in 28-day mortality 
+associated with the use of dexamethasone were 
+12.3 percentage points (95% CI, 6.3 to 17.6) among 
+the patients who were receiving invasive mechan-
+ical ventilation and 4.2 percentage points (95% 
+CI, 1.4 to 6.7) among those receiving oxygen only.
+Patients with a longer duration of symptoms 
+(who were more likely to have been receiving in-
+vasive mechanical ventilation at randomization) 
+had a greater mortality benefit in response to 
+treatment with dexamethasone. The receipt of 
+Figure 2. Mortality at 28 Days in All Patients and According to Respiratory Support at Randomization.
+Shown are Kaplan–Meier survival curves for 28-day mortality among all the patients in the trial (primary outcome) 
+(Panel A) and in three respiratory-support subgroups according to whether the patients were undergoing invasive 
+mechanical ventilation (Panel B), receiving oxygen only without mechanical ventilation (Panel C), or receiving no 
+supplemental oxygen (Panel D) at the time of randomization. The Kaplan–Meier curves have not been adjusted for 
+age. The rate ratios have been adjusted for the age of the patients in three categories (<70 years, 70 to 79 years, and 
+≥80 years). Estimates of the rate ratios and 95% confidence intervals in Panels B, C, and D were derived from a sin -
+gle age-adjusted regression model involving an interaction term between treatment assignment and level of respira -
+tory support at randomization.
+Mortality/uni0020(%)
+50
+40
+30
+10
+20
+0
+0 7 14 21 28
+Days/uni0020since/uni0020Randomization
+C Oxygen/uni0020Only/uni0020(N=3883) D
+Invasive/uni0020Mechanical/uni0020Ventilation/uni0020(N=1007)A All/uni0020Participants/uni0020(N=6425)
+Rate ratio, 0.83 (95% CI, 0.75–0.93)
+P<0.001
+No./uni0020at/uni0020Risk
+Usual care
+Dexamethasone
+4321
+2104
+3754
+1903
+3427
+1725
+3271
+1659
+3205
+1621
+Usual care
+Dexamethasone
+B
+No/uni0020Oxygen/uni0020Received/uni0020(N=1535)
+Mortality/uni0020(%)
+50
+40
+30
+10
+20
+0
+0 7 14 21 28
+Days/uni0020since/uni0020Randomization
+Rate ratio, 0.82 (95% CI, 0.72–0.94)
+No./uni0020at/uni0020Risk
+Usual care
+Dexamethasone
+2604
+1279
+2195
+1135
+2018
+1036
+1950
+1006
+1916
+981
+Usual care
+Dexamethasone
+Mortality/uni0020(%)
+50
+40
+30
+10
+20
+0
+0 7 14 21 28
+Days/uni0020since/uni0020Randomization
+Rate ratio, 1.19 (95% CI, 0.91–1.55)
+No./uni0020at/uni0020Risk
+Usual care
+Dexamethasone
+Usual care
+Dexamethasone
+Mortality/uni0020(%)
+50
+40
+30
+10
+20
+0
+1034
+501
+987
+478
+928
+441
+897
+421
+889
+412
+0 7 14 21 28
+Days/uni0020since/uni0020Randomization
+Rate ratio, 0.64 (95% CI, 0.51–0.81)
+No./uni0020at/uni0020Risk
+Usual care
+Dexamethasone
+683
+324
+572
+290
+481
+248
+424
+232
+400
+228
+Usual care
+Dexamethasone
+n engl j med   nejm.org 8
+The  new england journal of  medicine
+dexamethasone was associated with a reduction 
+in 28-day mortality among those with symptoms 
+for more than 7 days but not among those with 
+a more recent symptom onset (12.3 by chi-square 
+test for trend) (Fig. S1).
+Secondary Outcomes
+Patients in the dexamethasone group had a 
+shorter duration of hospitalization than those in 
+the usual care group (median, 12 days vs. 13 days) 
+and a greater probability of discharge alive within 
+28 days (rate ratio, 1.10; 95% CI, 1.03 to 1.17) 
+(Table 2). The greatest effect regarding discharge 
+within 28 days was seen among patients who 
+were receiving invasive mechanical ventilation at 
+randomization (11.5 by chi-square test for trend) 
+(Fig. S2A).
+Among the patients who were not receiving 
+invasive mechanical ventilation at randomization, 
+the number of patients who progressed to the 
+prespecified composite secondary outcome of in-
+vasive mechanical ventilation or death was lower 
+in the dexamethasone group than in the usual 
+care group (risk ratio, 0.92; 95% CI, 0.84 to 1.01) 
+(Table 2). This effect was greater among the 
+patients who were receiving oxygen at randomiza-
+tion (6.2 by chi-square test for trend) (Fig. S2B).
+Other Prespecified Clinical Outcomes
+The risk of progression to invasive mechanical 
+ventilation was lower in the dexamethasone 
+group than in the usual care group (risk ratio, 
+0.77; 95% CI, 0.62 to 0.95) (Table 2). Analyses 
+are ongoing regarding cause-specific mortality, 
+the need for renal dialysis or hemofiltration, and 
+the duration of ventilation.
+Discussion
+Our preliminary results show that among hospi-
+talized patients with Covid-19, the use of dexa -
+methasone for up to 10 days resulted in lower 
+28-day mortality than usual care in patients who 
+were receiving invasive mechanical ventilation at 
+randomization (by 12.3 age-adjusted percentage 
+points, a proportional reduction of approximately 
+one third) and those who were receiving oxygen 
+without invasive mechanical ventilation (by 4.1 
+age-adjusted percentage points, a proportional 
+reduction of approximately one fifth). However, 
+there was no evidence that dexamethasone pro -
+vided any benefit among patients who were not 
+receiving respiratory support at randomization, 
+and the results were consistent with possible 
+harm in this subgroup. The benefit was also clear 
+in patients who were being treated more than 
+7 days after symptom onset, when inflammatory 
+lung damage is likely to have been more com -
+mon. In a recent trial involving patients with 
+acute respiratory distress syndrome who were 
+undergoing mechanical ventilation, mortality at 
+60 days was 15 percentage points lower among 
+those receiving dexamethasone than among those 
+receiving usual care, a finding that was consis -
+tent with our results.22
+The RECOVERY trial was designed to provide 
+Figure 3. Effect of Dexamethasone on 28-Day Mortality, According to Respiratory Support at Randomization.
+Shown are subgroup-specific rate ratios for all the patients and for those who were receiving no oxygen, receiving 
+oxygen only, or undergoing invasive mechanical ventilation at the time of randomization. Rate ratios are plotted as 
+squares, with the size of each square proportional to the amount of statistical information that was available; the 
+horizontal lines represent 95% confidence intervals.
+0.75 1.00 2.001.50
+Usual/uni0020Care
+Better
+Dexamethasone
+Better
+Invasive mechanical
+ventilation
+Oxygen only
+No oxygen received
+All/uni0020Patients
+Chi-square trend across three categories: 11.5
+Dexamethasone Rate/uni0020Ratio/uni0020(95%/uni0020CI)Usual/uni0020Care
+Respiratory/uni0020Support
+at/uni0020Randomization
+0.64 (0.51–0.81)
+1.19 (0.91–1.55)
+0.83/uni0020(0.75–0.93)
+P<0.001
+0.50
+0.82 (0.72–0.94)
+ 95/324 (29.3)
+ 
+ 298/1279 (23.3)
+ 89/501 (17.8)
+/uni0020482/2104/uni0020(22.9)
+  283/683 (41.4)  
+ 
+  682/2604 (26.2)
+  145/1034 (14.0)
+1110/4321/uni0020(25.7)
+no. of events/total no. (%)
+n engl j med   nejm.org 9
+Dexamethasone in Hospitalized Patients with Covid-19
+a rapid and robust assessment of the effect of 
+readily available potential treatments for Covid-19 
+on 28-day mortality. Approximately 15% of all 
+hospitalized patients with Covid-19 in the United 
+Kingdom were enrolled in the trial, and mortality 
+in the usual care group was consistent with the 
+overall case fatality rate for hospitalized patients 
+with Covid-19 in the United Kingdom.7 Only es-
+sential data were collected at hospital sites, with 
+additional information (including longer-term 
+mortality) ascertained through linkage with rou-
+tine data sources. We did not collect information 
+on physiologic, laboratory, or virologic measures. 
+The protocol combines the methods that were 
+used in large, simple trials of treatments for 
+acute myocardial infarction in the 1980s with the 
+opportunities provided by digital health care in 
+the 2020s.23-25 The trial has progressed rapidly, 
+as is essential for studies during epidemics. 26 
+These preliminary results for dexamethasone 
+were announced on June 16, 2020, nearly 100 days 
+after the protocol was first drafted, and were 
+adopted into U.K. practice later the same day.27
+Glucocorticoids have been widely used in 
+syndromes closely related to Covid-19, including 
+SARS, Middle East respiratory syndrome (MERS), 
+severe influenza, and community-acquired pneu-
+monia. However, the evidence to support or dis-
+courage the use of glucocorticoids under these 
+conditions has been weak owing to the lack of 
+data from sufficiently powered randomized, con-
+trolled trials.28-31 In addition, the evidence base 
+has suffered from heterogeneity in glucocorticoid 
+doses, medical conditions, and disease severity. 
+It is likely that the beneficial effect of glucocor-
+ticoids in severe viral respiratory infections is 
+dependent on a selection of the right dose, at the 
+right time, in the right patient. High doses may 
+be more harmful than helpful, as may such treat-
+ment given at a time when control of viral repli-
+cation is paramount and inflammation is mini -
+mal. Slower clearance of viral RNA has been 
+observed in patients with SARS, MERS, and in -
+fluenza who were treated with systemic gluco -
+corticoids, but the clinical significance of these 
+findings is unknown.29,32,33 Unlike with SARS, in 
+which viral replication peaks in the second week 
+of illness, 34 viral shedding in SARS-CoV-2 ap -
+pears to be higher early in the illness and de -
+clines thereafter.35-38 The greater mortality ben -
+efit of dexamethasone in patients with Covid-19 
+who are receiving respiratory support and among 
+those recruited after the first week of their ill -
+ness suggests that at that stage the disease may 
+be dominated by immunopathological elements, 
+with active viral replication playing a secondary 
+role. This hypothesis would caution against ex -
+trapolation of the effect of dexamethasone in 
+patients with Covid-19 to patients with other 
+viral respiratory diseases with a different natural 
+history.
+The RECOVERY trial provides evidence that 
+treatment with dexamethasone at a dose of 6 mg 
+once daily for up to 10 days reduces 28-day mor-
+tality in patients with Covid-19 who are receiving 
+respiratory support. We found no benefit (and 
+Table 2. Primary and Secondary Outcomes.
+Outcome
+Dexamethasone 
+(N = 2104)
+Usual Care 
+(N = 4321)
+Rate or Risk Ratio 
+(95% CI)*
+no./total no. of patients (%)
+Primary outcome
+Mortality at 28 days 482/2104 (22.9) 1110/4321 (25.7) 0.83 (0.75–0.93)
+Secondary outcomes
+Discharged from hospital within 28 days 1413/2104 (67.2) 2745/4321 (63.5) 1.10 (1.03–1.17)
+Invasive mechanical ventilation or death† 456/1780 (25.6) 994/3638 (27.3) 0.92 (0.84–1.01)
+Invasive mechanical ventilation 102/1780 (5.7) 285/3638 (7.8) 0.77 (0.62–0.95)
+Death 387/1780 (21.7) 827/3638 (22.7) 0.93 (0.84–1.03)
+*  Rate ratios have been adjusted for age with respect to the outcomes of 28-day mortality and hospital discharge. Risk ra-
+tios have been adjusted for age with respect to the outcome of receipt of invasive mechanical ventilation or death and 
+its subcomponents.
+†  Excluded from this category are patients who were receiving invasive mechanical ventilation at randomization.
+n engl j med   nejm.org 10
+The  new england journal of  medicine
+the possibility of harm) among patients who did 
+not require oxygen. Before the completion of the 
+trial, many Covid-19 treatment guidelines stated 
+that the use of glucocorticoids was either contra-
+indicated or not recommended.18 Dexamethasone 
+is on the list of essential medicines of the World 
+Health Organization and is readily available world-
+wide at low cost. Guidelines issued by the U.K. 
+chief medical officers and by the National Insti-
+tutes of Health in the United States have already 
+been updated to recommend the use of glucocor-
+ticoids in patients hospitalized with Covid-19.27,39
+The views expressed in this article are those of the authors 
+and do not necessarily reflect those of the National Health Ser -
+vice, the National Institute for Health Research, or the Depart -
+ment of Health and Social Care.
+Supported by a grant (MC_PC_19056) to the University of 
+Oxford from UK Research and Innovation and the National 
+Institute for Health Research (NIHR); and by core funding 
+provided by NIHR Oxford Biomedical Research Centre, Well -
+come, the Bill and Melinda Gates Foundation,  the Department 
+for International Development, Health Data Research UK, 
+the Medical Research Council Population Health Research 
+Unit, the NIHR Health Protection Unit in Emerging and Zoo -
+notic Infections, and NIHR Clinical Trials Unit Support Fund -
+ing. Dr. Lim is supported by core funding provided by NIHR 
+Nottingham Biomedical Research Centre, Dr. Fenton by the 
+NIHR Manchester Biomedical Research Centre, and Dr. Jaki 
+by a grant (MC_UU_0002/14) from the UK Medical Research 
+Council and by an NIHR Senior Research Fellowship (NIHR-
+SRF-2015-08-001). Tocilizumab was provided free of charge for 
+this study by Roche. AbbVie contributed some supplies of lopi -
+navir–ritonavir for use in the trial. Other medications, including 
+dexamethasone, that were used in the trial were supplied by the 
+National Health Service (NHS).
+Disclosure forms provided by the authors are available with 
+the full text of this article at NEJM.org.
+A data sharing statement provided by the authors is available 
+with the full text of this article at NEJM.org.
+We thank the thousands of patients who participated in this 
+trial; the doctors, nurses, pharmacists, other allied health pro -
+fessionals, and research administrators at 176 NHS hospital 
+organizations across the United Kingdom, supported by staff 
+at the NIHR Clinical Research Network, NHS DigiTrials, Public 
+Health England, Department of Health and Social Care, the In -
+tensive Care National Audit and Research Centre, Public Health 
+Scotland, National Records Service of Scotland, the Secure 
+Anonymised Information Linkage (SAIL) at University of Swan -
+sea, and the NHS in England, Scotland, Wales, and Northern 
+Ireland; and the members of the independent data monitoring 
+committee: Peter Sandercock, Janet Darbyshire, David DeMets, 
+Robert Fowler, David Lalloo, Ian Roberts, and Janet Wittes.
+Appendix
+The affiliations of the members of the writing committee are as follows: the Nuffield Department of Medicine (P.H.), Nuffield Depart-
+ment of Population Health (J.R.E., M.M., J.L.B., L.L., N.S., E.J., R.H., M.J.L.), and MRC Population Health Research Unit (J.R.E., N.S., 
+R.H., M.J.L.), University of Oxford, the Oxford University Hospitals NHS Foundation Trust (K.J.), and National Institute for Health 
+Research (NIHR) Oxford Biomedical Research Centre (M.J.L.), Oxford, the Respiratory Medicine Department, Nottingham University 
+Hospitals NHS Trust (W.S.L.), and the School of Medicine, University of Nottingham (A.M.), Nottingham, the Institute for Lung Health, 
+Leicester NIHR Biomedical Research Centre, University of Leicester, Leicester (C.B.), the Regional Infectious Diseases Unit, North 
+Manchester General Hospital and University of Manchester (A.U.), and the University of Manchester and Manchester University NHS 
+Foundation Trust (T.F.), Manchester, the Research and Development Department, Northampton General Hospital, Northampton (E.E.), 
+the Department of Respiratory Medicine, North Tees and Hartlepool NHS Foundation Trust, Stockton-on-Tees (B.P.), University Hos-
+pitals Birmingham NHS Foundation Trust and Institute of Microbiology and Infection, University of Birmingham, Birmingham (C.G.), 
+the Centre for Clinical Infection, James Cook University Hospital, Middlesbrough (D.C.), the North West Anglia NHS Foundation Trust, 
+Peterborough (K. Rege), the Department of Research and Development, Cardiff and Vale University Health Board, Cardiff (C.F.), the 
+School of Life Course Sciences, King’s College London (L.C.C.), and the Intensive Care National Audit and Research Centre (K. Rowan), 
+London, the NIHR Southampton Clinical Research Facility and Biomedical Research Centre, University Hospital Southampton NHS 
+Foundation Trust and University of Southampton, Southampton (S.N.F.), the Department of Mathematics and Statistics, Lancaster 
+University, Lancaster (T.J.), the MRC Biostatistics Unit, University of Cambridge, Cambridge (T.J.), and Roslin Institute, University of 
+Edinburgh, Edinburgh (J.K.B.) — all in the United Kingdom.
+References
+1. Zhu N, Zhang D, Wang W, et al. A 
+novel coronavirus from patients with 
+pneumonia in China, 2019. N Engl J Med 
+2020; 382: 727-33.
+2. Verity R, Okell LC, Dorigatti I, et al. 
+Estimates of the severity of coronavirus 
+disease 2019: a model-based analysis. 
+Lancet Infect Dis 2020; 20: 669-77.
+3. Zhou F, Yu T, Du R, et al. Clinical 
+course and risk factors for mortality of 
+adult inpatients with COVID-19 in Wu -
+han, China: a retrospective cohort study. 
+Lancet 2020; 395: 1054-62.
+4. Chen N, Zhou M, Dong X, et al. Epide-
+miological and clinical characteristics of 
+99 cases of 2019 novel coronavirus pneu-
+monia in Wuhan, China: a descriptive 
+study. Lancet 2020; 395: 507-13.
+5. Cao J, Tu W-J, Cheng W, et al. Clinical 
+features and short-term outcomes of 102 
+patients with corona virus disease 2019 in 
+Wuhan, China. Clin Infect Dis 2020 April 
+2 (Epub ahead of print).
+6. Ruan Q, Yang K, Wang W, Jiang L, 
+Song J. Clinical predictors of mortality 
+due to COVID-19 based on an analysis of 
+data of 150 patients from Wuhan, China. 
+Intensive Care Med 2020; 46: 846-8.
+7. Docherty AB, Harrison EM, Green 
+CA, et al. Features of 20,133 UK patients in 
+hospital with covid-19 using the ISARIC 
+WHO Clinical Characterisation Protocol: 
+prospective observational cohort study. 
+BMJ 2020; 369: m1985.
+8. Beigel JH, Tomashek KM, Dodd LE, et 
+al. Remdesivir for the treatment of Covid-19 
+— preliminary report. N Engl J Med. DOI:  
+10.1056/NEJMoa2007764.
+9. Carsana L, Sonzogni A, Nasr A, et al. 
+Pulmonary post-mortem findings in a se-
+ries of COVID-19 cases from northern Italy: 
+a two-centre descriptive study. Lancet In -
+fect Dis 2020 June 8 (Epub ahead of print).
+10. de Jong MD, Simmons CP, Thanh TT, 
+et al. Fatal outcome of human influenza A 
+(H5N1) is associated with high viral load 
+and hypercytokinemia. Nat Med 2006; 12: 
+1203-7.
+n engl j med   nejm.org 11
+Dexamethasone in Hospitalized Patients with Covid-19
+11. Wong CK, Lam CWK, Wu AKL, et al. 
+Plasma inflammatory cytokines and che -
+mokines in severe acute respiratory syn -
+drome. Clin Exp Immunol 2004; 136: 95-103.
+12. Baillie JK, Digard P. Influenza — time 
+to target the host? N Engl J Med 2013; 369: 
+191-3.
+13. Huang C, Wang Y, Li X, et al. Clinical 
+features of patients infected with 2019 
+novel coronavirus in Wuhan, China. Lan -
+cet 2020; 395: 497-506.
+14. Moore JB, June CH. Cytokine release 
+syndrome in severe COVID-19. Science 
+2020; 368: 473-4.
+15. Shang L, Zhao J, Hu Y, Du R, Cao B. 
+On the use of corticosteroids for 2019-
+nCoV pneumonia. Lancet 2020; 395: 683-4.
+16. Russell CD, Millar JE, Baillie JK. Clin-
+ical evidence does not support corticoste-
+roid treatment for 2019-nCoV lung injury. 
+Lancet 2020; 395: 473-5.
+17. Corral L, Bahamonde A, Arnaiz delas 
+Revillas F, et al. GLUCOCOVID: a con -
+trolled trial of methylprednisolone in 
+adults hospitalized with COVID-19 pneu -
+monia. June 18, 2020 (https://www  
+ .medrxiv .org/ content/ 10 .1101/ 2020 .06 .17 
+.20133579v1). preprint.
+18. Dagens A, Sigfrid L, Cai E, et al. 
+Scope, quality, and inclusivity of clinical 
+guidelines produced early in the covid-19 
+pandemic: rapid review. BMJ 2020;  369: 
+m1936.
+19. Zhao JP, Hu Y, Du RH, et al. Expert 
+consensus on the use of corticosteroid in 
+patients with 2019-nCoV pneumonia. 
+Zhonghua Jie He He Hu Xi Za Zhi 2020; 43: 
+183-4. (In Chinese.)
+20. Wang D, Hu B, Hu C, et al. Clinical 
+characteristics of 138 hospitalized pa -
+tients with 2019 novel coronavirus-infect-
+ed pneumonia in Wuhan, China. JAMA 
+2020; 323: 1061-9.
+21. Xu XW, Wu XX, Jiang XG, et al. Clini-
+cal findings in a group of patients infect-
+ed with the 2019 novel coronavirus 
+(SARS-Cov-2) outside of Wuhan, China: 
+retrospective case series. BMJ 2020;  368: 
+m606.
+22. Villar J, Ferrando C, Martínez D, et al. 
+Dexamethasone treatment for the acute 
+respiratory distress syndrome: a multi -
+centre, randomised controlled trial. Lan -
+cet Respir Med 2020; 8: 267-76.
+23. Yusuf S, Collins R, Peto R. Why do we 
+need some large, simple randomized tri -
+als? Stat Med 1984; 3: 409-22.
+24. ISIS-2 (Second International Study of 
+Infarct Survival) Collaborative Group. 
+Randomised trial of intravenous strepto -
+kinase, oral aspirin, both, or neither 
+among 17,187 cases of suspected acute 
+myocardial infarction: ISIS-2. Lancet 1988; 
+2: 349-60.
+25. Collins R, Bowman L, Landray M, 
+Peto R. The magic of randomization ver -
+sus the myth of real-world evidence.  
+N Engl J Med 2020; 382: 674-8.
+26. Rojek AM, Horby PW. Modernising 
+epidemic science: enabling patient-cen -
+tred research during epidemics. BMC Med 
+2016; 14: 212.
+27. Whitty C. Dexamethasone in the 
+treatment of COVID-19:  Implementation 
+and management of supply for treatment 
+in hospitals. London:   Medicines and 
+Healthcare Products Regulatory Agency, 
+June 16, 2020 (https://www .cas .mhra .gov 
+.uk/ ViewandAcknowledgment/ ViewAlert 
+.aspx?AlertID=103054).
+28. Stockman LJ, Bellamy R, Garner P. 
+SARS: systematic review of treatment ef -
+fects. PLoS Med 2006; 3(9): e343.
+29. Arabi YM, Mandourah Y, Al-Hameed 
+F, et al. Corticosteroid therapy for criti -
+cally ill patients with Middle East respira-
+tory syndrome. Am J Respir Crit Care Med 
+2018; 197: 757-67.
+30. Lansbury LE, Rodrigo C, Leonardi-
+Bee J, Nguyen-Van-Tam J, Shen Lim W. 
+Corticosteroids as adjunctive therapy in 
+the treatment of influenza: an updated Co-
+chrane systematic review and meta-analy-
+sis. Crit Care Med 2020; 48(2): e98-e106.
+31. Siemieniuk RA, Meade MO, Alonso-
+Coello P, et al. Corticosteroid therapy for 
+patients hospitalized with community-
+acquired pneumonia: a systematic review 
+and meta-analysis. Ann Intern Med 2015; 
+163: 519-28.
+32. Lee N, Allen Chan KC, Hui DS, et al. 
+Effects of early corticosteroid treatment 
+on plasma SARS-associated Coronavirus 
+RNA concentrations in adult patients.  
+J Clin Virol 2004; 31: 304-9.
+33. Lee N, Chan PKS, Hui DSC, et al. Viral 
+loads and duration of viral shedding in 
+adult patients hospitalized with influen -
+za. J Infect Dis 2009; 200: 492-500.
+34. Cheng PKC, Wong DA, Tong LKL, et 
+al. Viral shedding patterns of coronavirus 
+in patients with probable severe acute re -
+spiratory syndrome. Lancet 2004;  363: 
+1699-700.
+35. To KK-W, Tsang OT-T, Leung W-S, et 
+al. Temporal profiles of viral load in pos-
+terior oropharyngeal saliva samples and 
+serum antibody responses during infec -
+tion by SARS-CoV-2: an observational co-
+hort study. Lancet Infect Dis 2020; 20: 565-
+74.
+36. Zhou R, Li F, Chen F, et al. Viral dy -
+namics in asymptomatic patients with 
+COVID-19. Int J Infect Dis 2020;  96: 288-
+90.
+37. He X, Lau EHY, Wu P, et al. Temporal 
+dynamics in viral shedding and transmis-
+sibility of COVID-19. Nat Med 2020;  26: 
+672-5.
+38. Wölfel R, Corman VM, Guggemos W, 
+et al. Virological assessment of hospital -
+ized patients with COVID-2019. Nature 
+2020; 581: 465-9.
+39. COVID-19 treatment guidelines. 
+Bethesda, MD:  National Institutes of 
+Health, 2020 (https://www  .covid19treat-
+mentguidelines .nih .gov/ dexamethasone/ ).
+Copyright © 2020 Massachusetts Medical Society.

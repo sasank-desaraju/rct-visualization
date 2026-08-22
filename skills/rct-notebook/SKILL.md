@@ -4,7 +4,7 @@ description: >-
   Author a marimo notebook that reads a randomized controlled trial through the
   CONSORT 2025 checklist. Use when building a visual, auditable trial summary
   from a paper (PDF or verified public sources) for the rct-visualization repo.
-version: 1.1.0
+version: 1.2.0
 license: MIT
 metadata:
   hermes:
@@ -163,8 +163,23 @@ element). Cells that build data used elsewhere return it via `return`.
   as a code block. Build long Markdown with explicit concatenated lines (or
   `textwrap.dedent`) and execute the browser-rendered notebook once to check
   headings, tables, and captions are actually semantic HTML.
+- The reference notebooks intentionally end display cells with bare
+  expressions; put `# ruff: noqa: B018,PLR1711` **after** the closing `# ///`
+  marker (never inside the PEP 723 TOML block) so Ruff checks real code without
+  misclassifying marimo's display convention.
 - Keep `width="medium"` on `marimo.App`; the site embed assumes it.
 - File must end with `if __name__ == "__main__": app.run()`.
+
+## Arithmetic audit (beyond the gate)
+
+After the verification gate passes, run a throwaway audit script (not shipped)
+that re-derives every displayed rate from the data-cell literals and checks
+published rates reproduce within rounding (<0.05 pp). Also check structural
+sums: stratum denominators must sum to arm totals, flow funnels must close at
+every stage, and arm counts must sum to the randomized total. When a value is
+genuinely unavailable (e.g. a screening count that exists only inside a raster
+figure), leave the box visibly empty with an explicit "not in retrieved full
+text" note — never guess.
 
 ## Verification gate (do not skip)
 
@@ -184,16 +199,9 @@ uv run marimo export script notebooks/<trial>.py > /tmp/export_check.py && echo 
 uv run python /tmp/export_check.py
 ```
 
-The reference notebooks intentionally end display cells with bare expressions;
-put `# ruff: noqa: B018,PLR1711` **after** the closing `# ///` marker (never
-inside the PEP 723 TOML block) so Ruff checks real code without misclassifying
-marimo's display convention.
 - `EXPORT_OK` proves the file parses and cells compile.
 - Executing the exported script proves every cell runs top-to-bottom with no
   NameError/marimo dependency errors (charts render as Altair specs; that is fine).
-- Arithmetic audit: assert (in a throwaway script, not shipped) that every rate
-  shown equals counts/denominator from the data cell, and that reconstructed
-  denominators reproduce the published rates within rounding (<0.05 pp).
 - If `uv` is unavailable, use `pip install altair==6.1.0 polars==1.40.0 marimo`
   into a venv; the gate is execution, not the toolchain.
 

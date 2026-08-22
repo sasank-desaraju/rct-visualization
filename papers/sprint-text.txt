@@ -1,0 +1,746 @@
+A Randomized Trial of Intensive versus Standard Blood-
+Pressure Control
+The SPRINT Research Group*
+Abstract
+BACKGROUND—The most appropriate targets for systolic blood pressure to reduce 
+cardiovascular morbidity and mortality among persons without diabetes remain uncertain.
+METHODS—We randomly assigned 9361 persons with a systolic blood pressure of 130 mm Hg 
+or higher and an increased cardiovascular risk, but without diabetes, to a systolic blood-pressure 
+target of less than 120 mm Hg (intensive treatment) or a target of less than 140 mm Hg (standard 
+treatment). The primary composite outcome was myocardial infarction, other acute coronary 
+syndromes, stroke, heart failure, or death from cardiovascular causes.
+RESULTS—At 1 year, the mean systolic blood pressure was 121.4 mm Hg in the intensive-
+treatment group and 136.2 mm Hg in the standard-treatment group. The intervention was stopped 
+early after a median follow-up of 3.26 years owing to a significantly lower rate of the primary 
+composite outcome in the intensive-treatment group than in the standard-treatment group (1.65% 
+per year vs. 2.19% per year; hazard ratio with intensive treatment, 0.75; 95% confidence interval 
+[CI], 0.64 to 0.89; P<0.001). All-cause mortality was also significantly lower in the intensive-
+treatment group (hazard ratio, 0.73; 95% CI, 0.60 to 0.90; P = 0.003). Rates of serious adverse 
+events of hypotension, syncope, electrolyte abnormalities, and acute kidney injury or failure, but 
+not of injurious falls, were higher in the intensive-treatment group than in the standard-treatment 
+group.
+CONCLUSIONS—Among patients at high risk for cardiovascular events but without diabetes, 
+targeting a systolic blood pressure of less than 120 mm Hg, as compared with less than 140 mm 
+Hg, resulted in lower rates of fatal and nonfatal major cardiovascular events and death from any 
+cause, although significantly higher rates of some adverse events were observed in the intensive-
+treatment group. (Funded by the National Institutes of Health; ClinicalTrials.gov number, 
+NCT01206062.)
+Address reprint requests to Dr. Wright at the Division of Nephrology and Hypertension, University Hospitals Case Medical Center, 
+Case Western Reserve University, 1100 Euclid Ave. Cleveland, OH 44106-6053, or at jackson.wright@case.edu.*A complete list of the members of the Systolic Blood Pressure Intervention Trial (SPRINT) Research Group is provided in the 
+Supplementary Appendix, available at NEJM.org.
+The members of the writing committee (Jackson T. Wright, Jr., M.D., Ph.D., Jeff D. Williamson, M.D., M.H.S., Paul K. Whelton, 
+M.D., Joni K. Snyder, R.N., B.S.N., M.A., Kaycee M. Sink, M.D., M.A.S., Michael V. Rocco, M.D., M.S.C.E., David M. Reboussin, 
+Ph.D., Mahboob Rahman, M.D., Suzanne Oparil, M.D., Cora E. Lewis, M.D., M.S.P.H., Paul L. Kimmel, M.D., Karen C. Johnson, 
+M.D., M.P.H., David C. Goff, Jr., M.D., Ph.D., Lawrence J. Fine, M.D., Dr.P.H., Jeffrey A. Cutler, M.D., M.P.H., William C. 
+Cushman, M.D., Alfred K. Cheung, M.D., and Walter T. Ambrosius, Ph.D.) assume responsibility for the overall content and integrity 
+of the article. The affiliations of the members of the writing group are listed in the Appendix.
+The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of 
+Health (NIH), the Department of Veterans Affairs, or the U.S. Government.
+Disclosure forms provided by the authors are available with the full text of this article at NEJM.org.
+HHS Public Access
+Author manuscript
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Published in final edited form as:
+N Engl J Med. 2015 November 26; 373(22): 2103–2116. doi:10.1056/NEJMoa1511939.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Hypertension is highly prevalent in the adult population in the United States, especially 
+among persons older than 60 years of age, and affects approximately 1 billion adults 
+worldwide.1,2 Among persons 50 years of age or older, isolated systolic hypertension is the 
+most common form of hypertension,3,4 and systolic blood pressure becomes more important 
+than diastolic blood pressure as an independent risk predictor for coronary events, stroke, 
+heart failure, and end-stage renal disease (ESRD).5–13 The Global Burden of Disease Study 
+identified elevated blood pressure as the leading risk factor, among 67 studied, for death and 
+disability-adjusted life-years lost during 2010.14
+Clinical trials have shown that treatment of hypertension reduces the risk of cardiovascular 
+disease outcomes, including incident stroke (by 35 to 40%), myocardial infarction (by 15 to 
+25%), and heart failure (by up to 64%).5,15,16 However, the target for systolic blood-
+pressure lowering is uncertain. Observational studies have shown a progressive increase in 
+cardiovascular risk as systolic blood pressure rises above 115 mm Hg,10 but the available 
+evidence from randomized, controlled trials in the general population of patients with 
+hypertension only documents the benefit of treatment to achieve a systolic blood-pressure 
+target of less than 150 mm Hg, with limited data concerning lower blood-pressure 
+targets.11,17–21 In a trial involving patients with type 2 diabetes mellitus, the rate of major 
+cardiovascular events was similar with a systolic blood-pressure target of less than 120 mm 
+Hg and the commonly recommended target of less than 140 mm Hg, though the rate of 
+stroke was lower with the target of less than 120 mm Hg.22 A recent trial involving patients 
+who had had a stroke compared treatment to lower systolic blood pressure to less than 130 
+mm Hg with treatment to lower it to less than 150 mm Hg and showed no significant benefit 
+of the lower target with respect to the overall risk of another stroke but a significant benefit 
+with respect to the risk of hemorrhagic stroke.23
+The hypothesis that a lower systolic blood-pressure goal (e.g., <120 mm Hg) would reduce 
+clinical events more than a standard goal was designated by a National Heart, Lung, and 
+Blood Institute (NHLBI) expert panel in 2007 as the most important hypothesis to test 
+regarding the prevention of hypertension-related complications among patients without 
+diabetes.24 The current article describes the primary results of the Systolic Blood Pressure 
+Intervention Trial (SPRINT), which compared the benefit of treatment of systolic blood 
+pressure to a target of less than 120 mm Hg with treatment to a target of less than 140 mm 
+Hg.
+METHODS
+STUDY DESIGN AND OVERSIGHT
+SPRINT was a randomized, controlled, open-label trial that was conducted at 102 clinical 
+sites (organized into 5 clinical center networks) in the United States, including Puerto Rico 
+(see the Supplementary Appendix, available with the full text of this article at NEJM.org). A 
+trial coordinating center served as a data and biostatistical core center and supervised the 
+central laboratory, the electrocardiography reading center, the magnetic resonance imaging 
+reading center, and the drug-distribution center. The rationale and protocol for the trial are 
+publicly available,25,26 and the protocol is available at NEJM.org.
+Page 2
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+SPRINT was sponsored by the NHLBI, with cosponsorship by the National Institute of 
+Diabetes and Digestive and Kidney Diseases, the National Institute of Neurological 
+Disorders and Stroke, and the National Institute on Aging. An independent data and safety 
+monitoring board monitored unblinded trial results and safety events. The study was 
+approved by the institutional review board at each participating study site. The steering 
+committee designed the study, gathered the data (in collaboration with investigators at the 
+clinics and other study units), made the decision to submit the manuscript for publication, 
+and vouches for the fidelity of the study to the protocol. The writing committee wrote the 
+manuscript and vouches for the completeness and accuracy of the data and analysis. The 
+coordinating center was responsible for analyzing the data. Scientists at the National 
+Institutes of Health participated in the design of the study and as a group had one vote on the 
+steering committee of the trial.
+STUDY POPULATION
+Participants were required to meet all the following criteria: an age of at least 50 years, a 
+systolic blood pressure of 130 to 180 mm Hg (see the Supplementary Appendix), and an 
+increased risk of cardiovascular events. Increased cardiovascular risk was defined by one or 
+more of the following: clinical or subclinical cardiovascular disease other than stroke; 
+chronic kidney disease, excluding polycystic kidney disease, with an estimated glomerular 
+filtration rate (eGFR) of 20 to less than 60 ml per minute per 1.73 m2 of body-surface area, 
+calculated with the use of the four-variable Modification of Diet in Renal Disease equation; 
+a 10-year risk of cardiovascular disease of 15% or greater on the basis of the Framing-ham 
+risk score; or an age of 75 years or older. Patients with diabetes mellitus or prior stroke were 
+excluded. Detailed inclusion and exclusion criteria are listed in the Supplementary 
+Appendix. All participants provided written informed consent.
+RANDOMIZATION AND INTERVENTIONS
+Eligible participants were assigned to a systolic blood-pressure target of either less than 140 
+mm Hg (the standard-treatment group) or less than 120 mm Hg (the intensive-treatment 
+group). Randomization was stratified according to clinical site. Participants and study 
+personnel were aware of the study-group assignments, but outcome adjudicators were not.
+After the participants underwent randomization, their baseline antihypertensive regimens 
+were adjusted on the basis of the study-group assignment. The treatment algorithms were 
+similar to those used in the Action to Control Cardiovascular Risk in Diabetes (ACCORD) 
+trial.22 These algorithms and our formulary are listed in Figures S1 and S2 and Table S1 in 
+the Supplementary Appendix. All major classes of antihypertensive agents were included in 
+the formulary and were provided at no cost to the participants. SPRINT investigators could 
+also prescribe other antihypertensive medications (not provided by the study). The protocol 
+encouraged, but did not mandate, the use of drug classes with the strongest evidence for 
+reduction in cardiovascular outcomes, including thiazide-type diuretics (encouraged as the 
+first-line agent), loop diuretics (for participants with advanced chronic kidney disease), and 
+beta-adrenergic blockers (for those with coronary artery disease).5,27 Chlorthalidone was 
+encouraged as the primary thiazide-type diuretic, and amlodipine as the preferred calcium-
+channel blocker.28,29 Azilsartan and azilsartan combined with chlorthalidone were donated 
+Page 3
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+by Takeda Pharmaceuticals International and Arbor Pharmaceuticals; neither company had 
+any other role in the study.
+Participants were seen monthly for the first 3 months and every 3 months thereafter. 
+Medications for participants in the intensive-treatment group were adjusted on a monthly 
+basis to target a systolic blood pressure of less than 120 mm Hg. For participants in the 
+standard-treatment group, medications were adjusted to target a systolic blood pressure of 
+135 to 139 mm Hg, and the dose was reduced if systolic blood pressure was less than 130 
+mm Hg on a single visit or less than 135 mm Hg on two consecutive visits. Dose adjustment 
+was based on a mean of three blood-pressure measurements at an office visit while the 
+patient was seated and after 5 minutes of quiet rest; the measurements were made with the 
+use of an automated measurement system (Model 907, Omron Healthcare). Lifestyle 
+modification was encouraged as part of the management strategy. Retention in the study and 
+adherence to treatment were monitored prospectively and routinely throughout the trial.26
+STUDY MEASUREMENTS
+Demographic data were collected at baseline. Clinical and laboratory data were obtained at 
+baseline and every 3 months thereafter. A structured interview was used in both groups 
+every 3 months to obtain self-reported cardiovascular disease outcomes. Although the 
+interviewers were aware of the study-group assignments, they used the same format for 
+interviews in the two groups to minimize ascertainment bias. Medical records and 
+electrocardiograms were obtained for documentation of events. Whenever clinical-site staff 
+became aware of a death, a standard protocol was used to obtain information on the event.
+Serious adverse events were defined as events that were fatal or life-threatening, that 
+resulted in clinically significant or persistent disability, that required or prolonged a 
+hospitalization, or that were judged by the investigator to represent a clinically significant 
+hazard or harm to the participant that might require medical or surgical intervention to 
+prevent one of the other events listed above.30,31 A short list of monitored conditions were 
+reported as adverse events if they were evaluated in an emergency department: hypotension, 
+syncope, injurious falls, electrolyte abnormalities, and bradycardia. We also monitored 
+occurrences of acute kidney injury or acute renal failure if they were noted on admission or 
+occurred during a hospitalization and were reported in the hospital discharge summary as a 
+primary or main secondary diagnosis. The Medical Dictionary for Regulatory Activities was 
+used to classify the safety events. Coding was performed at the coordinating center, and up 
+to three codes were assigned to each safety event. The relationship of serious adverse events 
+to the intervention was assessed by the trial safety officer and reviewed monthly by the 
+safety committee.
+STUDY OUTCOMES
+Definitions of study outcomes are outlined in the Supplementary Appendix. A committee 
+whose members were unaware of the study-group assignments adjudicated the clinical 
+outcomes specified in the protocol. The primary hypothesis was that treatment to reach a 
+systolic blood-pressure target of less than 120 mm Hg, as compared with a target of less than 
+140 mm Hg, would result in a lower rate of the composite outcome of myocardial infarction, 
+Page 4
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+acute coronary syndrome not resulting in myocardial infarction, stroke, acute 
+decompensated heart failure, or death from cardiovascular causes. Secondary outcomes 
+included the individual components of the primary composite outcome, death from any 
+cause, and the composite of the primary outcome or death from any cause.
+We also assessed renal outcomes, using a different definition for patients with chronic 
+kidney disease (eGFR <60 ml per minute per 1.73 m2) at baseline and those without it. The 
+renal outcome in participants with chronic kidney disease at baseline was a composite of a 
+decrease in the eGFR of 50% or more (confirmed by a subsequent laboratory test) or the 
+development of ESRD requiring long-term dialysis or kidney transplantation. In participants 
+without chronic kidney disease at baseline, the renal outcome was defined by a decrease in 
+the eGFR of 30% or more to a value of less than 60 ml per minute per 1.73 m2. Incident 
+albuminuria, defined for all study participants by a doubling of the ratio of urinary albumin 
+(in milligrams) to creatinine (in grams) from less than 10 at baseline to greater than 10 
+during follow-up, was also a prespecified renal outcome.
+Prespecified subgroups of interest for all outcomes were defined according to status with 
+respect to cardiovascular disease at baseline (yes vs. no), status with respect to chronic 
+kidney disease at baseline (yes vs. no), sex, race (black vs. non-black), age (<75 vs. ≥75 
+years), and baseline systolic blood pressure in three levels (≤132 mm Hg, >132 to <145 mm 
+Hg, and ≥145 mm Hg). We also planned a comparison of the effects of systolic blood-
+pressure targets on incident dementia, changes in cognitive function, and cerebral small-
+vessel ischemic disease; these results are not presented here.
+STATISTICAL ANALYSIS
+We planned a 2-year recruitment period, with a maximum follow-up of 6 years, and 
+anticipated a loss to follow-up of 2% per year. With an enrollment target of 9250 
+participants, we estimated that the trial would have 88.7% power to detect a 20% effect with 
+respect to the primary outcome, assuming an event rate of 2.2% per year in the standard-
+treatment group.
+Our primary analysis compared the time to the first occurrence of a primary outcome event 
+between the two study groups with the use of the intention-to-treat approach for all 
+randomly assigned participants; for this analysis, we used Cox proportional-hazards 
+regression with two-sided tests at the 5% level of significance, with stratification according 
+to clinic. Follow-up time was censored on the date of last event ascertainment. Interactions 
+between treatment effect and prespecified subgroups were assessed with a likelihood-ratio 
+test for the interaction with the use of Hommel-adjusted P values.32 Interim analyses were 
+performed for each meeting of the data and safety monitoring board, with group-sequential 
+stopping boundaries defined with the use of the Lan–DeMets method with an O’Brien–
+Fleming–type spending function.33 The Fine–Gray model for the competing risk of death 
+was used as a sensitivity analysis.34
+Page 5
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+RESULTS
+STUDY PARTICIPANTS
+A total of 9361 participants were enrolled between November 2010 and March 2013 (Fig. 
+1). Descriptive baseline statistics are presented in Table 1. On August 20, 2015, the NHLBI 
+director accepted a recommendation from the data and safety monitoring board of the trial to 
+inform the investigators and participants of the cardiovascular-outcome results after analyses 
+of the primary outcome exceeded the monitoring boundary at two consecutive time points 
+(Fig. S3 in the Supplementary Appendix), thus initiating the process to end the blood-
+pressure intervention early. The median follow-up on August 20, 2015, was 3.26 years of 
+the planned average of 5 years.
+BLOOD PRESSURE
+The two treatment strategies resulted in a rapid and sustained between-group difference in 
+systolic blood pressure (Fig. 2). At 1 year, the mean systolic blood pressure was 121.4 mm 
+Hg in the intensive-treatment group and 136.2 mm Hg in the standard-treatment group, for 
+an average difference of 14.8 mm Hg. The mean diastolic blood pressure at 1 year was 68.7 
+mm Hg in the intensive-treatment group and 76.3 mm Hg in the standard-treatment group 
+(Fig. S4 in the Supplementary Appendix). Throughout the 3.26 years of follow-up, the mean 
+systolic blood pressure was 121.5 mm Hg in the intensive-treatment group and 134.6 mm 
+Hg in the standard-treatment group, and the mean number of blood-pressure medications 
+was 2.8 and 1.8, respectively. The relative distribution of antihypertensive medication 
+classes used was similar in the two groups, though the use of each class was greater in the 
+intensive-treatment group (Table S2 in the Supplementary Appendix).
+CLINICAL OUTCOMES
+A primary outcome event was confirmed in 562 participants — 243 (1.65% per year) in the 
+intensive-treatment group and 319 (2.19% per year) in the standard-treatment group (hazard 
+ratio with intensive treatment, 0.75; 95% confidence interval [CI], 0.64 to 0.89; P<0.001) 
+(Table 2). Separation in the primary outcome between the groups was apparent at 1 year 
+(Fig. 3A). The between-group differences were consistent across the components of the 
+primary outcome and other prespecified secondary outcomes (Table 2).
+A total of 365 deaths occurred — 155 in the intensive-treatment group and 210 in the 
+standard-treatment group (hazard ratio, 0.73; 95% CI, 0.60 to 0.90; P = 0.003). Separation in 
+mortality between the groups became apparent at approximately 2 years (Fig. 3B). Causes of 
+death are provided in Table S3 in the Supplementary Appendix. The relative risk of death 
+from cardiovascular causes was 43% lower with the intensive intervention than with the 
+standard treatment (P=0.005) (Table 2).
+The numbers needed to treat to prevent a primary outcome event, death from any cause, and 
+death from cardiovascular causes during the median 3.26 years of the trial were 61, 90, and 
+172, respectively. The effects of the intervention on the rate of the primary outcome and on 
+the rate of death from any cause were consistent across the prespecified subgroups (Fig. 4, 
+and Fig. S5 in the Supplementary Appendix). There were no significant interactions between 
+Page 6
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+treatment and subgroup with respect to the primary outcome or death from any cause. When 
+death was treated as a competing risk in a Fine–Gray model, the results with respect to the 
+primary outcome were virtually unchanged (hazard ratio, 0.76; 95% CI, 0.64 to 0.89).
+Among participants who had chronic kidney disease at baseline, no significant between-
+group difference in the composite outcome of a decrease in the eGFR of 50% or more or the 
+development of ESRD was noted, though the number of events was small (Table 2). Among 
+participants who did not have chronic kidney disease at baseline, the incidence of the 
+outcome defined by a decrease in the eGFR of 30% or more to a value of less than 60 ml per 
+minute per 1.73 m2 was higher in the intensive-treatment group than in the standard-
+treatment group (1.21% per year vs. 0.35% per year; hazard ratio, 3.49; 95% CI, 2.44 to 
+5.10; P<0.001).
+SERIOUS ADVERSE EVENTS
+Serious adverse events occurred in 1793 participants in the intensive-treatment group 
+(38.3%) and in 1736 participants in the standard-treatment group (37.1%) (hazard ratio with 
+intensive treatment, 1.04; P = 0.25) (Table 3, and Table S4 in the Supplementary Appendix). 
+Serious adverse events of hypotension, syncope, electrolyte abnormalities, and acute kidney 
+injury or acute renal failure, but not injurious falls or bradycardia, occurred more frequently 
+in the intensive-treatment group than in the standard-treatment group. Orthostatic 
+hypotension as assessed during a clinic visit was significantly less common in the intensive-
+treatment group. A total of 220 participants in the intensive-treatment group (4.7%) and 118 
+participants in the standard-treatment group (2.5%) had serious adverse events that were 
+classified as possibly or definitely related to the intervention (hazard ratio, 1.88; P<0.001) 
+(Table S5 in the Supplementary Appendix). The magnitude and pattern of differences in 
+adverse events according to treatment assignment among participants 75 years of age or 
+older were similar to those in the overall cohort (Table S6 in the Supplementary Appendix).
+DISCUSSION
+SPRINT showed that among adults with hypertension but without diabetes, lowering 
+systolic blood pressure to a target goal of less than 120 mm Hg, as compared with the 
+standard goal of less than 140 mm Hg, resulted in significantly lower rates of fatal and 
+nonfatal cardiovascular events and death from any cause. Trial participants assigned to the 
+lower systolic blood-pressure target (intensive-treatment group), as compared with those 
+assigned to the higher target (standard-treatment group), had a 25% lower relative risk of the 
+primary outcome; in addition, the intensive-treatment group had lower rates of several other 
+important outcomes, including heart failure (38% lower relative risk), death from 
+cardiovascular causes (43% lower relative risk), and death from any cause (27% lower 
+relative risk). During the follow-up period of the trial (median, 3.26 years), the number 
+needed to treat with a strategy of intensive blood-pressure control to prevent one primary 
+outcome event was 61, and the number needed to treat to prevent one death from any cause 
+was 90. These benefits with respect to both the primary outcome and death were consistent 
+across all prespecified subgroups, including participants 75 years of age or older.
+Page 7
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Owing in part to a lower-than-expected decline in the eGFR and to the early termination of 
+the trial, the number of renal events was small. Among participants who had chronic kidney 
+disease at baseline, the number of participants with a decrease in the eGFR of 50% or more 
+or reaching ESRD over the course of the trial did not differ significantly between the two 
+intervention groups. Among participants who did not have chronic kidney disease at 
+baseline, a decrease in the eGFR of 30% or more to a value of less than 60 ml per minute per 
+1.73 m2 occurred more frequently in the intensive-treatment group than in the standard-
+treatment group (1.21% per year vs. 0.35% per year). Among all participants, acute kidney 
+injury or acute renal failure occurred more frequently in the intensive-treatment group than 
+in the standard-treatment group (Table 3, and Table S5 in the Supplementary Appendix). 
+The differences in adverse renal outcomes may be related to a reversible intrarenal 
+hemodynamic effect of the greater reduction in blood pressure and greater use of diuretics, 
+angiotensin-converting–enzyme inhibitors, and angiotensin-receptor blockers in the 
+intensive-treatment group.35,36 With the currently available data, there is no evidence of 
+substantial permanent kidney injury associated with the lower systolic blood-pressure goal; 
+however, the possibility of a long-term adverse renal outcome cannot be excluded. These 
+observations and hypotheses need to be explored further in analyses that incorporate more 
+clinical outcomes and longer follow-up.
+The results of SPRINT add substantially to the evidence of benefits of lowering systolic 
+blood pressure, especially in older patients with hypertension. Trials such as the Systolic 
+Hypertension in the Elderly Program trial,17 the Systolic Hypertension in Europe trial,11 and 
+the Hypertension in the Very Elderly Trial18 showed the benefits of lowering systolic blood 
+pressure below 150 mm Hg. However, trials evaluating systolic blood-pressure levels lower 
+than those studied in these trials have been either under-powered19–21 or performed without 
+specific systolic blood-pressure targets.37 A major component of the controversy regarding 
+the selection of the systolic blood-pressure goal in this population has resulted from 
+inadequate data on the risks versus benefits of systolic blood-pressure targets below 150 mm 
+Hg.11,17–21,37 SPRINT now provides evidence of benefits for an even lower systolic blood-
+pressure target than that currently recommended in most patients with hypertension.
+Comparisons between SPRINT and the ACCORD trial22 are inevitable, because the trials 
+examined identical systolic blood-pressure targets (<120 mm Hg vs. <140 mm Hg). In 
+contrast to the findings of SPRINT, the cardiovascular and mortality benefits observed in the 
+ACCORD trial were not statistically significant and were of a lesser magnitude. Several 
+important differences between these trials should be noted. The ACCORD trial enrolled 
+participants with diabetes exclusively, whereas SPRINT excluded participants with diabetes; 
+in addition, the sample size of the ACCORD trial was only half that of SPRINT (4733 vs. 
+9361). SPRINT enrolled an older cohort (mean age, 68 years, vs. 62 years in the ACCORD 
+trial), with 28% of participants 75 years of age or older, and also included participants with 
+chronic kidney disease. The ACCORD trial showed a (nonsignificant) 12% lower risk of its 
+primary composite cardiovascular outcome, with a 95% confidence interval that included 
+the possibility of a 27% lower risk, which is consistent with the cardiovascular benefit 
+observed in SPRINT. The ACCORD trial also used a factorial design that included 
+comparisons of standard and intensive glycemic and lipid treatment targets in the same trial. 
+A secondary analysis of the ACCORD results showed that, as compared with the combined 
+Page 8
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+standard glycemia and blood-pressure treatments, intensive blood-pressure treatment alone 
+reduced major cardiovascular outcomes by 26% without additional benefit from combining 
+the two intensive treatments.38 Thus, the difference in results between the trials could be due 
+to differences in study design, treatment interactions, or the play of chance. An inherent 
+difference in the cardiovascular benefits of systolic blood-pressure lowering between the 
+population with diabetes and the population without diabetes seems unlikely but cannot be 
+ruled out.
+In the Secondary Prevention of Small Subcortical Strokes trial (intensive systolic blood-
+pressure goal <130 mm Hg)23 and in the ACCORD trial (intensive systolic blood-pressure 
+goal <120 mm Hg), the lower blood-pressure target was associated with a nonsignificant 
+19% lower incidence of stroke (P = 0.08) and a significant 41% lower incidence of stroke, 
+respectively, than the incidence with higher targets. The intensive-treatment group in 
+SPRINT had a non-significant 11% lower incidence of stroke, though SPRINT also 
+excluded persons with prevalent stroke or transient ischemic attack at baseline.
+In SPRINT, significant between-group differences were noted in some adverse effects that 
+were attributed to the intervention (Table S5 in the Supplementary Appendix). Orthostatic 
+hypotension as assessed during a clinic visit (Table 3) was observed less frequently in the 
+intensive-treatment group than in the standard-treatment group (P = 0.01), but syncope was 
+more common among participants in the intensive-treatment group than among those in the 
+standard-treatment group (3.5% vs. 2.4%, P = 0.003), as was hypotension (3.4% vs. 2.0%, 
+P<0.001). There was no between-group difference in injurious falls (hazard ratio, 1.00; P = 
+0.97). There was a higher rate of acute kidney injury or acute renal failure in the intensive-
+treatment group, as noted above. These adverse events need to be weighed against the 
+benefits with respect to cardiovascular events and death that are associated with intensive 
+control of systolic blood pressure.
+The strengths of SPRINT include a large sample size, the diversity of the population 
+(including a large proportion of patients 75 years of age or older), and its success in 
+achieving the intended separation in systolic blood pressure between the two intervention 
+groups throughout the trial. The lack of generalizability to populations not included in the 
+study — such as persons with diabetes, those with prior stroke, and those younger than 50 
+years of age — is a limitation. It is also worth noting that we did not enroll older adults 
+residing in nursing homes or assisted-living facilities. In addition, the effects of the lower 
+blood pressure on the central nervous system and kidney cannot be reasonably interpreted 
+until analysis of these end points has been completed.
+The SPRINT results raise important practical issues. Hypertension control to a blood 
+pressure of less than 140/90 mm Hg is achieved in only about 50% of the general population 
+in the United States, which suggests that control to even that level is challenging.39 We 
+excluded patients with more severe hypertension, and control of systolic blood pressure to 
+less than 120 mm Hg required, on average, one additional antihypertensive drug. In addition, 
+the median systolic blood pressure in the intensive-treatment group was just above 120 mm 
+Hg, which indicates that more than half the participants had a systolic blood pressure above 
+the 120 mm Hg target. These observations suggest that achieving a systolic blood-pressure 
+Page 9
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+goal of less than 120 mm Hg in the overall population of patients with hypertension would 
+be more demanding and time-consuming for both providers and patients than achieving a 
+goal of 140 mm Hg, and would necessitate increased medication costs and clinic visits.
+In conclusion, targeting a systolic blood pressure of less than 120 mm Hg, as compared with 
+less than 140 mm Hg, in patients at high risk for cardiovascular events but without diabetes 
+resulted in lower rates of fatal and nonfatal major cardiovascular events and death from any 
+cause. However, some adverse events occurred significantly more frequently with the lower 
+target.
+Supplementary Material
+Refer to Web version on PubMed Central for supplementary material.
+Acknowledgments
+Supported by contracts (HHSN268200900040C, HHSN268200900046C, HHSN268200900047C, 
+HHSN268200900048C, and HHSN268200900049C) and an inter-agency agreement (A-HL-13-002-001) from the 
+NIH, including the National Heart, Lung, and Blood Institute (NHLBI), the National Institute of Diabetes and 
+Digestive and Kidney Diseases, the National Institute on Aging, and the National Institute of Neurological 
+Disorders and Stroke. Several study sites were supported by Clinical and Translational Science Awards funded by 
+the National Center for Advancing Translational Sciences of the NIH (Case Western Reserve University: 
+UL1TR000439; Ohio State University: UL1RR025755; University of Pennsylvania: UL1RR024134 and 
+UL1TR000003; Boston University: UL1RR025771; Stanford University: UL1TR000093; Tufts University: 
+UL1RR025752, UL1TR000073, and UL1TR001064; University of Illinois: UL1TR000050; University of 
+Pittsburgh: UL1TR000005; University of Texas Southwestern: 9U54TR000017-06; University of Utah: 
+UL1TR000105-05; Vanderbilt University: UL1TR000445; George Washington University: UL1TR000075; 
+University of California, Davis: UL1TR000002; University of Florida: UL1TR000064; University of Michigan: 
+UL1TR000433; and Tulane University: P30GM103337 COBRE Award NIGMS). The trial was also supported in 
+part with respect to resources and the use of facilities by the Department of Veterans Affairs.
+We thank the study participants, without whom this trial would not have been possible.
+References
+1. Kearney PM, Whelton M, Reynolds K, Muntner P, Whelton PK, He J. Global burden of 
+hypertension: analysis of worldwide data. Lancet. 2005; 365:217–23. [PubMed: 15652604] 
+2. Go AS, Mozaffarian D, Roger VL, et al. Heart disease and stroke statistics — 2014 update: a report 
+from the American Heart Association. Circulation. 2014; 129(3):e28–292. [PubMed: 24352519] 
+3. Franklin SS. Cardiovascular risks related to increased diastolic, systolic and pulse pressure: an 
+epidemiologist’s point of view. Pathol Biol (Paris). 1999; 47:594–603. [PubMed: 10472070] 
+4. Franklin SS, Jacobs MJ, Wong ND, L’Italien GJ, Lapuerta P. Predominance of isolated systolic 
+hypertension among middle-aged and elderly US hypertensives: analysis based on National Health 
+and Nutrition Examination Survey (NHANES) III. Hypertension. 2001; 37:869–74. [PubMed: 
+11244010] 
+5. Chobanian AV, Bakris GL, Black HR, et al. The seventh report of the Joint National Committee on 
+Prevention, Detection, Evaluation, and Treatment of High Blood Pressure: the JNC 7 Report. 
+JAMA. 2003; 289:2560–72. [PubMed: 12748199] 
+6. Collins R, Peto R, MacMahon S, et al. Blood pressure, stroke, and coronary heart disease. 2. Short-
+term reductions in blood pressure: overview of randomised drug trials in their epidemiological 
+context. Lancet. 1990; 335:827–38. [PubMed: 1969567] 
+7. Hsu CY, McCulloch CE, Darbinian J, Go AS, Iribarren C. Elevated blood pressure and risk of end-
+stage renal disease in subjects without baseline kidney disease. Arch Intern Med. 2005; 165:923–8. 
+[PubMed: 15851645] 
+Page 10
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+8. Levy D, Larson MG, Vasan RS, Kannel WB, Ho KK. The progression from hypertension to 
+congestive heart failure. JAMA. 1996; 275:1557–62. [PubMed: 8622246] 
+9. MacMahon S, Peto R, Cutler J, et al. Blood pressure, stroke, and coronary heart disease. Part 1: 
+prolonged differences in blood pressure: prospective observational studies corrected for the 
+regression dilution bias. Lancet. 1990; 335:765–74. [PubMed: 1969518] 
+10. Lewington S, Clarke R, Qizilbash N, Peto R, Collins R. Age-specific relevance of usual blood 
+pressure to vascular mortality: a meta-analysis of individual data for one million adults in 61 
+prospective studies. Lancet. 2002; 360:1903–13. [PubMed: 12493255] 
+11. Staessen JA, Fagard R, Thijs L, et al. Randomised double-blind comparison of placebo and active 
+treatment for older patients with isolated systolic hypertension. Lancet. 1997; 350:757–64. 
+[PubMed: 9297994] 
+12. Vasan RS, Larson MG, Leip EP, et al. Impact of high-normal blood pressure on the risk of 
+cardiovascular disease. N Engl J Med. 2001; 345:1291–7. [PubMed: 11794147] 
+13. Sundström J, Arima H, Jackson R, et al. Effects of blood pressure reduction in mild hypertension: a 
+systematic review and meta-analysis. Ann Intern Med. 2015; 162:184–91. [PubMed: 25531552] 
+14. Lim SS, Vos T, Flaxman AD, et al. A comparative risk assessment of burden of disease and injury 
+attributable to 67 risk factors and risk factor clusters in 21 regions, 1990–2010: a systematic 
+analysis for the Global Burden of Disease Study 2010. Lancet. 2012; 380:2224–60. [PubMed: 
+23245609] 
+15. Neal B, MacMahon S, Chapman N. Effects of ACE inhibitors, calcium antagonists, and other 
+blood-pressure-lowering drugs: results of prospectively designed overviews of randomised trials. 
+Lancet. 2000; 356:1955–64. [PubMed: 11130523] 
+16. Psaty BM, Smith NL, Siscovick DS, et al. Health outcomes associated with anti-hypertensive 
+therapies used as first-line agents: asystematic review and meta-analysis. JAMA. 1997; 277:739–
+45. [PubMed: 9042847] 
+17. SHEP Cooperative Research Group. Prevention of stroke by antihypertensive drug treatment in 
+older persons with isolated systolic hypertension: final results of the Systolic Hypertension in the 
+Elderly Program (SHEP). JAMA. 1991; 265:3255–64. [PubMed: 2046107] 
+18. Beckett NS, Peters R, Fletcher AE, et al. Treatment of hypertension in patients 80 years of age or 
+older. N Engl J Med. 2008; 358:1887–98. [PubMed: 18378519] 
+19. JATOS Study Group. Principal results of the Japanese trial to assess optimal systolic blood 
+pressure in elderly hypertensive patients (JATOS). Hypertens Res. 2008; 31:2115–27. [PubMed: 
+19139601] 
+20. Ogihara T, Saruta T, Rakugi H, et al. Target blood pressure for treatment of isolated systolic 
+hypertension in the elderly: Valsartan in Elderly Isolated Systolic Hypertension study. 
+Hypertension. 2010; 56:196–202. [PubMed: 20530299] 
+21. Verdecchia P, Staessen JA, Angeli F, et al. Usual versus tight control of systolic blood pressure in 
+non-diabetic patients with hypertension (Cardio-Sis): an open-label randomised trial. Lancet. 
+2009; 374:525–33. [PubMed: 19683638] 
+22. Cushman WC, Evans GW, Byington RP, et al. Effects of intensive blood-pressure control in type 2 
+diabetes mellitus. N Engl J Med. 2010; 362:1575–85. [PubMed: 20228401] 
+23. Benavente OR, Coffey CS, Conwit R, et al. Blood-pressure targets in patients with recent lacunar 
+stroke: the SPS3 randomised trial. Lancet. 2013; 382:507–15. [PubMed: 23726159] 
+24. Working group report: Expert Panel on a Hypertension Treatment Trial Initiative meeting 
+summary. Bethesda, MD: National Heart Lung and Blood Institute; 2007. http://
+www.nhlbi.nih.gov/sites/www.nhlbi.nih.gov/files/hypertsnsion-full.pdf
+25. Systolic Blood Pressure Intervention Trial (SPRINT) protocol. Nov 1. 2012 https://
+www.sprinttrial.org/public/Protocol_Current.pdf
+26. Ambrosius WT, Sink KM, Foy CG, et al. The design and rationale of a multi-center clinical trial 
+comparing two strategies for control of systolic blood pressure: the Systolic Blood Pressure 
+Intervention Trial (SPRINT). Clin Trials. 2014; 11:532–46. [PubMed: 24902920] 
+27. Lindholm LH, Carlberg B, Samuelsson O. Should beta blockers remain first choice in the 
+treatment of primary hypertension? A meta-analysis. Lancet. 2005; 366:1545–53. [PubMed: 
+16257341] 
+Page 11
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+28. ALLHAT Officers and Coordinators for the ALLHAT Collaborative Research Group. Major 
+outcomes in high-risk hypertensive patients randomized to angiotensin-converting enzyme 
+inhibitor or calcium channel blocker vs diuretic: the Antihypertensive and Lipid-Lowering 
+Treatment to Prevent Heart Attack Trial (ALLHAT). JAMA. 2002; 288:2981–97. [PubMed: 
+12479763] 
+29. Ernst ME, Carter BL, Goerdt CJ, et al. Comparative antihypertensive effects of 
+hydrochlorothiazide and chlorthalidone on ambulatory and office blood pressure. Hypertension. 
+2006; 47:352–8. [PubMed: 16432050] 
+30. Office for Human Research Protections. OHRP guidance on unanticipated problems and adverse 
+events. 2007. http://www.hhs.gov/ohrp/policy/advevntguid.html
+31. Food and Drug Administration. Code of Federal Regulations. Title 21CFR312.32a, 2013 (http://
+www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/cfrsearch.cfm?fr=312.32)
+32. Hommel G. A stagewise rejective multiple test procedure based on a modified Bonferroni test. 
+Biometrika. 1988; 75:383–86.
+33. Proschan, MA.; Lan, KKG.; Wittes, JT. Statistical monitoring of clinical trials: a unified approach. 
+New York: Springer; 2006. 
+34. Fine JP, Gray RJ. A proportional hazards model for the subdistribution of a competing risk. J Am 
+Stat Assoc. 1999; 94:496–509.
+35. Bakris GL, Weir MR. Angiotensin-converting enzyme inhibitor-associated elevations in serum 
+creatinine: is this a cause for concern? Arch Intern Med. 2000; 160:685–93. [PubMed: 10724055] 
+36. Apperloo AJ, de Zeeuw D, de Jong PE. A short-term antihypertensive treatment-induced fall in 
+glomerular filtration rate predicts long-term stability of renal function. Kidney Int. 1997; 51:793–
+7. [PubMed: 9067912] 
+37. Liu L, Zhang Y, Liu G, Li W, Zhang X, Zanchetti A. The Felodipine Event Reduction (FEVER) 
+Study: a randomized long-term placebo-controlled trial in Chinese hypertensive patients. J 
+Hypertens. 2005; 23:2157–72. [PubMed: 16269957] 
+38. Margolis KL, O’Connor PJ, Morgan TM, et al. Outcomes of combined cardiovascular risk factor 
+management strategies in type 2 diabetes: the ACCORD randomized trial. Diabetes Care. 2014; 
+37:1721–8. [PubMed: 24595629] 
+39. Nwankwo T, Yoon SS, Burt V, Gu Q. Hypertension among adults in the United States: National 
+Health and Nutrition Examination Survey, 2011–2012. NCHS Data Brief. 2013; 133:1–8. 
+[PubMed: 24171916] 
+APPENDIX
+The affiliations of the members of the writing group are as follows: the Division of 
+Nephrology and Hypertension, University Hospitals Case Medical Center, Case Western 
+Reserve University (J.T.W., M.R.), and Division of Nephrology and Hypertension, Louis 
+Stokes Cleveland Veterans Affairs (VA) Medical Center (M.R.), Cleveland; Sticht Center 
+on Aging (J.D.W., K.M.S.), Section on Nephrology (M.V.R.), and Department of 
+Biostatistical Sciences (D.M.R., W.T.A.), Wake Forest School of Medicine, Winston-Salem, 
+NC; Department of Epidemiology, Tulane University School of Public Health and Tropical 
+Medicine, New Orleans (P.K.W.); Clinical Applications and Prevention Branch, National 
+Heart, Lung, and Blood Institute (J.K.S., L.J.F., J.A.C.), and Division of Kidney, Urologic, 
+and Hematologic Diseases, National Institute of Diabetes and Digestive and Kidney 
+Diseases (P.L.K.), Bethesda, MD; Divisions of Cardiovascular Diseases (S.O.) and 
+Preventive Medicine (C.E.L.), University of Alabama at Birmingham, Birmingham; 
+Department of Preventive Medicine, University of Tennessee Health Science Center 
+(K.C.J.), and the Preventive Medicine Section, VA Medical Center (W.C.C.), Memphis; 
+School of Public Health, University of Colorado, Aurora (D.C.G.); and Division of 
+Nephrology and Hypertension, University of Utah, Salt Lake City (A.K.C.).
+Page 12
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 1. Eligibility, Randomization, and Follow-up
+Discontinued intervention refers to participants who discontinued the study treatment but did 
+not withdraw consent or become lost to follow-up.
+Page 13
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 2. Systolic Blood Pressure in the Two Treatment Groups over the Course of the Trial
+The systolic blood-pressure target in the intensive-treatment group was less than 120 mm 
+Hg, and the target in the standard-treatment group was less than 140 mm Hg. The mean 
+number of medications is the number of blood-pressure medications administered at the exit 
+of each visit. I bars represent 95% confidence intervals.
+Page 14
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 3. Primary Outcome and Death from Any Cause
+Shown are the cumulative hazards for the primary outcome (a composite of myocardial 
+infarction, acute coronary syndrome, stroke, heart failure, or death from cardiovascular 
+causes) (Panel A) and for death from any cause (Panel B). The inset in each panel shows the 
+same data on an enlarged y axis. CI denotes confidence interval.
+Page 15
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 4. Forest Plot of Primary Outcome According to Subgroups
+The dashed vertical line represents the hazard ratio for the overall study population. The box 
+sizes are proportional to the precision of the estimates (with larger boxes indicating a greater 
+degree of precision). The subgroup of no previous chronic kidney disease (CKD) includes 
+some participants with unknown CKD status at baseline. Black race includes Hispanic black 
+and black as part of a multiracial identification.
+Page 16
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Page 17
+Table 1
+Baseline Characteristics of the Study Participants.*
+Characteristic Intensive Treatment (N = 4678) Standard Treatment (N = 4683)
+Criterion for increased cardiovascular risk — no. (%)†
+ Age ≥75 yr 1317 (28.2) 1319 (28.2)
+ Chronic kidney disease ‡ 1330 (28.4) 1316 (28.1)
+ Cardiovascular disease 940 (20.1) 937 (20.0)
+  Clinical 779 (16.7) 783 (16.7)
+  Subclinical 247 (5.3) 246 (5.3)
+  Framingham 10-yr cardiovascular disease risk score ≥15% 2870 (61.4) 2867 (61.2)
+Female sex — no. (%) 1684 (36.0) 1648 (35.2)
+Age — yr
+ Overall 67.9±9.4 67.9±9.5
+ Among those ≥75 yr of age 79.8±3.9 79.9±4.1
+Race or ethnic group — no. (%)§
+ Non-Hispanic black 1379 (29.5) 1423 (30.4)
+ Hispanic 503 (10.8) 481 (10.3)
+ Non-Hispanic white 2698 (57.7) 2701 (57.7)
+ Other 98 (2.1) 78 (1.7)
+Black race§¶ 1454 (31.1) 1493 (31.9)
+Baseline blood pressure — mm Hg
+ Systolic 139.7±15.8 139.7±15.4
+ Diastolic 78.2±11.9 78.0±12.0
+Distribution of systolic blood pressure — no. (%)
+ ≤132 mm Hg 1583 (33.8) 1553 (33.2)
+ >132 mm Hg to <145 mm Hg 1489 (31.8) 1549 (33.1)
+ ≥145 mm Hg 1606 (34.3) 1581 (33.8)
+Serum creatinine — mg/dl 1.07±0.34 1.08±0.34
+Estimated GFR — ml/min/1.73 m2
+ Among all participants 71.8±20.7 71.7±20.5
+ Among those with estimated GFR ≥60 ml/min/1.73 m 2 81.3±15.5 81.1±15.5
+ Among those with estimated GFR <60 ml/min/1.73 m 2 47.8±9.5 47.9±9.5
+Ratio of urinary albumin (mg) to creatinine (g) 44.1±178.7 41.1±152.9
+Fasting total cholesterol — mg/dl 190.2±41.4 190.0±40.9
+Fasting HDL cholesterol — mg/dl 52.9±14.3 52.8±14.6
+Fasting total triglycerides — mg/dl 124.8±85.8 127.1±95.0
+Fasting plasma glucose — mg/dl 98.8±13.7 98.8±13.4
+Statin use — no./total no. (%) 1978/4645 (42.6) 2076/4640 (44.7)
+Aspirin use — no./total no. (%) 2406/4661 (51.6) 2350/4666 (50.4)
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Page 18
+Characteristic Intensive Treatment (N = 4678) Standard Treatment (N = 4683)
+Smoking status — no. (%)
+ Never smoked 2050 (43.8) 2072 (44.2)
+ Former smoker 1977 (42.3) 1996 (42.6)
+ Current smoker 639 (13.7) 601 (12.8)
+ Missing data 12 (0.3) 14 (0.3)
+Framingham 10-yr cardiovascular disease risk score — % 20.1±10.9 20.1±10.8
+Body-mass index|| 29.9±5.8 29.8±5.7
+Antihypertensive agents — no./patient 1.8±1.0 1.8±1.0
+Not using antihypertensive agents — no. (%) 432 (9.2) 450 (9.6)
+*Plus–minus values are means ±SD. There were no significant differences (P<0.05) between the two groups except for statin use (P = 0.04). To 
+convert the values for creatinine to micromoles per liter, multiply by 88.4. To convert the values for cholesterol to millimoles per liter, multiply by 
+0.02586. To convert the values for triglycerides to millimoles per liter, multiply by 0.01129. To convert the values for glucose to millimoles per 
+liter, multiply by 0.05551. GFR denotes glomerular filtration rate, and HDL high-density lipoprotein.
+†Increased cardiovascular risk was one of the inclusion criteria.
+‡Chronic kidney disease was defined as an estimated glomerular filtration rate of less than 60 ml per minute per 1.73 m2 of body-surface area.
+§Race and ethnic group were self-reported.
+¶Black race includes Hispanic black and black as part of a multiracial identification.
+||The body-mass index is the weight in kilograms divided by the square of the height in meters.
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Page 19
+Table 2
+Primary and Secondary Outcomes and Renal Outcomes.*
+Outcome Intensive Treatment Standard Treatment Hazard Ratio (95% CI) P Value
+no. of patients (%) % per year no. of patients (%) % per year
+All participants (N = 4678) (N = 4683)
+Primary outcome† 243 (5.2) 1.65 319 (6.8) 2.19 0.75 (0.64–0.89) <0.001
+Secondary outcomes
+ Myocardial infarction 97 (2.1) 0.65 116 (2.5) 0.78 0.83 (0.64–1.09) 0.19
+ Acute coronary syndrome 40 (0.9) 0.27 40 (0.9) 0.27 1.00 (0.64–1.55) 0.99
+ Stroke 62 (1.3) 0.41 70 (1.5) 0.47 0.89 (0.63–1.25) 0.50
+ Heart failure 62 (1.3) 0.41 100 (2.1) 0.67 0.62 (0.45–0.84) 0.002
+ Death from cardiovascular causes 37 (0.8) 0.25 65 (1.4) 0.43 0.57 (0.38–0.85) 0.005
+ Death from any cause 155 (3.3) 1.03 210 (4.5) 1.40 0.73 (0.60–0.90) 0.003
+ Primary outcome or death 332 (7.1) 2.25 423 (9.0) 2.90 0.78 (0.67–0.90) <0.001
+Participants with CKD at baseline (N = 1330) (N = 1316)
+Composite renal outcome‡ 14 (1.1) 0.33 15 (1.1) 0.36 0.89 (0.42–1.87) 0.76
+≥50% reduction in estimated GFR§ 10 (0.8) 0.23 11 (0.8) 0.26 0.87 (0.36–2.07) 0.75
+Long-term dialysis 6 (0.5) 0.14 10 (0.8) 0.24 0.57 (0.19–1.54) 0.27
+Kidney transplantation 0 0
+Incident albuminuria¶ 49/526 (9.3) 3.02 59/500 (11.8) 3.90 0.72 (0.48–1.07) 0.11
+Participants without CKD at baseline|| (N = 3332) (N = 3345)
+≥30% reduction in estimated GFR to <60 ml/ min/1.73 m2§ 127 (3.8) 1.21 37 (1.1) 0.35 3.49 (2.44–5.10) <0.001
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Page 20
+Outcome Intensive Treatment Standard Treatment Hazard Ratio (95% CI) P Value
+no. of patients (%) % per year no. of patients (%) % per year
+Incident albuminuria¶ 110/1769 (6.2) 2.00 135/1831 (7.4) 2.41 0.81 (0.63–1.04) 0.10
+*CI denotes confidence interval, and CKD chronic kidney disease.
+†The primary outcome was the first occurrence of myocardial infarction, acute coronary syndrome, stroke, heart failure, or death from cardiovascular causes.
+‡The composite renal outcome for participants with CKD at baseline was the first occurrence of a reduction in the estimated GFR of 50% or more, long-term dialysis, or kidney transplantation.
+§Reductions in the estimated GFR were confirmed by a second laboratory test at least 90 days later.
+¶Incident albuminuria was defined by a doubling of the ratio of urinary albumin (in milligrams) to creatinine (in grams) from less than 10 at baseline to greater than 10 during follow-up. The denominators 
+for number of patients represent those without albuminuria at baseline.
+||No long-term dialysis or kidney transplantation was reported among participants without CKD at baseline.
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Page 21
+Table 3
+Serious Adverse Events, Conditions of Interest, and Monitored Clinical Events.
+Variable Intensive Treatment (N 
+= 4678)
+Standard Treatment (N 
+= 4683)
+Hazard Ratio P Value
+no. of patients (%)
+Serious adverse event* 1793 (38.3) 1736 (37.1) 1.04 0.25
+Conditions of interest
+ Serious adverse event only
+  Hypotension 110 (2.4) 66 (1.4) 1.67 0.001
+  Syncope 107 (2.3) 80 (1.7) 1.33 0.05
+  Bradycardia 87 (1.9) 73 (1.6) 1.19 0.28
+  Electrolyte abnormality 144 (3.1) 107 (2.3) 1.35 0.02
+  Injurious fall † 105 (2.2) 110 (2.3) 0.95 0.71
+  Acute kidney injury or acute renal failure ‡ 193 (4.1) 117 (2.5) 1.66 <0.001
+ Emergency department visit or serious adverse event
+  Hypotension 158 (3.4) 93 (2.0) 1.70 <0.001
+  Syncope 163 (3.5) 113 (2.4) 1.44 0.003
+  Bradycardia 104 (2.2) 83 (1.8) 1.25 0.13
+  Electrolyte abnormality 177 (3.8) 129 (2.8) 1.38 0.006
+  Injurious fall † 334 (7.1) 332 (7.1) 1.00 0.97
+  Acute kidney injury or acute renal failure ‡ 204 (4.4) 120 (2.6) 1.71 <0.001
+Monitored clinical events
+ Adverse laboratory measure §
+  Serum sodium <130 mmol/liter 180 (3.8) 100 (2.1) 1.76 <0.001
+  Serum sodium >150 mmol/liter 6 (0.1) 0 0.02
+  Serum potassium <3.0 mmol/liter 114 (2.4) 74 (1.6) 1.50 0.006
+  Serum potassium >5.5 mmol/liter 176 (3.8) 171 (3.7) 1.00 0.97
+ Orthostatic hypotension ¶
+  Alone 777 (16.6) 857 (18.3) 0.88 0.01
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Page 22
+Variable Intensive Treatment (N 
+= 4678)
+Standard Treatment (N 
+= 4683)
+Hazard Ratio P Value
+no. of patients (%)
+  With dizziness 62 (1.3) 71 (1.5) 0.85 0.35
+*A serious adverse event was defined as an event that was fatal or life-threatening, that resulted in clinically significant or persistent disability, that 
+required or prolonged a hospitalization, or that was judged by the investigator to represent a clinically significant hazard or harm to the participant 
+that might require medical or surgical intervention to prevent one of the other events listed above.
+†An injurious fall was defined as a fall that resulted in evaluation in an emergency department or that resulted in hospitalization.
+‡Acute kidney injury or acute renal failure were coded if the diagnosis was listed in the hospital discharge summary and was believed by the safety 
+officer to be one of the top three reasons for admission or continued hospitalization. A few cases of acute kidney injury were noted in an 
+emergency department if the participant presented for one of the other conditions of interest.
+§Adverse laboratory measures were detected on routine or unscheduled tests; routine laboratory tests were performed at 1 month, then quarterly 
+during the first year, then every 6 months.
+¶Orthostatic hypertension was defined as a drop in systolic blood pressure of at least 20 mm Hg or in diastolic blood pressure of at least 10 mm Hg 
+at 1 minute after the participant stood up, as compared with the value obtained when the participant was seated. Standing blood pressures were 
+measured at screening, baseline, 1 month, 6 months, 12 months, and yearly thereafter. Participants were asked if they felt dizzy at the time the 
+orthostatic measure was taken.
+N Engl J Med. Author manuscript; available in PMC 2016 May 26.

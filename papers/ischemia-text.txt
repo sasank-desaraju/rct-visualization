@@ -1,0 +1,895 @@
+Initial Invasive or Conservative Strategy for Stable Coronary 
+Disease
+A full list of authors and affiliations appears at the end of the article.
+# These authors contributed equally to this work.
+Abstract
+BACKGROUND—Among patients with stable coronary disease and moderate or severe 
+ischemia, whether clinical outcomes are better in those who receive an invasive intervention plus 
+medical therapy than in those who receive medical therapy alone is uncertain.
+METHODS—We randomly assigned 5179 patients with moderate or severe ischemia to an initial 
+invasive strategy (angiography and revascularization when feasible) and medical therapy or to an 
+initial conservative strategy of medical therapy alone and angiography if medical therapy failed. 
+The primary outcome was a composite of death from cardiovascular causes, myocardial infarction, 
+or hospitalization for unstable angina, heart failure, or resuscitated cardiac arrest. A key secondary 
+outcome was death from cardiovascular causes or myocardial infarction.
+RESULTS—Over a median of 3.2 years, 318 primary outcome events occurred in the invasive-
+strategy group and 352 occurred in the conservative-strategy group. At 6 months, the cumulative 
+event rate was 5.3% in the invasive-strategy group and 3.4% in the conservative-strategy group 
+(difference, 1.9 percentage points; 95% confidence interval [CI], 0.8 to 3.0); at 5 years, the 
+cumulative event rate was 16.4% and 18.2%, respectively (difference, −1.8 percentage points; 95% 
+CI, −4.7 to 1.0). Results were similar with respect to the key secondary outcome. The incidence of 
+the primary outcome was sensitive to the definition of myocardial infarction; a secondary analysis 
+yielded more procedural myocardial infarctions of uncertain clinical importance. There were 145 
+deaths in the invasive-strategy group and 144 deaths in the conservative-strategy group (hazard 
+ratio, 1.05; 95% CI, 0.83 to 1.32).
+CONCLUSIONS—Among patients with stable coronary disease and moderate or severe 
+ischemia, we did not find evidence that an initial invasive strategy, as compared with an initial 
+conservative strategy, reduced the risk of ischemic cardiovascular events or death from any cause 
+over a median of 3.2 years. The trial findings were sensitive to the definition of myocardial 
+infarction that was used. (Funded by the National Heart, Lung, and Blood Institute and others; 
+ISCHEMIA ClinicalTrials.gov number, NCT01471522.)
+Address reprint requests to Dr. Maron at the Department of Medicine, Stanford University School of Medicine, 1265 Welch Rd., 
+Medical School Office Bldg. x314, Stanford, CA 94305, or at david.maron@stanford.edu; or to Dr. Hochman at the New York 
+University Grossman School of Medicine-New York University Langone Health, 530 First Ave., Skirball 9R, New York, NY 10016, or 
+at judith.hochman@nyumc.org. 
+The views expressed in this article are solely those of the authors and do not necessarily represent official views of the National Center 
+for Advancing Translational Sciences, the National Heart, Lung, and Blood Institute, the National Institutes of Health, or the 
+Department of Health and Human Services.
+A data sharing statement provided by the authors is available with the full text of this article at NEJM.org.
+Disclosure forms provided by the authors are available with the full text of this article at NEJM.org.
+HHS Public Access
+Author manuscript
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Published in final edited form as:
+N Engl J Med. 2020 April 09; 382(15): 1395–1407. doi:10.1056/NEJMoa1915922.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+THE GOALS OF TREATING PATIENTS WITH stable coronary disease are to reduce their 
+risk of death and ischemic events and to improve their quality of life. All patients with 
+coronary disease should be treated with guide-line-based medical therapy (hereafter, medical 
+therapy) to achieve these objectives.1,2 Before the widespread availability of drug-eluting 
+stents, strategy trials that tested the incremental effect of revascularization added to medical 
+therapy did not show a reduction in the incidence of death or myocardial infarction.3,4 In one 
+trial, fractional flow reserve–guided percutaneous coronary intervention (PCI) with drug-
+eluting stents, added to medical therapy, decreased the incidence of urgent revascularization 
+but not the incidence of death from any cause or myocardial infarction at a mean of 7 
+months,5 whereas the 5-year follow-up showed marginal evidence of a decrease in the 
+incidence of myocardial infarction.6
+Several theories have been advanced to explain why previous strategy trials involving 
+patients with stable coronary disease have not shown a decrease in death or myocardial 
+infarction with revascularization. In trials requiring angiographic evidence of obstructive 
+coronary disease, patients with high-risk anatomical features may have been excluded and 
+knowledge of the anatomy may have led to revascularization in patients who were randomly 
+assigned to a conservative strategy. Previous studies allowed the enrollment of patients with 
+any level of ischemia, which resulted in a minority of patients with moderate or severe 
+ischemia for whom an invasive strategy might have been most beneficial. In a single-center 
+observational study involving 10,627 patients, the incidence of death from cardiac causes 
+was lower among those with at least 10% ischemia on myocardial perfusion imaging who 
+underwent early revascularization than among those who did not undergo revascularization.7 
+We designed the International Study of Comparative Health Effectiveness with Medical and 
+Invasive Approaches (ISCHEMIA) to determine the effect of adding cardiac catheterization 
+(hereafter, angiography) and revascularization when feasible to medical therapy in patients 
+with stable coronary disease and moderate or severe ischemia.8,9
+METHODS
+TRIAL POPULATION
+The trial design and baseline characteristics of the patients have been described previously.
+8,10 Patients with stable coronary disease were enrolled at clinical sites that met certain 
+quality metrics (see the Methods section in the Supplementary Appendix, available with the 
+full text of this article at NEJM.org) after clinically indicated stress testing showed moderate 
+or severe reversible ischemia on imaging tests or severe ischemia on exercise tests without 
+imaging (Fig. S1 and S2 in the Supplementary Appendix). The option of exercise-stress 
+testing without imaging was added as a protocol addendum in 2014 to improve recruitment 
+and generalizability of the trial results.11 Key exclusion criteria were an estimated 
+glomerular filtration rate below 30 ml per minute per 1.73 m2 of body-surface area, a recent 
+acute coronary syndrome, unprotected left main stenosis of at least 50%, a left ventricular 
+ejection fraction of less than 35%, New York Heart Association class III or IV heart failure, 
+and unacceptable angina despite the use of medical therapy at maximum acceptable doses.
+Most enrolled trial patients underwent coronary computed tomographic (CT) angiography to 
+rule out left main coronary disease and nonobstructive coronary disease. The primary 
+Maron et al. Page 2
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+exceptions to the use of CT angiography were renal dysfunction that would preclude such 
+testing or known coronary anatomy. Patients underwent randomization if protocol-indicated 
+clinical, ischemia-based, and anatomical eligibility criteria (based on blinded CT 
+angiography) had been met (Tables S1 and S2). Although sites determined whether stress-
+testing results met eligibility criteria for ischemia severity, all stress tests were reviewed by 
+independent core laboratories.
+TREATMENT STRATEGIES
+Eligible patients were randomly assigned, in a 1:1 ratio, to an initial invasive strategy of 
+medical therapy, angiography, and revascularization when feasible or to an initial 
+conservative strategy of medical therapy alone, with angiography reserved for failure of 
+medical therapy. Randomization was performed with an interactive voice–response or Web-
+based response system with the use of randomly permuted blocks of varying sizes, with 
+stratification according to enrollment site.
+Patients who were assigned to the invasive strategy were to undergo angiography within 30 
+days after randomization and complete revascularization of all ischemic territories if 
+feasible. Sites were provided with guidelines for performing revascularization, including the 
+use of fractional flow reserve measurements when available and appropriate (Fig. S3a and 
+S3b and the Supplementary Methods section). Decisions about the type of revascularization 
+— PCI or coronary-artery bypass grafting (CABG) — were deferred to the local heart team. 
+An independent angiographic core laboratory analyzed all protocol-assigned angiographic 
+and PCI procedures. Medical therapy consisted of intensive secondary prevention with 
+lifestyle and pharmacologic interventions applied equally in both groups with the use of 
+treat-to-target algorithms (Table S3). Patients were followed at 1.5, 3, 6, and 12 months after 
+randomization and every 6 months thereafter.
+OUTCOME ASSESSMENT
+The primary outcome was the composite of death from cardiovascular causes, myocardial 
+infarction, or hospitalization for unstable angina, heart failure, or resuscitated cardiac arrest. 
+The key secondary outcomes were the composite of death from cardiovascular causes or 
+myocardial infarction and angina-related quality of life. Clinical outcomes were adjudicated 
+by an independent clinical-event committee whose members were unaware of the trial-group 
+assignments.
+The primary definition of nonprocedural infarction was based on the Third Universal 
+Definition of Myocardial Infarction types 1, 2, 4b, and 4c.12 For procedural infarctions, we 
+required higher biomarker thresholds for confirmation8 because data showed that this more 
+stringent definition carried greater prognostic significance than the universal definition types 
+4a and 5.13,14 We developed a secondary definition for procedural infarctions that used 
+biomarker thresholds that were similar to those of the universal definition but with additional 
+criteria based on elevations of biomarker levels alone without additional findings. 
+Definitions of all trial outcomes, including both the primary and the secondary definitions of 
+procedural infarction, are provided in the Supplementary Methods section.
+Maron et al. Page 3
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+TRIAL ORGANIZATION AND OVERSIGHT
+The trial was designed by the executive committee and sponsored by the National Heart, 
+Lung, and Blood Institute, with additional support from industry sponsors (Table S4). An 
+independent data and safety monitoring board approved the trial protocol (available at 
+NEJM.org) and monitored patient safety. The protocol was approved by the institutional 
+review board at New York University Grossman School of Medicine (the clinical 
+coordinating center) and by the institutional review board and ethics committee at each 
+participating site (see the Supplementary Appendix). All the patients provided written 
+informed consent.
+The industry sponsors did not have access to the data during the trial and did not participate 
+in the trial design, data analysis, or manuscript preparation. The statistical and data 
+coordinating center at Duke Clinical Research Institute monitored data collection and quality 
+and performed statistical analyses. The first author prepared the first draft of the manuscript. 
+The first and second authors had full access to the data and were responsible for editing 
+subsequent drafts as well as for the decision to submit the final manuscript for publication. 
+All the authors vouch for the accuracy and completeness of the data and adherence of the 
+trial to the protocol.
+STATISTICAL ANALYSIS
+The original trial design specified that 8000 patients would undergo randomization with 4 
+years of follow-up for the five-component primary composite outcome reported in this 
+article.15 Before the trial launch, the National Heart, Lung, and Blood Institute and the data 
+and safety monitoring board approved changing the primary outcome to a composite of 
+death from cardiovascular causes or myocardial infarction, with a protocol-defined 
+procedure to revert to the five-component primary outcome if needed to preserve statistical 
+power. Slow recruitment and lower-than-expected aggregated event rates triggered this 
+prespecified contingency plan and other changes, as described previously.8,11
+Power calculations performed in 2015 determined that a trial with 5000 patients would have 
+at least 83% power to detect an 18% relative reduction in the 4-year rate of the primary 
+outcome, assuming a 4-year rate of 20% in the conservative-strategy group. When power 
+was reestimated with the use of updated event-rate assumptions derived from blinded trial 
+data in 2018, the final sample size was estimated to provide at least 83% power to detect an 
+18.5% relative reduction in the primary outcome, assuming average follow-up of 
+approximately 3 years and an aggregate 4-year cumulative incidence of 14%.
+Detailed statistical methods are provided in the Supplementary Methods section. Group 
+comparisons were performed according to the intention-to-treat principle based on time-to-
+first-event analyses. Cumulative event probabilities were estimated with the use of the 
+Kaplan–Meier method for outcomes that were not subject to competing risks (e.g., death 
+from any cause) and by a nonparametric cumulative-incidence function estimator for 
+outcomes that were subject to competing risks (e.g., the primary outcome, for which death 
+from noncardiovascular causes is a competing risk).16 The prespecified primary analysis was 
+a covariate-adjusted Cox proportional-hazards model. However, the proportional-hazards 
+Maron et al. Page 4
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+assumption underlying the Cox model was not met for the primary outcome (P<0.001 for 
+time-by-treatment interaction) and several secondary outcomes. We report these results for 
+the primary outcome and do not report them for any other outcomes that show 
+nonproportionality.
+The statistical analysis plan specified that presentation of the results would emphasize 
+nonparametric cumulative event-rate estimates if the proportional-hazards assumption was 
+violated. Differences in these estimates for the invasive-strategy group as compared with the 
+conservative-strategy group at 6 months and at yearly time points were tabulated and 
+presented with 95% confidence intervals. The confidence intervals have not been adjusted 
+for multiple comparisons, so these intervals should not be used to infer definitive treatment 
+effects. In a post hoc analysis, we used kernel smoothing to estimate hazard-rate functions 
+over time for the two treatment groups.17 We also estimated the difference in restricted mean 
+event-free time over 5 years.18,19 This quantity is derived from the nonparametric 
+cumulative event-rate curves and is interpreted as the average number of event-free days per 
+patient over the period between randomization and 5 years. Supporting analyses using a 
+Bayesian statistical framework were prespecified to permit the primary clinical results to be 
+expressed in terms of the posterior (post-trial) probability of a small or large effect size in 
+light of the current trial data. We implemented the Bayesian approach using a flexible 
+piecewise-exponential nonproportional-hazards model (see the Supplementary Methods 
+section). Analyses were performed with the use of SAS software (version 9.4), WinBUGS 
+software (version 1.4), and R software (version 3.6).
+RESULTS
+BASEUNE CHARACTERISTICS AND MEDICAL THERAPY
+From July 26, 2012, through January 31, 2018, a total of 8518 patients were enrolled and 
+5179 underwent randomization at 320 sites in 37 countries (Section II in the Supplementary 
+Appendix and Fig. 1). The baseline characteristics of the patients were well balanced 
+between the two groups (Table 1 and Table S5). Baseline risk-factor control and medication 
+use were similar in the groups (Table S6). The median low-density lipoprotein cholesterol 
+level was 83 mg per deciliter (2.2 mmol per liter) at baseline and 64 mg per deciliter (1.7 
+mmol per liter) at the last visit. Medication use at baseline and during follow-up is shown in 
+Figures S4 and S5.
+USE OF INVASIVE PROCEDURES AND FOLLOW UP
+Among patients in the invasive-strategy group, 96% underwent angiography and 79% 
+underwent revascularization (PCI in 74% and CABG in 26%) (Table S7a and Fig. S6). 
+Angiographic characteristics of patients in the invasive-strategy group and procedural data 
+are provided in Table S8. In the conservative-strategy group, 26% of the patients underwent 
+angiography and 21% underwent revascularization; 19% underwent angiography and 15% 
+underwent revascularization before the occurrence of a primary outcome event. The total 
+numbers of invasive procedures, including repeat procedures, that were performed in each 
+group were 5337 in the invasive-strategy group and 1506 in the conservative-strategy group 
+Maron et al. Page 5
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+(Table S9). Patients were followed until June 30, 2019; the median duration of follow-up 
+was 3.2 years.
+PRIMARY OUTCOME
+The primary outcome occurred in 318 patients in the invasive-strategy group and in 352 
+patients in the conservative-strategy group (Table 2 and Fig. 2). In prespecified covariate-
+adjusted Cox model analysis, the estimated hazard ratio with the invasive strategy as 
+compared with the conservative strategy was 0.93 (95% confidence interval [CI], 0.80 to 
+1.08; P = 0.34). However, the underlying proportional-hazards assumption was violated. At 
+6 months, the estimated cumulative event rate was 5.3% in the invasive-strategy group and 
+3.4% in the conservative-strategy group (difference, 1.9 percentage points; 95% CI, 0.8 to 
+3.0). At 5 years, the estimated cumulative event rate was 16.4% in the invasive-strategy 
+group and 18.2% in the conservative-strategy group (difference, −1.8 percentage points; 
+95% CI, −4.7 to 1.0). The estimated hazard rates over time are shown in Figure S7. We did 
+not find evidence of a difference in the 5-year restricted mean event-free time between the 
+groups (9.5 days longer in the invasive-strategy group; 95% CI, −17.8 to 36.9).
+SECONDARY OUTCOMES
+There were 276 deaths from cardiovascular causes or myocardial infarctions in the invasive-
+strategy group and 314 in the conservative-strategy group (Table 2 and Fig. 2). At 6 months, 
+the estimated event rate was 4.8% in the invasive-strategy group and 2.9% the conservative-
+strategy group (difference, 1.9 percentage points; 95% CI, 0.9 to 3.0). At 5 years, the 
+estimated cumulative event rate was 14.2% in the invasive-strategy group and 16.5% in the 
+conservative-strategy group (difference, −2.3 percentage points; 95% CI, −5.0 to 0.4). The 
+restricted mean time free from death from cardiovascular causes or infarction over 5 years 
+was similar in the two groups (9.4 days longer in the invasive-strategy group; 95% CI, −16.5 
+to 35.2). Other outcomes according to treatment group are shown in Table 2, Table S10, and 
+Figure S8. There were more hospitalizations for heart failure and fewer hospitalizations for 
+unstable angina with the invasive strategy. There were 145 deaths in the invasive-strategy 
+group and 144 deaths in the conservative-strategy group (hazard ratio, 1.05; 95% CI, 0.83 to 
+1.32).
+The early increased risk of the primary and major secondary outcomes in the invasive-
+strategy group was attributable to more procedural infarctions in early follow-up. This early 
+hazard difference was increased when the secondary definition of infarction, which 
+increased the number of adjudicated procedural infarctions, was used. With the use of the 
+secondary definition of myocardial infarction, the estimated cumulative event rate at 6 
+months for the primary outcome was 10.2% in the invasive-strategy group and 3.7% in the 
+conservative-strategy group (difference, 6.5 percentage points; 95% CI, 5.2 to 7.9), and the 
+estimated cumulative event rate at 5 years was 21.2% in the invasive-strategy group and 
+19.0% in the conservative-strategy group (difference, 2.2 percentage points; 95% CI, −0.7 to 
+5.2). The greater number of procedural infarctions according to the secondary definition is 
+reflected in all composite outcomes that include infarctions (Table S11 and Fig. S9).
+Maron et al. Page 6
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+HETEROGENEITY OF TREATMENT EFFECT
+No evidence of a differential treatment effect on the primary outcome was found for five 
+prespecified covariates or the degree of ischemia (Fig. 3). Likewise, there was no evidence 
+of a differential treatment effect on the primary outcome with respect to other baseline 
+characteristics, including the type of stress test, baseline left ventricular ejection fraction, 
+estimated glomerular filtration rate, and age.
+BAYESIAN ANALYSIS
+In the Bayesian analysis, the post-trial probability that the difference in group-specific 5-
+year cumulative rates of the primary outcome is greater than 3 absolute percentage points 
+was estimated to be 24.5% for a difference favoring the invasive strategy and less than 0.1% 
+for a difference favoring the conservative strategy; results were similar for the key secondary 
+outcome (Fig. S10 and Table S12). The probability that the difference in the 5-year rate of 
+death from any cause is greater than 1 absolute percentage point was estimated to be 10.7% 
+for a difference favoring the invasive strategy and 32.1% for a difference favoring the 
+conservative strategy.
+DISCUSSION
+Over a median of 3.2 years of follow-up, among patients with stable coronary disease who 
+had moderate or severe ischemia on stress testing, an initial invasive strategy, as compared 
+with an initial conservative strategy, did not reduce the rates of the primary or key secondary 
+composite outcomes. Patients in the invasive-strategy group had more procedural infarctions, 
+and they had fewer nonprocedural infarctions during follow-up. The incidence of death from 
+any cause was low and similar in the two groups.
+The opposing trends in procedural and nonprocedural infarctions drove the lack of 
+proportionality for the primary and key secondary outcomes. The rate of early 
+cardiovascular events was higher and the rate of late cardiovascular events was lower among 
+patients in the invasive-strategy group than among those in the conservative-strategy group. 
+Differences in event rates between the groups in early follow-up were greater when the 
+secondary definition of procedural infarction was used; this showed the sensitivity of rates of 
+procedural infarctions to the definition used. The invasive strategy was associated with fewer 
+nonprocedural infarctions when either definition was used. When the secondary definition of 
+myocardial infarction was used, the primary outcome occurred more frequently in the 
+invasive-strategy group than in the conservative-strategy group throughout the 5-year follow-
+up period.
+A preliminary analysis of ISCHEMIA data provides support for previous studies showing 
+that spontaneous infarctions confer a higher risk of subsequent death than procedural 
+infarctions.13,14 Despite pronounced differences in the frequency and timing of myocardial 
+infarctions, there was no difference between the groups with respect to mortality. Longer-
+term follow-up with assessment of mortality is needed to fully understand the prognostic 
+implications of more procedural and fewer nonprocedural infarctions with an invasive 
+strategy.
+Maron et al. Page 7
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+The results of ISCHEMIA should be interpreted in the context of certain limitations. Power 
+was decreased by reducing the sample size from 8000 to 5179 patients, event rates were 
+lower than expected, and the period of follow-up was modest. With a 3.2-year median 
+follow-up, event-rate estimates past the median are subject to progressively greater 
+uncertainty. The primary outcome was expanded, as prespecified, owing to slow recruitment, 
+yet there was no difference between the results for the primary and key secondary outcomes. 
+The findings do not apply to patients with acute coronary syndromes,18,19 clinically 
+significant left main coronary artery disease,20,21 low ejection fraction,22 class III or IV 
+heart failure, or those who are very symptomatic despite the use of medical therapy at 
+maximum acceptable doses. Although the stress core laboratories did not confirm that the 
+degree of ischemia was sufficient to qualify for the trial in 14% of the patients who 
+underwent randomization, a subgroup analysis showed that inclusion of patients with less 
+than moderate ischemia as determined by core laboratories had no effect on the trial 
+findings. We have not yet analyzed the effect of the completeness23 or method24 of 
+revascularization on outcomes. The clinical outcomes should be interpreted in the context of 
+quality-of-life outcomes, which represent a different dimension of treatment effectiveness 
+and are reported separately.25
+In conclusion, we compared an initial invasive strategy with an initial conservative strategy 
+in patients with coronary disease and moderate or severe ischemia. We did not find evidence 
+that the initial invasive strategy reduced the risk of ischemic cardiovascular events or death 
+from any cause. The trial findings were sensitive to the definition of myocardial infarction 
+used.
+Supplementary Material
+Refer to Web version on PubMed Central for supplementary material.
+Authors 
+D.J. Maron#,
+Department of Medicine, Stanford University School of Medicine, Stanford
+J.S. Hochman#,
+New Y ork University Grossman School of Medicine, New Y ork
+H.R. Reynolds,
+New Y ork University Grossman School of Medicine, New Y ork
+S. Bangalore,
+New Y ork University Grossman School of Medicine, New Y ork
+S.M. O’Brien,
+Duke Clinical Research Institute, Durham, North Carolina
+W.E. Boden,
+Veterans Affairs (VA) New England Healthcare System and Boston University 
+School of Medicine, Boston
+Maron et al. Page 8
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+B.R. Chaitman,
+Saint Louis University School of Medicine, St. Louis
+R. Senior,
+Northwick Park Hospital, London
+Imperial College London and Royal Brompton Hospital, London
+J. López-Sendón,
+Hospital Universitario La Paz, Instituto de Investigación de La Paz, Centro de 
+Investigación Biomédica en Red Cardiovascular, Madrid, Spain
+K.P . Alexander,
+Duke Clinical Research Institute, Durham, North Carolina
+R.D. Lopes,
+Duke Clinical Research Institute, Durham, North Carolina
+L.J. Shaw,
+Weill Cornell Medicine/New Y ork-Presbyterian Hospital, New Y ork
+J.S. Berger,
+New Y ork University Grossman School of Medicine, New Y ork
+J.D. Newman,
+New Y ork University Grossman School of Medicine, New Y ork
+M.S. Sidhu,
+Albany Medical College and Albany Medical Center, New Y ork
+S.G. Goodman,
+Canadian Heart Research Centre and St. Michael’s Hospital, University of Toronto, 
+Toronto, Canada
+W. Ruzyllo,
+National Institute of Cardiology, Warsaw, Poland
+G. Gosselin,
+Montreal Heart Institute Research Center, Montreal
+A.P . Maggioni,
+Associazione Nazionale Medici Cardiologi Ospedalieri, Florence, Italy
+H.D. White,
+Auckland Hospital Green Lane Cardiovascular Services, Auckland, New Zealand
+B. Bhargava,
+All India Institute of Medical Sciences, New Delhi, India
+J.K. Min,
+Cleerly the Cardiovascular Research Foundation, New Y ork
+G.B.J. Mancini,
+Montreal Heart Institute Research Center, Montreal (G.G.), and the University of 
+British Columbia, Vancouver, Canada
+Maron et al. Page 9
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+D.S. Berman,
+Cedars-Sinai Medical Center, Los Angeles, California
+M.H. Picard,
+Massachusetts General Hospital and Harvard Medical School, Boston
+R.Y . Kwong,
+Brigham and Women’s Hospital, Boston
+Z.A. Ali,
+Cleerly the Cardiovascular Research Foundation, New Y ork
+Columbia University Irving Medical Center/New Y ork-Presbyterian Hospital, New 
+Y ork
+Albany St. Francis Hospital, Roslyn, New Y ork
+D.B. Mark,
+Duke Clinical Research Institute, Durham, North Carolina
+J.A. Spertus,
+Saint Luke’s Mid America Heart Institute and the University of Missouri-Kansas City 
+School of Medicine, Kansas City
+M.N. Krishnan,
+Government Medical College Kozhikode, Kerala, India
+A. Elghamaz,
+Northwick Park Hospital, London
+N. Moorthy,
+Sri Jayadeva Institute of Cardiovascular Sciences and Research, Bangalore, India
+W.A. Hueb,
+Instituto do Coração, Hospital das Clínicas da Faculdade de Medicina da 
+Universidade de São Paulo, Faculdade de Medicina, Universidade de São Paulo, 
+São Paulo
+M. Demkow,
+Department of Coronary and Structural Heart Diseases
+National Institute of Cardiology, Warsaw, Poland
+K. Mavromatis,
+Emory University School of Medicine-Atlanta VA Medical Center, Decatur, Georgia
+O. Bockeria,
+National Research Center for Cardiovascular Surgery, Moscow
+J. Peteiro,
+Complejo Hospitalario Universitario A Coruna, Centro de Investigación Biomédica 
+en Red Cardiovascular, A Coruna, Spain
+T.D. Miller,
+Mayo Clinic, Rochester, MN
+Maron et al. Page 10
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+H. Szwed,
+National Institute of Cardiology, Warsaw, Poland
+R. Doerr,
+Praxisklinik Herz und Gefaesse, Dresden, Germany
+M. Keltai,
+Semmelweis University, Budapest, Hungary
+J.B. Selvanayagam,
+Flinders University, Flinders Medical Centre, Adelaide, SA, Australia
+P .G. Steg,
+Université de Paris, Assistance Publique-Hôpitaux de Paris, and INSERM Unité 
+1148, Paris
+C. Held,
+Department of Medical Sciences, Cardiology, Uppsala Clinical Research Center, 
+Uppsala University, Uppsala, Sweden
+S. Kohsaka,
+Keio University School of Medicine, Shinjuku, Tokyo
+S. Mavromichalis,
+New Y ork University Grossman School of Medicine, New Y ork
+R. Kirby,
+National Institutes of Health, Bethesda, MD
+N.O. Jeffries,
+National Institutes of Health, Bethesda, MD
+F .E. Harrell Jr.,
+Vanderbilt University School of Medicine, Nashville
+F .W. Rockhold,
+Duke Clinical Research Institute, Durham, North Carolina
+S. Broderick,
+Duke Clinical Research Institute, Durham, North Carolina
+T.B. Ferguson Jr.,
+Brody School of Medicine, East Carolina University, Greenville, North Carolina
+D.O. Williams,
+Brigham and Women’s Hospital, Boston
+R.A. Harrington,
+Department of Medicine, Stanford University School of Medicine, Stanford
+G.W. Stone,
+Cleerly the Cardiovascular Research Foundation, New Y ork
+Icahn School of Medicine at Mount Sinai, New Y ork
+Maron et al. Page 11
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Y . Rosenberg
+National Institutes of Health, Bethesda, MD
+ISCHEMIA Research Group
+Affiliations
+Department of Medicine, Stanford University School of Medicine, Stanford
+New Y ork University Grossman School of Medicine, New Y ork
+New Y ork University Grossman School of Medicine, New Y ork
+New Y ork University Grossman School of Medicine, New Y ork
+Duke Clinical Research Institute, Durham, North Carolina
+Veterans Affairs (VA) New England Healthcare System and Boston University 
+School of Medicine, Boston
+Saint Louis University School of Medicine, St. Louis
+Northwick Park Hospital, London
+Imperial College London and Royal Brompton Hospital, London
+Hospital Universitario La Paz, Instituto de Investigación de La Paz, Centro de 
+Investigación Biomédica en Red Cardiovascular, Madrid, Spain
+Duke Clinical Research Institute, Durham, North Carolina
+Duke Clinical Research Institute, Durham, North Carolina
+Weill Cornell Medicine/New Y ork-Presbyterian Hospital, New Y ork
+New Y ork University Grossman School of Medicine, New Y ork
+New Y ork University Grossman School of Medicine, New Y ork
+Albany Medical College and Albany Medical Center, New Y ork
+Canadian Heart Research Centre and St. Michael’s Hospital, University of Toronto, 
+Toronto, Canada
+National Institute of Cardiology, Warsaw, Poland
+Montreal Heart Institute Research Center, Montreal
+Associazione Nazionale Medici Cardiologi Ospedalieri, Florence, Italy
+Auckland Hospital Green Lane Cardiovascular Services, Auckland, New Zealand
+All India Institute of Medical Sciences, New Delhi, India
+Cleerly the Cardiovascular Research Foundation, New Y ork
+Montreal Heart Institute Research Center, Montreal (G.G.), and the University of 
+British Columbia, Vancouver, Canada
+Cedars-Sinai Medical Center, Los Angeles, California
+Maron et al. Page 12
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Massachusetts General Hospital and Harvard Medical School, Boston
+Brigham and Women’s Hospital, Boston
+Cleerly the Cardiovascular Research Foundation, New Y ork
+Columbia University Irving Medical Center/New Y ork-Presbyterian Hospital, New 
+Y ork
+Albany St. Francis Hospital, Roslyn, New Y ork
+Duke Clinical Research Institute, Durham, North Carolina
+Saint Luke’s Mid America Heart Institute and the University of Missouri-Kansas City 
+School of Medicine, Kansas City
+Government Medical College Kozhikode, Kerala, India
+Northwick Park Hospital, London
+Sri Jayadeva Institute of Cardiovascular Sciences and Research, Bangalore, India
+Instituto do Coração, Hospital das Clínicas da Faculdade de Medicina da 
+Universidade de São Paulo, Faculdade de Medicina, Universidade de São Paulo, 
+São Paulo
+Department of Coronary and Structural Heart Diseases
+National Institute of Cardiology, Warsaw, Poland
+Emory University School of Medicine-Atlanta VA Medical Center, Decatur, Georgia
+National Research Center for Cardiovascular Surgery, Moscow
+Complejo Hospitalario Universitario A Coruna, Centro de Investigación Biomédica 
+en Red Cardiovascular, A Coruna, Spain
+Mayo Clinic, Rochester, MN
+National Institute of Cardiology, Warsaw, Poland
+Praxisklinik Herz und Gefaesse, Dresden, Germany
+Semmelweis University, Budapest, Hungary
+Flinders University, Flinders Medical Centre, Adelaide, SA, Australia
+Université de Paris, Assistance Publique-Hôpitaux de Paris, and INSERM Unité 
+1148, Paris
+Department of Medical Sciences, Cardiology, Uppsala Clinical Research Center, 
+Uppsala University, Uppsala, Sweden
+Keio University School of Medicine, Shinjuku, Tokyo
+New Y ork University Grossman School of Medicine, New Y ork
+National Institutes of Health, Bethesda, MD
+National Institutes of Health, Bethesda, MD
+Maron et al. Page 13
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Vanderbilt University School of Medicine, Nashville
+Duke Clinical Research Institute, Durham, North Carolina
+Duke Clinical Research Institute, Durham, North Carolina
+Brody School of Medicine, East Carolina University, Greenville, North Carolina
+Brigham and Women’s Hospital, Boston
+Department of Medicine, Stanford University School of Medicine, Stanford
+Cleerly the Cardiovascular Research Foundation, New Y ork
+Icahn School of Medicine at Mount Sinai, New Y ork
+National Institutes of Health, Bethesda, MD
+Acknowledgments
+Supported by grants (U01HL105907, U01HL105462, U01HL105561, and U01HL105565) from the National Heart, 
+Lung, and Blood Institute, by Arbor Pharmaceuticals and AstraZeneca Pharmaceuticals, and in part by Clinical and 
+Translational Science Awards (11UL1 TR001445 and UL1 TR002243) from the National Center for Advancing 
+Translational Sciences. Devices or medications were provided by Abbott Vascular, Medtronic, St. Jude Medical, 
+V olcano, Amgen, Arbor Pharmaceuticals, AstraZeneca Pharmaceuticals, Espero Pharmaceuticals, Merck Sharp & 
+Dohme, Omron Healthcare, and Sunovion Pharmaceuticals.
+Dr. Reynolds reports receiving donated supplies from Abbott Vascular and BioTelemetry; Dr. Bangalore, receiving 
+grant support and advisory board fees from Abbott Vascular and advisory board fees from Biotronik, Pfizer, 
+Amgen, and Reata Pharmaceuticals; Dr. Boden, receiving grant support from AbbVie and Amarin, grant support 
+and lecture fees from Amgen, and lecture fees from Janssen Pharmaceuticals; Dr. Chaitman, receiving fees for 
+serving on a clinical-event committee from Merck, Novo Nordisk, Lilly, Johnson & Johnson, Daiichi Sankyo, 
+Imbria Pharmaceuticals, and XyloCor Therapeutics, and fees for serving on a data and safety monitoring board 
+from Sanofi, Tricida, and Relypsa; Dr. López-Sendón, receiving grant support from Bayer, Merck, and Amgen, trial 
+support and personal fees from Pfizer and Sanofi, lecture fees from Menarini Group, and grant support and lecture 
+fees from Boehringer Ingelheim; Dr. Lopes, receiving consulting fees from Bayer, Boehringer Ingelheim, Daiichi 
+Sankyo, Merck, and Portola Pharmaceuticals, and grant support and consulting fees from Bristol Myers Squibb, 
+GlaxoSmithKline, Medtronic, Pfizer, and Sanofi; Dr. Berger, receiving grant support from AstraZeneca 
+Pharmaceuticals, research support from Janssen Pharmaceuticals, and advisory board fees from Amgen; Dr. Sidhu, 
+receiving advisory board fees from AstraZeneca Pharmaceuticals and Sanofi and Regeneron; Dr. Goodman, 
+receiving grant support, fees for serving on a steering committee, lecture fees, consulting fees, and advisory board 
+fees from Amgen, grant support, fees for serving as study chair, lecture fees, consulting fees, and advisory board 
+fees from AstraZeneca Pharmaceuticals and Bayer, lecture fees, consulting fees, and advisory board fees from 
+Boehringer Ingelheim/Eli Lilly and Servier, grant support, fees for serving on an executive steering committee, fees 
+for serving as study chair, lecture fees, consulting fees, and advisory board fees from Bristol Myers Sqiubb–Pfizer, 
+grant support, fees for serving on an executive steering committee, and salary support from CSL Behring–
+PERFUSE Research Institute, grant support, fees for serving on a data and safety monitoring committee, and salary 
+support from Daiichi Sankyo–American Regent-Duke Clinical Research Institute, fees for serving on a steering 
+committee from Esperion Therapeutics–C5Research, fees for serving on a steering committee, advisory board fees, 
+and travel support from Ferring Pharmaceuticals, fees for serving on a data and safety monitoring committee and 
+travel support from GlaxoSmithKline and Novo Nordisk, consulting fees and advisory board fees from HLS 
+Therapeutics, advisory board fees from Merck, grant support, fees for serving as a subinvestigator, lecture fees, and 
+advisory board fees from Novartis, grant support, fees for serving on an executive steering committee, fees for 
+serving as Canadian national coordinator, salary support, lecture fees, consulting fees, advisory board fees, and 
+travel support from Sanofi and Regeneron, and lecture fees, consulting fees, and advisory board fees from Servier; 
+Dr. Maggioni, receiving fees for serving on study committees from Bayer, Fresenius Medical Care, and Novartis; 
+Dr. White, receiving grant support and fees for serving on a steering committee from Eli Lilly, Omthera 
+Pharmaceuticals, Pfizer USA, Eisai, DalCor Pharma UK, and American Regent, advisory board fees from Sirtex 
+Medical, Acetelion, and Genentech, grant support, fees for serving on a steering committee, and advisory board 
+fees from CSL Behring, grant support, fees for serving on a steering committee, fees for serving as cochair, 
+sponsorship, and travel support from Sanofi–Aventis Australia, grant support, fees for serving on a steering 
+committee, and reimbursement of meeting expenses from Esperion Therapeutics, and grant support, fees for serving 
+on a steering committee, sponsorship, honoraria, and travel support from Sanofi–Aventis; Dr. Min, receiving grant 
+support and advisory board fees from GE Healthcare, holding equity in Cleerly, and receiving advisory board fees 
+Maron et al. Page 14
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+from Arineta; Dr. Mancini, receiving grant support, advisory board fees, and lecture fees from Amgen, Sanofi, 
+Boehringer Ingelheim, AstraZeneca Pharmaceuticals, Bayer, Janssen Pharmaceuticals, and Novo Nordisk, and grant 
+support from Novartis; Dr. Berman, receiving consulting fees from GE Healthcare and Bayer and grant support 
+from Heart-Flow; Dr. Ali, receiving grant support, paid to his institution, and advisory board fees from Abbott 
+Vascular, grant support and advisory board fees from Cardiovascular Systems, lecture fees from Amgen, fees for 
+serving on a speakers’ bureau from AstraZeneca Pharmaceuticals, advisory board fees from Abiomed and Acist 
+Medical, advisory board fees and lecture fees from Boston Scientific and Cardinal Health, advisory board fees and 
+consulting fees from Opsens Medical, and holding equity in Shockwave Medical; Dr. Mark, receiving grant support 
+from HeartFlow, Merck, Tenax Therapeutics, Eli Lilly, AstraZeneca Pharmaceuticals, and Bristol Myers Squibb, 
+and consulting fees from Novo Nordisk, Cytokinetics, and CeleCor Therapeutics; Dr. Spertus, receiving consulting 
+fees from Bayer, AstraZeneca Pharmaceuticals, Amgen, and UnitedHealthcare, fees for serving on a steering 
+committee from Novartis, and fees for serving as principal investigator from Janssen Pharmaceuticals; Dr. Demkow, 
+receiving fees for proctoring, honoraria, consulting fees, and lecture fees from Abbott Vascular, Medtronic, and 
+Boston Scientific; Dr. Mavromatis, receiving grant support from CSL Behring, St. Jude Medical, Medtronic, 
+DalCor Pharmaceuticals, AstraZeneca Pharmaceuticals, Novartis, and Regeneron; Dr. Steg, receiving grant support 
+and fees for serving on a steering committee from Bayer–Janssen Pharmaceuticals, grant support and lecture fees 
+from Merck, grant support, fees for serving as co-chair, consulting fees, and lecture fees from Sanofi, grant support, 
+fees for serving on a steering committee, and consulting fees from Amarin, consulting fees and lecture fees from 
+Amgen and Novo Nordisk, consulting fees, lecture fees, and fees for serving on a critical-event committee from 
+Bristol Myers Squibb, fees for serving on an executive steering committee from Boehringer Ingelheim, fees for 
+serving on a critical-event committee from Pfizer, fees for serving on an executive steering committee and 
+consulting fees from Novartis, consulting fees from Regeneron and Eli Lilly, fees for serving as co-chair and 
+consulting fees from AstraZeneca Pharmaceuticals, grant support, fees for serving as chair of a data and safety 
+monitoring committee, and fees for serving as chair of a registry from Servier, and fees for serving on a steering 
+committee from Idorsia; Dr. Kohsaka, receiving grant support and lecture fees from Bayer, grant support from 
+Daiichi Sankyo, and lecture fees from Bristol Myers Squibb, Pfizer Japan, and AstraZeneca Pharmaceuticals; Dr. 
+Rockhold, receiving grant support and consulting fees from Janssen Pharmaceuticals, consulting fees from Merck 
+Healthcare, fees for serving on a data and safety monitoring board from Merck Research Laboratories, Novo 
+Nordisk, KLSMC Stem Cells, Aldeyra Therapeutics, Rhythm Pharmaceuticals, and Complexa, grant support and 
+fees for serving on a data and safety monitoring board from AstraZeneca Pharmaceuticals, grant support and fees 
+for trial design from Eidos Therapeutics, fees for serving on an advisory board and holding equity in Athira Pharma 
+and Spencer Health Solutions, holding equity in GlaxoSmithKline, and fees for study design from Phathom 
+Pharmaceuticals; Dr. Ferguson, fees for serving as founder and chief medical officer of RFPi; Dr. Harrington, 
+receiving grant support from CSL Behring, Sanofi–Aventis, AstraZeneca Pharmaceuticals, Janssen 
+Pharmaceuticals, Bristol Myers Squibb, Novartis, and The Medicines Company, consulting fees from Amgen and 
+Bayer, fees for serving on an advisory board and holding equity in Element Science, and advisory board fees from 
+Gilead, MyoKardia, and WebMD; and Dr. Stone, receiving lecture fees from Terumo and Amaranth, consulting fees 
+from Shockwave Medical, TherOx, Reva, Vascular Dynamics, Robocath, HeartFlow, Gore, Ablative Solutions, 
+Matrizyme, Miracor Medical, Neovasc, V-Wave, Abiomed, Claret Medical, Sirtex Medical, MAIA 
+Pharmaceuticals, and Vectorious Medical Technologies, consulting fees and holding equity in V ALFIX Medical and 
+SpectraW A VE, consulting fees, holding equity, and holding stock options in Ancora, personal fees, holding equity, 
+and holding stock options in Qool Therapeutics and Orchestra BioMed, and holding equity and stock options in 
+Cagent Vascular, Applied Therapeutics, Biostar, MedFocus, Aria CV , and Cardiac Success. No other potential 
+conflict of interest relevant to this article was reported.
+REFERENCES
+1. Fihn SD, Gardin JM, Abrams J, et al. 2012 ACCF/AHA/ACP/AATS/PCNA/SCAI/STS guideline for 
+the diagnosis and management of patients with stable ischemic heart disease: executive summary: a 
+report of the American College of Cardiology Foundation/American Heart Association task force on 
+practice guidelines, and the American College of Physicians, American Association for Thoracic 
+Surgery, Preventive Cardiovascular Nurses Association, Society for Cardiovascular Angiography 
+and Interventions, and Society of Thoracic Surgeons. J Am Coll Cardiol 2012;60:2564–603. 
+[PubMed: 23182124] 
+2. Knuuti J, Wijns W, Saraste A, et al. ESC guidelines for the diagnosis and management of chronic 
+coronary syndromes. Eur Heart J 2020;41:407–77. [PubMed: 31504439] 
+3. Boden WE, O’Rourke RA, Teo KK, et al. Optimal medical therapy with or without PCI for stable 
+coronary disease. N Engl J Med 2007;356:1503–16. [PubMed: 17387127] 
+4. The BARI 2D Study Group. A randomized trial of therapies for type 2 diabetes and coronary artery 
+disease. N Engl J Med 2009;360:2503–15. [PubMed: 19502645] 
+5. De Bruyne B, Pijls NHJ, Kalesan B, et al. Fractional flow reserve–guided PCI versus medical 
+therapy in stable coronary disease. N Engl J Med 2012;367:991–1001. [PubMed: 22924638] 
+Maron et al. Page 15
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+6. Xaplanteris P, Fournier S, Pijls NHJ, et al. Five-year outcomes with PCI guided by fractional flow 
+reserve. N Engl J Med 2018;379:250–9. [PubMed: 29785878] 
+7. Hachamovitch R, Hayes SW, Friedman JD, Cohen I, Berman DS. Comparison of the short-term 
+survival benefit associated with revascularization compared with medical therapy in patients with no 
+prior coronary artery disease undergoing stress myocardial perfusion single photon emission 
+computed tomography. Circulation 2003;107:2900–7. [PubMed: 12771008] 
+8. ISCHEMIA Trial Research Group, Maron DJ, Hochman JS, et al. International Study of 
+Comparative Health Effectiveness with Medical and Invasive Approaches (ISCHEMIA) trial: 
+rationale and design. Am Heart J 2018;201:124–35. [PubMed: 29778671] 
+9. Stone GW, Hochman JS, Williams DO, et al. Medical therapy with versus without revascularization 
+in stable patients with moderate and severe ischemia: the case for community equipoise. J Am Coll 
+Cardiol 2016;67:81–99. [PubMed: 26616030] 
+10. Hochman JS, Reynolds HR, Bangalore S, et al. Baseline characteristics and risk profiles of 
+participants in the ISCHEMIA randomized clinical trial. JAMA Cardiol 2019;4:273–86. [PubMed: 
+30810700] 
+11. Maron DJ, Harrington RA, Hochman JS. Planning and conducting the ISCHEMIA trial. 
+Circulation 2018;138: 1384–6. [PubMed: 30354348] 
+12. Thygesen K, Alpert JS, Jaffe AS, et al. Third universal definition of myocardial infarction. J Am 
+Coll Cardiol 2012;60: 1581–98. [PubMed: 22958960] 
+13. Prasad A, Gersh BJ, Bertrand ME, et al. Prognostic significance of periprocedural versus 
+spontaneously occurring myocardial infarction after percutaneous coronary intervention in patients 
+with acute coronary syndromes: an analysis from the ACUITY (Acute Catheterization and Urgent 
+Intervention Triage Strategy) trial. J Am Coll Cardiol 2009;54:477–86. [PubMed: 19628125] 
+14. Lansky AJ, Stone GW. Periprocedural myocardial infarction: prevalence, prognosis, and 
+prevention. Circ Cardiovasc Interv 2010;3:602–10. [PubMed: 21156928] 
+15. Project information: the ISCHEMIA trial. Bethesda, MD: National Institutes of Health (https://
+projectreporter.nih.gov/project_info_description.cfm?
+aid=9265117&icde=38661984&ddparam=&ddvalue=&ddsub=&cr=1&csb=default&cs=ASC&pb
+all=).
+16. Kalbfleisch JD, Prentice RL. The statistical analysis of failure time data. New York: John Wiley, 
+2011.
+17. Müller HG, Wang JL. Hazard rate estimation under random censoring with varying kernels and 
+bandwidths. Biometrics 1994;50:61–76. [PubMed: 8086616] 
+18. Keeley EC, Boura JA, Grines CL. Primary angioplasty versus intravenous thrombolytic therapy for 
+acute myocardial infarction: a quantitative review of 23 randomised trials. Lancet 2003;361:13–20. 
+[PubMed: 12517460] 
+19. Fox KA, Clayton TC, Damman P, et al. Long-term outcome of a routine versus selective invasive 
+strategy in patients with non-ST-segment elevation acute coronary syndrome a meta-analysis of 
+individual patient data. J Am Coll Cardiol 2010;55: 2435–45. [PubMed: 20359842] 
+20. Yusuf S, Zucker D, Peduzzi P, et al. Effect of coronary artery bypass graft surgery on survival: 
+overview of 10-year results from randomised trials by the Coronary Artery Bypass Graft Surgery 
+Trialists Collaboration. Lancet 1994;344: 563–70. [PubMed: 7914958] 
+21. Bittl JA, He Y , Jacobs AK, Yancy CW, Normand SL. Bayesian methods affirm the use of 
+percutaneous coronary intervention to improve survival in patients with unprotected left main 
+coronary artery disease. Circulation 2013;127:2177–85. [PubMed: 23674397] 
+22. Velazquez EJ, Lee KL, Jones RH, et al. Coronary-artery bypass surgery in patients with ischemic 
+cardiomyopathy. N Engl J Med 2016;374:1511–20. [PubMed: 27040723] 
+23. Bangalore S, Guo Y , Samadashvili Z, Hannan EL. Outcomes with complete versus incomplete 
+revascularization in patients with multivessel coronary disease undergoing percutaneous coronary 
+intervention with everolimus eluting stents. Am J Cardiol 2020;125:362–9. [PubMed: 31810515] 
+24. Mack M, Baumgarten H, Lytle B. Why surgery won the SYNTAX trial and why it matters. J 
+Thorac Cardiovasc Surg 2016; 152:1237–40. [PubMed: 27283748] 
+25. Spertus JA, Jones PG, Maron DJ, et al. Health-status outcomes with invasive or conservative care 
+in coronary disease. N Engl J Med 2020;382:1408–19. [PubMed: 32227753] 
+Maron et al. Page 16
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 1. Enrollment, Randomization, and Follow-up.
+Unprotected left main coronary artery (LMCA) disease was defined as 50% or greater 
+LMCA stenosis without a bypass graft to the left coronary artery. To maximize information 
+about baseline coronary anatomy, available coronary computed tomographic angiographic 
+(CCTA) images obtained less than 1 year before enrollment in 130 patients were 
+subsequently collected for CCTA core laboratory review. The percentage of projected 
+follow-up completed was calculated with the number of patient-years of observed follow-up 
+as the numerator and the number of patient-years of expected follow-up as the denominator. 
+Maron et al. Page 17
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+The percentages of patients who underwent angiography and revascularization differ from 
+the cumulative incidence function rates, which account for censoring. The percentage of 
+patients who underwent angiography includes a small number of patients in the invasive-
+strategy group who underwent angiography before randomization and did not undergo 
+repeat angiography after randomization and before bypass surgery. A total of 15% of the 
+patients in the conservative-strategy group underwent revascularization before a primary 
+outcome event occurred. CAD denotes coronary artery disease, eGFR estimated glomerular 
+filtration rate, and IQR interquartile range.
+Maron et al. Page 18
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 2. Time-to-Event Curves for the Primary Composite Outcome and Other Outcomes.
+Panel A shows the cumulative incidence of the primary composite outcome of death from 
+cardiovascular causes, myocardial infarction, or hospitalization for unstable angina, heart 
+failure, or resuscitated cardiac arrest in the conservative-strategy group and the invasive-
+strategy group. Panel B shows the cumulative incidence of death from cardiovascular causes 
+or myocardial infarction. Panel C shows the cumulative incidence of death from any cause, 
+and Panel D shows the cumulative incidence of myocardial infarction. In each panel, the 
+inset shows the same data on an enlarged y axis.
+Maron et al. Page 19
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 3. Analyses of Heterogeneity of Treatment Effect for the Primary Outcome.
+Only the first event per patient was counted in these analyses. Ischemia severity was based 
+on core-laboratory interpretation. A total of 1266 patients did not undergo core-laboratory-
+interpreted computed tomographic (CT) angiography for the trial and did not have an 
+available previous CT angiogram within 1 year before the trial for core-laboratory 
+interpretation, and 923 patients had a CT angiography core-laboratory interpretation in 
+which the number of diseased vessels could not be evaluated. When trial images could be 
+interpreted for this variable, the number of diseased vessels on CT angiography was based 
+on a 50% stenosis threshold. Data on CAD severity based on 50% stenosis exclude 4 
+patients with no diseased vessels. Stenosis of the proximal left anterior descending (LAD) 
+coronary artery was reported when the proximal LAD segment could be evaluated on CT 
+angiography. Patients were considered to have high attainment of guideline-based medical 
+therapy at baseline if they met all the following criteria: low-density lipoprotein cholesterol 
+level of less than 70 mg per deciliter (1.8 mmol per liter) and receipt of any statin, systolic 
+blood pressure of less than 140 mm Hg, receipt of aspirin or other antiplatelet or 
+anticoagulant agent, and no smoking. Patients who were determined by the core laboratory 
+to have moderate ischemia on a nonimaging exercise-stress test did not meet ischemia 
+eligibility, yet some such patients underwent randomization. This explains the discrepancy 
+Maron et al. Page 20
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+between the “no” category under ischemia eligibility (13.8%) and the “none or mild” 
+category for the “degree of baseline ischemia” subgroup (11.9%).
+Maron et al. Page 21
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Maron et al. Page 22
+Table 1.
+Baseline Characteristics of the Patients.
+*
+Characteristic Invasive Strategy (N = 2588) Conservative Strategy (N = 2591) Total (N = 5179)
+Median age (IQR) — yr 64 (58–70) 64 (58–70) 64 (58–70)
+Male sex — no. (%) 1982 (76.6) 2029 (78.3) 4011 (77.4)
+Race or ethnic group — no./total no. (%)
+†
+ White 1706/2569 (66.4) 1697/2560 (66.3) 3403/5129 (66.3)
+ Black 96/2569 (3.7) 108/2560 (4.2) 204/5129 (4.0)
+ Asian 747/2569 (29.1) 738/2560 (28.8) 1485/5129 (29.0)
+ Hispanic or Latino 372/2402 (15.5) 391/2413 (16.2) 4815 (15.8)
+ Other or multiple ethnic groups 20/2569 (0.8) 17/2560 (0.7) 37/5129 (0.7)
+Hypertension — no./total no. (%) 1894/2579 (73.4) 1895/2582 (73.4) 3789/5161 (73.4)
+Diabetes — no. (%) 1071 (41.4) 1093 (42.2) 2164 (41.8)
+Use of insulin — no. (%) 239 (9.2) 253 (9.8) 492 (9.5)
+Cigarette smoking — no./total no. (%)
+ Never smoked 1119/2587 (43.3) 1089/2587 (42.1) 2208/5174 (42.7)
+ Former smoker 1149/2587 (44.4) 1177/2587 (45.5) 2326/5174 (45.0)
+ Current smoker 319/2587 (12.3) 321/2587 (12.4) 640/5174 (12.4)
+Family history of premature coronary artery disease — no./total no. (%) 578/2228 (25.9) 592/2262 (26.2) 1170/4490 (26.1)
+Previous myocardial infarction — no./total no. (%) 495/2580 (19.2) 496/2582 (19.2) 991/5162 (19.2)
+Previous PCI — no./total no. (%) 551/2586 (21.3) 499/2589 (19.3) 1050/5175 (20.3)
+Previous CABG — no./total no. (%) 110/2588 (4.3) 93/2591 (3.6) 203/5179 (3.9)
+Cardiac catheterization — no./total no. (%)
+ Before enrollment 979/2588 (37.8) 925/2591 (35.7) 1904/5179 (36.8)
+ Before enrollment and ≤12 mo before randomization 338/2504 (13.5) 329/2503 (13.1) 667/5007 (13.3)
+CCTA — no./total no. (%)
+ Before enrollment 178/2585 (6.9) 175/2588 (6.8) 353/5173 (6.8)
+ Before enrollment and ≤12 mo before randomization 127/2573 (4.9) 126/2576 (4.9) 253/5149 (4.9)
+Heart failure — no. (%)
+ History 112 (4.3) 94 (3.6) 206 (4.0)
+ Previous hospitalization 27 (1.0) 30 (1.2) 57 (1.1)
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Maron et al. Page 23
+Characteristic Invasive Strategy (N = 2588) Conservative Strategy (N = 2591) Total (N = 5179)
+Median ejection fraction (IQR) — % 60 (55–65) 60 (55–65) 60 (55–65)
+History of atrial fibrillation or atrial flutter — no./total no. (%) 128/2587 (4.9) 93/2586 (3.6) 221/5173 (4.3)
+Previous stroke — no./total no. (%) 83/2587 (3.2) 68/2591 (2.6) 151/5178 (2.9)
+History of cerebrovascular disease — no./total no. (%)
+‡ 201/2582 (7.8) 176/2583 (6.8) 377/5165 (7.3)
+History of peripheral-artery disease — no./total no. (%) 116/2585 (4.5) 88/2583 (3.4) 204/5168 (3.9)
+Angina
+ History — no./total no. (%) 2329/2588 (90.0) 2312/2591 (89.2) 4641/5179 (89.6)
+ Began or became more frequent within previous 3 mo — no./total no. (%) 680/2584 (26.3) 675/2583 (26.1) 1355/5167 (26.2)
+ New onset within previous 3 mo — no./total no. (%) 415/2452 (16.9) 440/2466 (17.8) 855/4918 (17.4)
+ SAQ Angina Frequency score
+§ 80.7±20.0 82.1±19.2 81.4±19.6
+ Daily or weekly angina — no./total no. (%)
+§ 502/2314 (21.7) 442/2333 (18.9) 944/4647 (20.3)
+ Angina several times per mo — no./total no. (%)
+§ 1018/2314 (44.0) 1039/2333 (44.5) 2057/4647 (44.3)
+ No angina in previous 4 wk — no./total no. (%)
+§ 794/2314 (34.3) 852/2333 (36.5) 1646/4647 (35.4)
+*Plus–minus values are means ±SD. Percentages may not total 100 because of rounding. CCTA denotes coronary computed tomographic angiography, and IQR interquartile range.†Race or ethnic group was reported by the patient.‡Previous cerebrovascular disease is defined as a previous carotid artery surgery or stent placement, a previous stroke, or a previous transient ischemic attack.§The Seattle Angina Questionnaire (SAQ) captures the frequency of angina and the disease-specific effect of angina on patients’ physical function and quality of life; the subscales are averaged to define the 
+SAQ summary score. SAQ scores range from 0 to 100, with higher scores indicating less frequent angina, better function, and greater quality of life. For the SAQ Angina Frequency scale, scores of 0 to 30, 
+31 to 60, 61 to 99, and 100 have been shown to validly reflect angina that occurs daily, weekly, monthly, and no angina, respectively, as assessed with daily diaries. Data were excluded from five sites (481 
+patients) because of improper completion of forms.
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Maron et al. Page 24
+Table 2.
+Estimated Differences between Treatment Groups in Cumulative Event Rates.
+*
+Variable Invasive Strategy (N = 2588) Conservative Strategy (N = 2591) Estimated Difference (95% CI) Hazard Ratio (95% CI)†
+Primary composite outcome
+‡
+No. of patients with events 318 352
+Cumulative event rate — % 0.93 (0.80 to 1.08)
+ At 6 mo 5.3 3.4 1.9 (0.8 to 3.0)
+ At 1 yr 7.0 5.4 1.5 (0.2 to 2.9)
+ At 2 yr 9.0 9.5 −0.5 (−2.1 to 1.1)
+ At 3 yr 11.3 12.7 −1.3 (−3.2 to 0.6)
+ At 4 yr 13.3 15.5 −2.2 (−4.4 to 0)
+ At 5 yr 16.4 18.2 −1.8 (−4.7 to 1.0)
+Restricted mean event-free time 4.5 yr 4.5 yr 9.5 days (−17.8 to 36.9)
+Death from cardiovascular causes or myocardial infarction
+No. of patients with events 276 314
+Cumulative event rate — %
+ At 6 mo 4.8 2.9 1.9 (0.9 to 3.0)
+ At 1 yr 6.2 4.6 1.6 (0.4 to 2.8)
+ At 2 yr 7.9 8.2 −0.3 (−1.8 to 1.2)
+ At 3 yr 9.7 11.0 −1.3 (−3.1 to 0.5)
+ At 4 yr 11.7 13.9 −2.2 (−4.4 to −0.1)
+ At 5 yr 14.2 16.5 −2.3 (−5.0 to 0.4)
+Restricted mean event-free time 4.6 yr 4.5 yr 9.4 days (−16.5 to 35.2)
+Death from any cause
+No. of patients with events 145 144
+Cumulative event rate — % 1.05 (0.83 to 1.32)
+ At 6 mo 0.8 0.4 0.4 (−0 to 0.8)
+ At 1 yr 1.7 1.0 0.7 (0 to 1.3)
+ At 2 yr 2.8 2.9 −0.1 (−1.0 to 0.9)
+ At 3 yr 4.3 4.3 0 (−1.2 to 1.2)
+ At 4 yr 6.5 6.4 0.1 (−1.5 to 1.8)
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Maron et al. Page 25
+Variable Invasive Strategy (N = 2588) Conservative Strategy (N = 2591) Estimated Difference (95% CI) Hazard Ratio (95% CI)†
+ At 5 yr 9.0 8.3 0.7 (−1.6 to 3.1)
+Restricted mean event-free time 4.8 yr 4.8 yr −3.0 days (−19.6 to 13.6)
+Myocardial infarction
+No. of patients with events 210 233
+Cumulative event rate — %
+ At 6 mo 4.3 2.6 1.8 (0.8 to 2.8)
+ At 1 yr 5.3 3.8 1.5 (0.3 to 2.6)
+ At 2 yr 6.3 6.5 −0.1 (−1.5 to 1.2)
+ At 3 yr 7.7 8.5 −0.7 (−2.3 to 0.8)
+ At 4 yr 8.9 10.1 −1.2 (−3.0 to 0.6)
+ At 5 yr 10.3 11.9 −1.6 (−3.9 to 0.7)
+Restricted mean event-free time 4.6 yr 4.6 yr 3.2 days (−20.3 to 26.7)
+*CI denotes confidence interval.†The hazard ratio for the invasive strategy as compared with the conservative strategy is shown, with adjustment for age, sex, estimated glomerular filtration rate, ejection fraction, and diabetes. The 
+prespecified primary analysis was a covariate-adjusted Cox proportional-hazards model. Hazard ratios are presented for the primary outcome and for death from any cause; the latter is an outcome that 
+appears to satisfy the proportional-hazards assumption. The 95% confidence intervals have not been adjusted for multiple comparisons, and therefore these intervals should not be used to infer definitive 
+treatment effects.‡The primary composite outcome was death from cardiovascular causes, myocardial infarction, or hospitalization for unstable angina, heart failure, or resuscitated cardiac arrest.
+N Engl J Med. Author manuscript; available in PMC 2020 October 09.
