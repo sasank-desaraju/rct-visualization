@@ -60,10 +60,10 @@ to the others.
 
 ## Why marimo
 
-- **Beautiful visualizations**
-- **Portable**
-- **Agent-friendly**
-- **Easy to deploy**
+- **Beautiful visualizations**: Altair charts and reactive controls work together.
+- **Portable**: each notebook is a single Python file.
+- **Agent-friendly**: plain-text code is easy to inspect and edit.
+- **Easy to deploy**: export to a browser-only WebAssembly app.
 
 ## Repository layout
 
