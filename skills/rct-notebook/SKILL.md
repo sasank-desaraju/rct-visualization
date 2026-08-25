@@ -4,7 +4,7 @@ description: >-
   Author a marimo notebook that reads a randomized controlled trial through the
   CONSORT 2025 checklist. Use when building a visual, auditable trial summary
   from a paper (PDF or verified public sources) for the rct-visualization repo.
-version: 1.4.0
+version: 1.4.1
 license: MIT
 metadata:
   hermes:
@@ -147,7 +147,9 @@ Implementation components:
 9. Participant-flow cell (item 22): rebuilt flow diagram using `box()` and CSS
    grid, screened → randomised → allocated per arm → analysed per arm, with
    exclusions shown at each stage where reported.
-10. Baseline cell (item 25): markdown table from `BASELINE`.
+10. Baseline cell (item 25): derive a compact cohort-profile figure from
+    `BASELINE`; put the full markdown table in a closed `mo.accordion` fold when
+    it would otherwise interrupt the reading flow.
 11. Primary outcome visual: use two 10×10 waffle charts (one per arm) when the
     paper provides clean fixed-denominator risks; each square = one patient per
     hundred, event squares filled first, arm color on events, `#e7e2d8` on
@@ -159,15 +161,20 @@ Implementation components:
 12. Forest plot (item 26): log-scale OR/HR rules+points with dashed null line at
     1.0, CIs as tooltips. Include primary + key secondary/harm estimates the
     paper reports with CI.
-13. Harms & secondary outcomes cell (items 15, 26, 27): prose WITH numbers from
-    the data structures + a "Why it matters" callout tying mechanism to outcome.
+13. Harms & secondary outcomes cell (items 15, 26, 27): show a compact
+    comparative figure with counts and rates from the data structures, followed
+    by one concise interpretation paragraph. From Harms onward, use generous
+    spacing and a restrained ending: avoid stacking colored callouts, nested
+    panels, and repeated interpretations.
 14. Open science cell (items 2–5): registration, protocol/SAP, data sharing,
     funding/COI as a small card grid.
-15. Inline checklist views: within each CONSORT chapter, show a section-level
-    count strip plus compact item rows with `(item_id, topic, status, note)`.
-    Keep the evidence statement visible. Use expansion only for secondary source
-    detail, not for the core answer. The final coverage summary shows totals and
-    gaps without repeating the full checklist.
+15. Inline checklist views: within each CONSORT chapter, keep the section-level
+    count strip visible and group related item rows in native `mo.accordion`
+    folds that are closed by default. The fold label names the topic cluster and
+    summarizes its item count and statuses. Expanding it reveals compact rows
+    with `(item_id, topic, status, note)` and the full evidence statement. The
+    final coverage summary shows totals and gaps without repeating the full
+    checklist.
 16. Provenance footer cell: citation with DOI link, CONSORT 2025 citation
     (Hopewell S, et al. BMJ 2025;388:e081123), reconstruction disclosures, and
     the lens-not-judge caveat when applicable.

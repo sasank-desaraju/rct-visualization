@@ -351,11 +351,19 @@ def _(CHECKLIST, FONT, colors, mo, pill):
     def consort_items(item_ids, title=""):
         wanted = set(item_ids)
         rows = [row for row in CHECKLIST if row[1] in wanted]
-        title_html = (
-            f'<h3 style="font-family:{FONT}; color:{colors["dark"]}; margin:0 0 8px; font-size:1.02rem;">{title}</h3>'
-            if title
-            else ""
+        counts = _status_counts(rows)
+        status_names = {
+            "reported": "reported",
+            "partial": "partial",
+            "na": "not applicable",
+            "gap": "not addressed",
+        }
+        status_summary = " · ".join(
+            f"{count} {status_names[status]}"
+            for status, count in counts.items()
+            if count
         )
+        fold_title = f"{title or 'Checklist items'} · {len(rows)} items · {status_summary}"
         rows_html = "".join(
             f"""
             <div style="display:grid; grid-template-columns:minmax(42px,auto) minmax(0,1fr) auto; gap:10px; align-items:start;
@@ -370,12 +378,12 @@ def _(CHECKLIST, FONT, colors, mo, pill):
             """
             for _section, item, topic, status, note in rows
         )
-        return mo.Html(
+        item_rows = mo.Html(
             f"""
-            <div style="font-family:{FONT}; background:{colors['paper']}; border:1px solid {colors['grid']};
-                        border-radius:10px; padding:11px 14px;">{title_html}{rows_html}</div>
+            <div style="font-family:{FONT}; color:{colors['ink']}; padding:0 6px 4px;">{rows_html}</div>
             """
         )
+        return mo.accordion({fold_title: item_rows})
 
     def section_nav():
         nav_items = []
@@ -396,18 +404,17 @@ def _(CHECKLIST, FONT, colors, mo, pill):
         gaps = [f"item {row[1]} ({row[2].lower()})" for row in CHECKLIST if row[3] == "gap"]
         return mo.Html(
             f"""
-            <div style="font-family:{FONT}; background:{colors['panel']}; border:1px solid {colors['grid']};
-                        border-radius:10px; padding:14px 16px; color:{colors['ink']};">
-                <h2 style="font-family:{FONT}; margin:0 0 6px; color:{colors['dark']};">Coverage summary</h2>
-                <div style="margin-bottom:8px;">
-                    {pill('reported')} {counts['reported']} &nbsp; {pill('partial')} {counts['partial']} &nbsp;
-                    {pill('na')} {counts['na']} &nbsp; {pill('gap')} {counts['gap']}
+            <div style="font-family:{FONT}; border-top:1px solid {colors['grid']}; padding-top:16px; color:{colors['ink']}; line-height:1.5;">
+                <h3 style="font-family:{FONT}; margin:0 0 6px; color:{colors['dark']};">Coverage summary</h3>
+                <div style="color:{colors['muted']}; margin-bottom:6px;">
+                    {counts['reported']} reported · {counts['partial']} partial · {counts['na']} not applicable · {counts['gap']} not addressed
                 </div>
-                Of the <strong>{top_level} top-level CONSORT 2025 items ({len(CHECKLIST)} reporting rows)</strong>,
-                the 2009 report substantively covers <strong>{covered} rows</strong>. The gaps are
-                <strong>{' and '.join(gaps)}</strong>. Both expectations became standard after this trial was published.
-                See <a href="#open-science">Open science</a> for item 4 and <a href="#methods">Methods</a> for item 8;
-                the complete evidence appears inline across the six chapters above.
+                <div>
+                    Of the <strong>{top_level} top-level CONSORT 2025 items ({len(CHECKLIST)} reporting rows)</strong>,
+                    the 2009 report substantively covers <strong>{covered} rows</strong>. The gaps are
+                    <strong>{' and '.join(gaps)}</strong>. Both expectations became standard after this trial was published.
+                    See <a href="#open-science">Open science</a> for item 4 and <a href="#methods">Methods</a> for item 8.
+                </div>
             </div>
             """
         )
@@ -666,19 +673,76 @@ def _(ARMS, CHART_W, alt, colors, consort_items, mo, pl, style, units):
     return
 
 @app.cell
-def _(BASELINE, consort_items, mo):
+def _(BASELINE, CHART_W, FLOW, alt, colors, consort_items, mo, pl, style):
     # --------------------------- BASELINE ---------------------------
+    _profile_labels = [
+        "Mechanical ventilation",
+        "APACHE II ≥ 25",
+        "Severe sepsis",
+        "Diabetes",
+        "Renal-replacement therapy",
+    ]
+    _baseline_lookup = dict(BASELINE)
+    _profile = pl.DataFrame(
+        {
+            "characteristic": _profile_labels,
+            "percent": [float(_baseline_lookup[label].rstrip("%")) for label in _profile_labels],
+            "label": [_baseline_lookup[label] for label in _profile_labels],
+        }
+    )
+    _bars = alt.Chart(_profile).mark_bar(
+        color=colors["muted"], opacity=0.72, cornerRadiusEnd=4, size=18
+    ).encode(
+        y=alt.Y("characteristic:N", sort=_profile_labels, title=None),
+        x=alt.X(
+            "percent:Q",
+            scale=alt.Scale(domain=[0, 105]),
+            title="Participants (%)",
+        ),
+        tooltip=[
+            alt.Tooltip("characteristic:N", title="Characteristic"),
+            alt.Tooltip("percent:Q", title="Participants", format=".0f"),
+        ],
+    )
+    _labels = alt.Chart(_profile).mark_text(
+        align="left", dx=6, color=colors["dark"], fontWeight=600
+    ).encode(
+        y=alt.Y("characteristic:N", sort=_profile_labels),
+        x="percent:Q",
+        text="label:N",
+    )
+    profile_chart = style(
+        (_bars + _labels).properties(
+            width=CHART_W,
+            height=155,
+            title=alt.TitleParams(
+                "A highly supported ICU population",
+                subtitle="Overall cohort; labels show the percentage with each characteristic.",
+            ),
+        )
+    )
+
     _rows = "\n".join(f"| {label} | {value} |" for label, value in BASELINE)
-    baseline_text = (
-        "### Baseline characteristics\n"
-        "_Overall cohort (n = 6,104); the trial reported that the groups were well balanced._\n\n"
+    _baseline_table = mo.md(
         "| Characteristic | Value |\n"
         "|:---|:---|\n"
         f"{_rows}"
     )
     baseline_view = mo.vstack(
-        [consort_items(["25"], "Baseline data"), mo.md(baseline_text)],
-        gap=0.35,
+        [
+            consort_items(["25"], "Baseline data"),
+            mo.md(
+                f"### Baseline profile\n"
+                f"The overall cohort included **{FLOW['randomized']:,} participants**. "
+                "The randomized groups were well balanced."
+            ),
+            mo.ui.altair_chart(profile_chart),
+            mo.md(
+                "Most participants received mechanical ventilation, so the result applies most directly to a highly supported ICU population."
+            ),
+            mo.accordion({"Full reported baseline summary": _baseline_table}),
+        ],
+        gap=0.45,
     )
     baseline_view
     return
@@ -812,47 +876,117 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
     return
 
 @app.cell
-def _(ARMS, SECONDARY, colors, consort_items, mo, pill):
+def _(ARMS, CHART_W, SECONDARY, alt, colors, consort_items, mo, pl, style):
     # ------------------------- HARMS + SECONDARY -------------------------
+    _outcome_order = ["90-day mortality", "Severe hypoglycaemia"]
+    _risk_rows = []
+    for _arm in ARMS:
+        _mortality_risk = 100 * _arm["deaths"] / _arm["n"]
+        _risk_rows.extend(
+            [
+                {
+                    "outcome": _outcome_order[0],
+                    "arm": _arm["arm"],
+                    "events": _arm["deaths"],
+                    "n": _arm["n"],
+                    "risk": _mortality_risk,
+                    "label": f"{_mortality_risk:.1f}%",
+                },
+                {
+                    "outcome": _outcome_order[1],
+                    "arm": _arm["arm"],
+                    "events": _arm["hypo"],
+                    "n": _arm["hypo_n"],
+                    "risk": _arm["hypo_pct"],
+                    "label": f"{_arm['hypo_pct']:.1f}%",
+                },
+            ]
+        )
+    _risks = pl.DataFrame(_risk_rows)
+    _ranges = _risks.group_by("outcome").agg(
+        pl.col("risk").min().alias("lo"),
+        pl.col("risk").max().alias("hi"),
+    )
+    _links = alt.Chart(_ranges).mark_rule(
+        color=colors["muted"], opacity=0.48, strokeWidth=4
+    ).encode(
+        y=alt.Y("outcome:N", sort=_outcome_order, title=None),
+        x=alt.X("lo:Q", scale=alt.Scale(domain=[0, 31]), title="Participants with outcome (%)"),
+        x2="hi:Q",
+    )
+    _points = alt.Chart(_risks).mark_point(size=150, filled=True).encode(
+        y=alt.Y("outcome:N", sort=_outcome_order),
+        x=alt.X("risk:Q", scale=alt.Scale(domain=[0, 31])),
+        color=alt.Color(
+            "arm:N",
+            scale=alt.Scale(
+                domain=["Intensive", "Conventional"],
+                range=[colors["intensive"], colors["conventional"]],
+            ),
+            title=None,
+        ),
+        tooltip=[
+            alt.Tooltip("outcome:N", title="Outcome"),
+            alt.Tooltip("arm:N", title="Arm"),
+            alt.Tooltip("events:Q", title="Events", format=","),
+            alt.Tooltip("n:Q", title="Denominator", format=","),
+            alt.Tooltip("risk:Q", title="Risk (%)", format=".1f"),
+        ],
+    )
+    _intensive_labels = alt.Chart(_risks).transform_filter(
+        alt.datum.arm == "Intensive"
+    ).mark_text(dy=-12, color=colors["intensive"], fontWeight=600).encode(
+        y=alt.Y("outcome:N", sort=_outcome_order),
+        x="risk:Q",
+        text="label:N",
+    )
+    _conventional_labels = alt.Chart(_risks).transform_filter(
+        alt.datum.arm == "Conventional"
+    ).mark_text(dy=13, color=colors["conventional"], fontWeight=600).encode(
+        y=alt.Y("outcome:N", sort=_outcome_order),
+        x="risk:Q",
+        text="label:N",
+    )
+    harms_chart = style(
+        (_links + _points + _intensive_labels + _conventional_labels).properties(
+            width=CHART_W,
+            height=125,
+            title=alt.TitleParams(
+                "Absolute harm profile",
+                subtitle="Points show observed risks; each gray line joins the randomized arms.",
+            ),
+        )
+    )
+
     _int, _conv = ARMS[0], ARMS[1]
-    harms_md = mo.md(
-        f"""
-        ### Harms and secondary outcomes
-        _The report gives severe-hypoglycaemia counts and prespecified secondary outcomes._
-
-        **Severe hypoglycaemia** (≤40 mg/dL) occurred in
-        **{_int['hypo']} patients ({_int['hypo_pct']}%)** on intensive control versus **{_conv['hypo']}
-        ({_conv['hypo_pct']}%)** on conventional control, about **15 times** as often.
-
-        No prespecified **secondary outcome** showed a significant between-group difference:
-        {", ".join(SECONDARY[:-1])}, and {SECONDARY[-1].lower()}.
-        """
+    harms_view = mo.vstack(
+        [
+            consort_items(["27", "28"], "Harms and ancillary analyses"),
+            mo.md("### Harms and secondary outcomes"),
+            mo.ui.altair_chart(harms_chart),
+            mo.md(
+                f"Severe hypoglycaemia (≤40 mg/dL) occurred in **{_int['hypo']:,}/{_int['hypo_n']:,} "
+                f"({_int['hypo_pct']:.1f}%)** participants on intensive control and **{_conv['hypo']:,}/{_conv['hypo_n']:,} "
+                f"({_conv['hypo_pct']:.1f}%)** on conventional control. No prespecified secondary outcome differed "
+                f"significantly: {', '.join(SECONDARY[:-1])}, and {SECONDARY[-1].lower()}."
+            ),
+        ],
+        gap=0.5,
     )
-
-    harms_note = mo.Html(
-        f"""
-        <div style="background:{colors['panel2']}; border-left:4px solid {colors['bad']};
-                    border-radius:8px; padding:12px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
-            <strong>Clinical interpretation:</strong> blood glucose is a surrogate outcome. Intensive control
-            lowered glucose but increased mortality. {pill("reported")} The report also quantified severe
-            hypoglycaemia.
-        </div>
-        """
-    )
-    mo.vstack([consort_items(["27", "28"], "Harms and ancillary analyses"), harms_md, harms_note], gap=0.35)
+    harms_view
     return
 
 @app.cell
-def _(chapter_header, colors, consort_items, mo):
-    discussion_note = mo.Html(
-        f"""
-        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; background:{colors['panel2']};
-                    border-left:4px solid {colors['bad']}; border-radius:8px; padding:12px 16px; color:{colors['ink']};">
-            <strong>Interpretation.</strong> Intensive glucose control lowered the surrogate measure but increased
-            mortality, so the trial supports conventional rather than intensive control in this population.
-            The open-label design, use of a single glucose-control algorithm, and participating ICU settings limit
-            how broadly the result can be generalized.
-        </div>
+def _(chapter_header, consort_items, mo):
+    discussion_note = mo.md(
+        """
+        ### Interpretation and limits
+
+        Intensive glucose control lowered blood glucose but increased mortality. The trial therefore supports
+        conventional rather than intensive control for this population.
+
+        The open-label design, use of a single glucose-control algorithm, and participating ICU settings limit
+        how broadly the result can be generalized.
         """
     )
     discussion_view = mo.vstack(
@@ -864,7 +998,7 @@ def _(chapter_header, colors, consort_items, mo):
             consort_items(["29", "30"]),
             discussion_note,
         ],
-        gap=0.35,
+        gap=0.55,
     )
     discussion_view
     return
