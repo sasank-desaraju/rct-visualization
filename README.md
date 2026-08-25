@@ -11,6 +11,7 @@ structured using the [CONSORT 2025](https://pubmed.ncbi.nlm.nih.gov/40228833/) r
 
 ## Examples
 
+The examples in this repo are hosted live [here](https://sasank-desaraju.github.io/rct-examples/).
 
 
 | Trial | Clinical question | Headline result (from the notebook) |
@@ -24,7 +25,7 @@ Each headline above is one line from a notebook that walks you through the full
 result. Open any notebook to read the question, the population, the comparison,
 and the uncertainty as a clear visual sequence.
 
-## Try one in about a minute
+## Build the notebooks yourself
 
 Every notebook is a standalone script with its dependencies declared inline
 ([PEP 723](https://peps.python.org/pep-0723/)). You do not clone, create a
@@ -44,70 +45,25 @@ uv sync                                   # marimo + altair + polars
 uv run marimo edit notebooks/nice-sugar.py
 ```
 
-> **Live browser demo:** a WebAssembly build that runs with no install at all is
-> planned, not yet published. Until then, the one-line command above is the
-> fastest way to see a notebook run. You can build a local WASM copy yourself
-> with `uv run marimo export html-wasm notebooks/nice-sugar.py -o site/`.
+## How it works
 
-## Why marimo
-
-The method needs a notebook that is honest by construction. marimo supplies
-exactly that:
-
-- **Reactive, not stateful.** Change a control and every dependent cell
-  recomputes. A reader cannot see a figure that disagrees with the data cell
-  above it, because marimo will not let a stale cell survive.
-- **One file, plain Python.** Each notebook is a `.py` file you can read, diff,
-  and review in a pull request. Provenance lives in comments next to the data.
-- **Inline dependencies.** PEP 723 headers pin `altair`, `marimo`, and `polars`,
-  so the notebook you share is the notebook that runs.
-- **Runs in the browser.** marimo compiles to WebAssembly, so a finished trial
-  read can reach a clinician, a trainee, or a curious reader with no Python
-  install. That reach is the point: an easier read only helps if people can open
-  it.
-
-The visual language is shared across every notebook: the same color system, the
-same card, box, and pill helpers, the same chart styling. Read one and you can
-read all four.
-
-## How a notebook is built
-
-The method is not tribal knowledge. It is written down as an authoring skill:
+To generate a notebook, you can point your AI agent at this skill:
 [`skills/rct-notebook/SKILL.md`](skills/rct-notebook/SKILL.md).
 
-The skill encodes the whole pipeline: a
-[CONSORT 2025](https://pubmed.ncbi.nlm.nih.gov/40228833/)-shaped data model,
-extraction rules that forbid inventing a number, a mapping from checklist item to
-chart type, the shared visual language, the marimo pitfalls that have bitten real
-notebooks, and a verification gate. Give the skill to a capable agent together
+The skill encodes the whole pipeline: the
+[CONSORT 2025](https://pubmed.ncbi.nlm.nih.gov/40228833/) structure,
+extraction rules for authenticity, how to map from checklist item to
+chart type, and the shared visual language.
+Give the skill to a capable agent together
 with a trial paper and you get a consistent, auditable notebook that belongs next
 to the others.
 
-To build or check a notebook, run the gate:
+## Why marimo
 
-```bash
-uv run python scripts/verify_notebook.py notebooks/nice-sugar.py
-```
-
-The gate runs Ruff, exports the notebook to a script, executes it, and checks the
-structural markers. It proves the notebook parses, runs, and is shaped right. It
-does not prove the clinical numbers are correct. That still needs a human reading
-the paper. See [CONTRIBUTING.md](CONTRIBUTING.md) to add a trial.
-
-## Faithful to the source
-
-Making a trial easier to read must not make it less accurate. A visual read is
-only worth trusting if every number still traces back to the paper. So this repo
-treats "where did this number come from" as a first-class question.
-
-- Source papers live in [`papers/`](papers/). Open-access PDFs are stored
-  directly. Paywalled papers get a `SOURCE-NOTE.md` that lists every public
-  source used instead.
-- No notebook invents a value. A number the paper does not report is marked "not
-  reported," never guessed.
-- When a denominator is reconstructed from a published percentage so the
-  arithmetic reproduces the printed rate, the notebook says so, next to the
-  number and in its provenance footer.
+- **Beautiful visualizations**
+- **Portable**
+- **Agent-friendly**
+- **Easy to deploy**
 
 ## Repository layout
 
@@ -115,7 +71,7 @@ treats "where did this number come from" as a first-class question.
 notebooks/    one marimo notebook per trial (nice-sugar.py, sprint.py, ...)
 papers/       source publications and source notes, with a provenance index
 skills/       rct-notebook/SKILL.md, the authoring method
-scripts/      verify_notebook.py, the verification gate
+scripts/      verify_notebook.py
 ```
 
 ## License
