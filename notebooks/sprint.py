@@ -310,33 +310,154 @@ def _():
     return (CHECKLIST,)
 
 
+
 @app.cell
-def _(CHECKLIST, mo):
-    # Interactive controls — always shown (works in script/run/edit modes).
-    section = mo.ui.dropdown(
-        options=["All sections"] + list(dict.fromkeys(row[0] for row in CHECKLIST)),
-        value="All sections",
-        label="CONSORT section",
-    )
+def _(CHECKLIST, FONT, colors, mo, pill):
+    # Shared inline CONSORT reader. The checklist guides the visible notebook.
+    _section_order = [
+        "Title and abstract",
+        "Open science",
+        "Introduction",
+        "Methods",
+        "Results",
+        "Discussion",
+    ]
+
+    def _slug(section_name):
+        return section_name.lower().replace(" ", "-").replace("&", "and")
+
+    def _section_rows(section_name):
+        return [row for row in CHECKLIST if row[0] == section_name]
+
+    def _status_counts(rows):
+        counts = {"reported": 0, "partial": 0, "na": 0, "gap": 0}
+        for row in rows:
+            counts[row[3]] += 1
+        return counts
+
+    def chapter_header(section_name, intro):
+        rows = _section_rows(section_name)
+        counts = _status_counts(rows)
+        status_html = " ".join(
+            f"{pill(status)} <span style='color:{colors['muted']}; font-size:0.78rem; margin-right:8px;'>{count}</span>"
+            for status, count in counts.items()
+            if count
+        )
+        return mo.Html(
+            f"""
+            <div id="{_slug(section_name)}" style="scroll-margin-top:24px; border-top:1px solid {colors['grid']}; padding-top:18px; font-family:{FONT};">
+                <div style="display:flex; justify-content:space-between; gap:16px; align-items:flex-start; flex-wrap:wrap;">
+                    <div>
+                        <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:{colors['muted']};">CONSORT 2025 chapter</div>
+                        <h2 style="font-family:{FONT}; color:{colors['dark']}; margin:2px 0 4px;">{section_name}</h2>
+                        <div style="color:{colors['muted']}; max-width:760px; line-height:1.42;">{intro}</div>
+                    </div>
+                    <div style="display:flex; align-items:center; flex-wrap:wrap; gap:4px; padding-top:4px;">{status_html}</div>
+                </div>
+            </div>
+            """
+        )
+
+    def consort_items(item_ids, title=""):
+        wanted = set(item_ids)
+        rows = [row for row in CHECKLIST if row[1] in wanted]
+        counts = _status_counts(rows)
+        status_names = {
+            "reported": "reported",
+            "partial": "partial",
+            "na": "not applicable",
+            "gap": "not addressed",
+        }
+        status_summary = " · ".join(
+            f"{count} {status_names[status]}"
+            for status, count in counts.items()
+            if count
+        )
+        item_word = "item" if len(rows) == 1 else "items"
+        fold_title = f"{title or 'Checklist items'} · {len(rows)} {item_word} · {status_summary}"
+        rows_html = "".join(
+            f"""
+            <div style="display:grid; grid-template-columns:minmax(42px,auto) minmax(0,1fr) auto; gap:10px; align-items:start;
+                        padding:9px 0; border-top:1px solid {colors['grid']};">
+                <div style="font-size:0.78rem; font-weight:700; color:{colors['dark']}; padding-top:2px;">{item}</div>
+                <div>
+                    <div style="font-size:0.88rem; font-weight:650; color:{colors['ink']};">{topic}</div>
+                    <div style="font-size:0.82rem; color:{colors['muted']}; line-height:1.38; margin-top:2px;">{note}</div>
+                </div>
+                <div>{pill(status)}</div>
+            </div>
+            """
+            for _section, item, topic, status, note in rows
+        )
+        item_rows = mo.Html(
+            f"""
+            <div style="font-family:{FONT}; color:{colors['ink']}; padding:0 6px 4px;">{rows_html}</div>
+            """
+        )
+        return mo.accordion({fold_title: item_rows})
+
+    def section_nav():
+        nav_items = []
+        for section_name in _section_order:
+            rows = _section_rows(section_name)
+            counts = _status_counts(rows)
+            covered = counts["reported"] + counts["partial"]
+            gap_text = f", {counts['gap']} gap" if counts["gap"] else ""
+            nav_items.append(
+                f"[{section_name}](#{_slug(section_name)}) ({covered}/{len(rows)} covered{gap_text})"
+            )
+        return mo.md("**Read the trial by CONSORT section**\n\n" + " · ".join(nav_items))
+
+    def coverage_summary():
+        counts = _status_counts(CHECKLIST)
+        covered = counts["reported"] + counts["partial"]
+        top_level = len({"".join(ch for ch in row[1] if ch.isdigit()) for row in CHECKLIST})
+        gaps = [f"item {row[1]} ({row[2].lower()})" for row in CHECKLIST if row[3] == "gap"]
+        not_applicable = [f"item {row[1]} ({row[2].lower()})" for row in CHECKLIST if row[3] == "na"]
+        gap_text = ", ".join(gaps) if gaps else "none"
+        na_text = ", ".join(not_applicable) if not_applicable else "none"
+        return mo.Html(
+            f"""
+            <div style="font-family:{FONT}; border-top:1px solid {colors['grid']}; padding-top:16px; color:{colors['ink']}; line-height:1.5;">
+                <h3 style="font-family:{FONT}; margin:0 0 6px; color:{colors['dark']};">Coverage summary</h3>
+                <div style="color:{colors['muted']}; margin-bottom:6px;">
+                    {counts['reported']} reported · {counts['partial']} partial · {counts['na']} not applicable · {counts['gap']} not addressed
+                </div>
+                <div>
+                    Of the <strong>{top_level} top-level CONSORT 2025 items ({len(CHECKLIST)} reporting rows)</strong>,
+                    the report substantively covers <strong>{covered} rows</strong>. The gaps are
+                    <strong>{gap_text}</strong>. Not-applicable rows are <strong>{na_text}</strong>.
+                    The gap pattern shows which reporting expectations became standard after this 2015 trial.
+                    See <a href="#open-science">Open science</a> and <a href="#methods">Methods</a> for the inline evidence.
+                </div>
+            </div>
+            """
+        )
+
+    return chapter_header, consort_items, coverage_summary, section_nav
+
+
+@app.cell
+def _(mo):
+    # Interactive primary-outcome view. It changes the unit shown in the chart.
     rate_mode = mo.ui.radio(
         options=["Annualised rate (%/yr)", "Events during trial (n)"],
         value="Annualised rate (%/yr)",
         label="Primary-outcome view",
         inline=True,
     )
-    return rate_mode, section
+    return (rate_mode,)
 
 
 @app.cell
-def _(FLOW, FONT, NNT, OUTCOMES, TRIAL, colors, card, mo):
+def _(ARMS, FLOW, NNT, OUTCOMES, TRIAL, card, colors, mo):
     # ---------------------------- HERO ----------------------------
-    _pr = next(o for o in OUTCOMES if o["short"] == "Primary composite")
-    _ard = _pr["int_rate"] - _pr["std_rate"]
-
+    _primary = next(outcome for outcome in OUTCOMES if outcome["short"] == "Primary composite")
+    _rate_difference = _primary["std_rate"] - _primary["int_rate"]
     hero = mo.Html(
         f"""
         <div style="background:{colors['panel']}; border:1px solid #D8D4D7; border-radius:14px;
-                    padding:18px 20px; font-family:{FONT}; color:{colors['ink']};">
+                    padding:18px 20px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
             <div style="text-transform:uppercase; letter-spacing:0.15em; font-size:0.72rem;
                         color:{colors['muted']}; margin-bottom:0.5rem;">
                 A randomised trial, read through CONSORT 2025
@@ -344,17 +465,16 @@ def _(FLOW, FONT, NNT, OUTCOMES, TRIAL, colors, card, mo):
             <div style="font-size:1.82rem; line-height:1.12; margin-bottom:0.25rem;">{TRIAL['name']}</div>
             <div style="font-size:1.0rem; color:#343741; margin-bottom:0.35rem;">{TRIAL['title']}</div>
             <div style="max-width:820px; font-size:0.96rem; line-height:1.42; color:#343741; margin-bottom:0.85rem;">
-                SPRINT compared systolic blood-pressure targets below 120 and 140 mm Hg in adults at high
-                cardiovascular risk without diabetes. Intensive control reduced the primary cardiovascular
-                outcome and all-cause mortality. The intervention stopped early on {TRIAL['stopped']} after a
-                median {TRIAL['median_fu_years']} years of follow-up. Some serious adverse events were more common
-                with intensive control.
+                SPRINT compared systolic blood-pressure targets {ARMS[0]['target_label']} and {ARMS[1]['target_label']} in adults at high
+                cardiovascular risk without diabetes. Intensive control reduced the primary cardiovascular outcome
+                and all-cause mortality, but some serious adverse events were more common. The intervention stopped
+                early for benefit.
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:8px;">
-                {card("Randomised population", f"{FLOW['randomized']:,}", "4,678 intensive &lt;120 · 4,683 standard &lt;140 mm Hg · 102 sites", colors["ink"])}
-                {card("Intervention: intensive target", f"{_pr['int_rate']}%/yr", f"{_pr['int_n']} events · HR {_pr['hr']} ({_pr['lo']}–{_pr['hi']}), P {_pr['p']}", colors["intensive"])}
-                {card("Reference: standard target", f"{_pr['std_rate']}%/yr", f"{_pr['std_n']} events over median {TRIAL['median_fu_years']} yr", colors["standard"])}
-                {card("Main contrast", f"{_ard:.2f} pts/yr", f"NNT {NNT['primary']} over median {TRIAL['median_fu_years']} years (as published)", colors["good"])}
+                {card("Randomised population", f"{FLOW['randomized']:,}", f"{FLOW['int_assigned']:,} intensive · {FLOW['std_assigned']:,} standard · {TRIAL['centers']} sites", colors["ink"])}
+                {card("Intervention: intensive target", f"{_primary['int_rate']}%/yr", f"{_primary['int_n']} events · HR {_primary['hr']} ({_primary['lo']}–{_primary['hi']}), P {_primary['p']}", colors["intensive"])}
+                {card("Reference: standard target", f"{_primary['std_rate']}%/yr", f"{_primary['std_n']} events · median follow-up {TRIAL['median_fu_years']} years", colors["standard"])}
+                {card("Main contrast", f"−{_rate_difference:.2f} pts/yr", f"Published NNT {NNT['primary']} over median follow-up · HR {_primary['hr']} ({_primary['lo']}–{_primary['hi']})", colors["good"])}
             </div>
         </div>
         """
@@ -364,89 +484,179 @@ def _(FLOW, FONT, NNT, OUTCOMES, TRIAL, colors, card, mo):
 
 
 @app.cell
-def _(colors, mo):
-    consort_blurb = mo.Html(
+def _(section_nav):
+    navigator = section_nav()
+    navigator
+    return
+
+
+@app.cell
+def _(chapter_header, consort_items, mo):
+    title_abstract_view = mo.vstack(
+        [
+            chapter_header(
+                "Title and abstract",
+                "Can a reader identify the study as randomised and understand its design, participants, interventions, and main result?",
+            ),
+            consort_items(["1a", "1b"]),
+        ],
+        gap=0.35,
+    )
+    title_abstract_view
+    return
+
+
+@app.cell
+def _(CHECKLIST, TRIAL, card, chapter_header, colors, consort_items, mo):
+    # --------------------------- OPEN SCIENCE ---------------------------
+    _notes = {row[1]: row[4] for row in CHECKLIST}
+    open_science_cards = mo.Html(
         f"""
-        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']}; line-height:1.42;
-                    border:1px solid #D8D4D7; border-left:4px solid {colors['accent']};
-                    border-radius:10px; padding:10px 14px; background:#FFF4EF;">
-            <strong>CONSORT map.</strong>
-            Each section names the checklist items it addresses:
-            design and eligibility (items 9, 11, 12), intervention specification and delivery (13, 24),
-            participant flow (22), baseline balance (25), absolute and relative effects (26), harms (15, 27),
-            open-science expectations (2–5), and interpretation/limitations (29–30).
-            The final table separates reported, partial, not-applicable, and missing items.
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
+                {card("Registration · item 2", TRIAL["registration"], _notes["2"], colors["good"])}
+                {card("Protocol & SAP · item 3", "Protocol public", _notes["3"], colors["good"])}
+                {card("Data sharing · item 4", "Not addressed", _notes["4"], colors["bad"])}
+                {card("Funding & COI · item 5", "Disclosed", f"{_notes['5a']} {_notes['5b']}", colors["good"])}
+            </div>
         </div>
         """
     )
-    consort_blurb
-    return
-
-
-@app.cell
-def _(TRIAL, mo):
-    design = mo.md(
-        "**The design in one paragraph**\n\n"
-        f"**{TRIAL['name']}** was a randomised, controlled, **open-label** multicentre trial at "
-        f"{TRIAL['centers']} clinical sites in {TRIAL['networks']} networks ({TRIAL['geography']}). "
-        "Adults **≥50 years** with systolic BP **130–180 mm Hg** and increased cardiovascular risk "
-        "(clinical/subclinical CVD other than stroke; CKD with eGFR 20–<60; Framingham 10-year risk ≥15%; or age ≥75) "
-        "were eligible; **diabetes and prior stroke were excluded**. Participants were allocated 1:1 by "
-        "**randomisation stratified according to clinical site** to an intensive target (**<120 mm Hg**) or a "
-        "standard target (**<140 mm Hg**, titrated to 135–139, with dose reduction below those thresholds). "
-        "Participants and study personnel knew the assignments, but **outcome adjudicators did not**. "
-        "The primary analysis was **intention-to-treat**, comparing time to the first primary outcome with "
-        "**Cox proportional-hazards regression stratified by clinic**; interim analyses used Lan–DeMets "
-        "**O'Brien–Fleming** stopping boundaries reviewed by an independent DSMB. Recruitment ran "
-        f"{TRIAL['recruitment']}; on {TRIAL['stopped']} the NHLBI director accepted the DSMB's recommendation to "
-        f"end the intervention early, after the monitoring boundary was crossed at two consecutive looks "
-        f"(median follow-up {TRIAL['median_fu_years']} years).\n\n"
-        "_CONSORT items 1, 9, 11, 12, 17–21._"
+    open_science_view = mo.vstack(
+        [
+            chapter_header(
+                "Open science",
+                "Registration, protocol access, data availability, funding, and conflicts determine whether readers can audit the trial.",
+            ),
+            consort_items(["2", "3", "4", "5a", "5b"], "Registration, protocol, sharing, and funding"),
+            open_science_cards,
+        ],
+        gap=0.4,
     )
-    design
+    open_science_view
     return
 
 
 @app.cell
-def _(ARMS, CHART_W, alt, colors, mo, pl, style):
-    # ------------- INTERVENTIONS: target bands + achieved means -------------
-    X_MIN = 112  # view floor only; the protocol sets no lower bound
+def _(CHECKLIST, chapter_header, consort_items, mo):
+    # --------------------------- INTRODUCTION ---------------------------
+    _rationale = next(row[4] for row in CHECKLIST if row[1] == "6")
+    _objective = next(row[4] for row in CHECKLIST if row[1] == "7")
+    introduction_view = mo.vstack(
+        [
+            chapter_header(
+                "Introduction",
+                "Why was the trial needed, and which benefit and harm question did the investigators test?",
+            ),
+            consort_items(["6", "7"], "Rationale and objectives"),
+            mo.md(
+                f"**Rationale.** {_rationale}.\n\n"
+                f"**Clinical question.** {_objective}. SPRINT tested whether a lower systolic-pressure target "
+                "reduced cardiovascular events without an unacceptable increase in treatment-related harm."
+            ),
+        ],
+        gap=0.4,
+    )
+    introduction_view
+    return
 
-    band_rows = []
-    point_rows = []
-    for a in ARMS:
-        band_rows.append(
+
+@app.cell
+def _(CHECKLIST, TRIAL, chapter_header, consort_items, mo):
+    # ----------------------------- METHODS -----------------------------
+    _notes = {row[1]: row[4] for row in CHECKLIST}
+    design = mo.md(
+        "### Trial design in one paragraph\n\n"
+        f"**{TRIAL['name']}** was a multicentre, parallel-group, **open-label randomised trial** at "
+        f"{TRIAL['centers']} sites in {TRIAL['networks']} networks in {TRIAL['geography']}. Adults with elevated "
+        "systolic blood pressure and increased cardiovascular risk were allocated 1:1, stratified by clinical site, "
+        "to an intensive or standard systolic-pressure target. Participants and treatment personnel knew the "
+        "assignment, but outcome adjudicators were masked. The primary analysis included all randomly assigned "
+        "participants as assigned and used clinic-stratified Cox regression. The prespecified intervention stopped "
+        f"early on {TRIAL['stopped']} after the monitoring boundary was crossed; median follow-up was "
+        f"{TRIAL['median_fu_years']} years. The report states the eligibility criteria as **{_notes['12a']}** and "
+        f"the intervention contrast as **{_notes['13']}**. Recruitment ran {TRIAL['recruitment']}."
+    )
+    methods_view = mo.vstack(
+        [
+            chapter_header(
+                "Methods",
+                "How was the trial planned, who was eligible, what care was assigned, and how were bias and uncertainty handled?",
+            ),
+            consort_items(["8", "9", "10", "11", "12a", "12b"], "Design, setting, and participants"),
+            design,
+            consort_items(["13", "14", "15"], "Interventions, outcomes, and harms assessment"),
+            consort_items(
+                ["16a", "16b", "17a", "17b", "18", "19", "20a", "20b", "21a", "21b", "21c", "21d"],
+                "Sample size, randomisation, masking, and analysis",
+            ),
+        ],
+        gap=0.5,
+    )
+    methods_view
+    return
+
+
+@app.cell
+def _(chapter_header):
+    results_header = chapter_header(
+        "Results",
+        "Who entered the trial, what treatment they received, and what benefits, harms, and uncertainties were observed?",
+    )
+    results_header
+    return
+
+
+@app.cell
+def _(ARMS, CHART_W, alt, colors, consort_items, mo, pl, style):
+    # ------------- INTERVENTION DELIVERY: target and achieved pressure -------------
+    _arm_names = [arm["arm"] for arm in ARMS]
+    _arm_colors = [colors["intensive"], colors["standard"]]
+    _view_floor = min(
+        value
+        for arm in ARMS
+        for value in (arm["achieved_1yr"], arm["achieved_mean"], arm["target_ceiling"])
+    ) - 8
+    _view_ceiling = max(
+        value
+        for arm in ARMS
+        for value in (arm["achieved_1yr"], arm["achieved_mean"], arm["target_ceiling"])
+    ) + 4
+    _band_rows = []
+    _point_rows = []
+    for arm in ARMS:
+        _band_rows.append(
             {
-                "arm": a["arm"],
-                "lo": X_MIN,
-                "hi": a["target_ceiling"],
-                "label": f'Target {a["target_label"]} (no protocol lower bound)',
+                "arm": arm["arm"],
+                "lo": _view_floor,
+                "hi": arm["target_ceiling"],
+                "label": f'Target {arm["target_label"]} (no protocol lower bound)',
             }
         )
-        point_rows.append({"arm": a["arm"], "kind": "Achieved mean at 1 year", "value": a["achieved_1yr"]})
-        point_rows.append({"arm": a["arm"], "kind": "Mean over median 3.26-yr follow-up", "value": a["achieved_mean"]})
-    bands = pl.DataFrame(band_rows)
-    points = pl.DataFrame(point_rows)
-
-    arm_scale = alt.Scale(domain=["Intensive", "Standard"], range=[colors["intensive"], colors["standard"]])
-    y_sort = ["Intensive", "Standard"]
-
-    _band = alt.Chart(bands).mark_bar(height=26, opacity=0.35, cornerRadius=3).encode(
-        y=alt.Y("arm:N", title=None, sort=y_sort),
-        x=alt.X("lo:Q", title="Systolic blood pressure (mm Hg)",
-                scale=alt.Scale(zero=False, domain=[112, 142])),
+        _point_rows.extend(
+            [
+                {"arm": arm["arm"], "kind": "Achieved mean at 1 year", "value": arm["achieved_1yr"]},
+                {"arm": arm["arm"], "kind": "Mean over median follow-up", "value": arm["achieved_mean"]},
+            ]
+        )
+    _bands = pl.DataFrame(_band_rows)
+    _points = pl.DataFrame(_point_rows)
+    _arm_scale = alt.Scale(domain=_arm_names, range=_arm_colors)
+    _band = alt.Chart(_bands).mark_bar(height=26, opacity=0.35, cornerRadius=3).encode(
+        y=alt.Y("arm:N", title=None, sort=_arm_names),
+        x=alt.X("lo:Q", title="Systolic blood pressure (mm Hg)", scale=alt.Scale(domain=[_view_floor, _view_ceiling])),
         x2="hi:Q",
-        color=alt.Color("arm:N", scale=arm_scale, legend=None),
+        color=alt.Color("arm:N", scale=_arm_scale, legend=None),
         tooltip=[alt.Tooltip("arm:N"), alt.Tooltip("label:N", title="Protocol target")],
     )
-    _achieved = alt.Chart(points).mark_point(size=170, filled=True, opacity=1.0).encode(
-        y=alt.Y("arm:N", sort=y_sort),
+    _achieved = alt.Chart(_points).mark_point(size=170, filled=True).encode(
+        y=alt.Y("arm:N", sort=_arm_names),
         x=alt.X("value:Q"),
-        color=alt.Color("arm:N", scale=arm_scale, legend=None),
+        color=alt.Color("arm:N", scale=_arm_scale, legend=None),
         shape=alt.Shape(
             "kind:N",
             scale=alt.Scale(
-                domain=["Achieved mean at 1 year", "Mean over median 3.26-yr follow-up"],
+                domain=["Achieved mean at 1 year", "Mean over median follow-up"],
                 range=["circle", "diamond"],
             ),
             legend=alt.Legend(title="Achieved SBP"),
@@ -463,45 +673,33 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style):
             height=170,
             title=alt.TitleParams(
                 "The assigned targets produced sustained blood-pressure separation",
-                subtitle=(
-                    "The shaded band ends at the target ceiling; the protocol set no lower bound. "
-                    "The circle shows the 1-year mean. The diamond shows the trial mean."
-                ),
+                subtitle="The shaded band ends at the target ceiling; the circle shows the 1-year mean and the diamond the trial mean.",
             ),
         )
     )
-
-    _int, _std = ARMS[0], ARMS[1]
-    interventions_view = mo.vstack(
+    _intensive, _standard = ARMS[0], ARMS[1]
+    fidelity_view = mo.vstack(
         [
-            mo.md(
-                """
-                ## Intervention delivery
-                _CONSORT items 13 and 24. The chart compares target systolic pressure with achieved pressure._
-                """
-            ),
+            consort_items(["24a", "24b"], "Intervention delivery and concomitant care"),
+            mo.md("### Intervention delivery\n_The chart compares protocol targets with achieved systolic pressure._"),
             mo.ui.altair_chart(interventions),
             mo.md(
-                f"At 1 year, mean systolic pressure was "
-                f"**{_int['achieved_1yr']} mm Hg** under intensive control versus **{_std['achieved_1yr']} mm Hg** "
-                f"under standard care, a **{_std['achieved_1yr'] - _int['achieved_1yr']:.1f} mm Hg** difference. "
-                f"The difference persisted across follow-up (**{_int['achieved_mean']} vs {_std['achieved_mean']} "
-                f"mm Hg**). Participants used **{_int['meds']} vs {_std['meds']}** antihypertensive agents per "
-                f"patient on average. The 1-year diastolic means were 68.7 and 76.3 mm Hg."
+                f"At 1 year, mean systolic pressure was **{_intensive['achieved_1yr']} mm Hg** under intensive control "
+                f"versus **{_standard['achieved_1yr']} mm Hg** under standard care. The difference persisted across "
+                f"follow-up (**{_intensive['achieved_mean']} vs {_standard['achieved_mean']} mm Hg**). Participants used "
+                f"**{_intensive['meds']} vs {_standard['meds']}** antihypertensive agents per patient on average."
             ),
         ],
-        gap=0.35,
+        gap=0.4,
     )
-    interventions_view
+    fidelity_view
     return
 
 
 @app.cell
-def _(FLOW, box, colors, mo):
+def _(ARMS, FLOW, TRIAL, box, colors, consort_items, mo):
     # ----------------------- CONSORT FLOW DIAGRAM -----------------------
-    arrow = f'<div style="text-align:center; color:{colors["muted"]}; font-size:1.1rem; line-height:1;">↓</div>'
-
-    def note_box(title, sub):
+    def _note_box(title, sub):
         return f"""
         <div style="background:{colors['panel']}; border:1px dashed {colors['grid']};
                     border-radius:8px; padding:8px 10px; text-align:center;">
@@ -512,192 +710,236 @@ def _(FLOW, box, colors, mo):
     _screened = (
         box("Assessed for eligibility", FLOW["screened"], colors["dark"])
         if FLOW["screened"] is not None
-        else note_box("Assessed for eligibility", "count appears only in Fig. 1 — not in the retrieved full text")
+        else _note_box("Assessed for eligibility", "count appears only in Figure 1 — not in the retrieved full text")
     )
-
+    arrow = f'<div style="text-align:center; color:{colors["muted"]}; font-size:1.1rem; line-height:1;">↓</div>'
     flow_html = mo.Html(
         f"""
         <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; max-width:720px; margin:0 auto;">
             {_screened}
-            <div style="text-align:center; color:{colors['muted']}; font-size:1.1rem; margin:2px 0;">↓</div>
-            {box("Randomised", FLOW["randomized"], colors["accent"], "November 2010 – March 2013")}
+            {arrow}
+            {box("Randomised", FLOW["randomized"], colors["accent"], TRIAL["recruitment"])}
             {arrow}
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
                 <div style="display:grid; gap:6px;">
-                    {box("Allocated: intensive target", FLOW["int_assigned"], colors["intensive"], "target <120 mm Hg")}
+                    {box("Allocated: intensive target", FLOW["int_assigned"], colors["intensive"], f"target {ARMS[0]['target_label']}")}
                     {arrow}
-                    {box("Analysed (intention-to-treat)", FLOW["int_analyzed"], colors["intensive"], "primary outcome")}
+                    {box("Analysed (intention-to-treat)", FLOW["int_analyzed"], colors["intensive"], "primary outcome; no post-randomisation exclusions reported")}
                 </div>
                 <div style="display:grid; gap:6px;">
-                    {box("Allocated: standard target", FLOW["std_assigned"], colors["standard"], "target <140 mm Hg")}
+                    {box("Allocated: standard target", FLOW["std_assigned"], colors["standard"], f"target {ARMS[1]['target_label']}")}
                     {arrow}
-                    {box("Analysed (intention-to-treat)", FLOW["std_analyzed"], colors["standard"], "primary outcome")}
+                    {box("Analysed (intention-to-treat)", FLOW["std_analyzed"], colors["standard"], "primary outcome; no post-randomisation exclusions reported")}
                 </div>
             </div>
         </div>
         """
     )
-
     flow_view = mo.vstack(
         [
+            consort_items(["22a", "22b", "23a", "23b"], "Participant flow and recruitment"),
             mo.md(
-                """
-                ## Participant flow
-                _CONSORT item 22. The diagram uses the reported counts. The main text reports no post-randomisation
-                exclusions: everyone randomised was analysed as assigned. Pre-randomisation screening counts
-                live in Figure 1 of the paper, which the retrieved full text does not include, so that box is
-                left visibly empty rather than guessed._
-                """
+                "### Participant flow\n_The reported randomised and analysed counts close at each arm. "
+                "The pre-randomisation screening count is left visibly empty because it appears only in the retrieved figure._"
             ),
             flow_html,
         ],
-        gap=0.35,
+        gap=0.4,
     )
     flow_view
     return
 
 
 @app.cell
-def _(BASELINE, mo):
+def _(ARMS, BASELINE, CHART_W, FLOW, FONT, colors, consort_items, mo):
     # --------------------------- BASELINE ---------------------------
-    _rows = "\n".join(f"| {label} | {iv} | {sv} |" for label, iv, sv in BASELINE)
-    baseline_text = (
-        "## Baseline characteristics\n"
-        "_CONSORT item 25. Highlights from Table 1 (N = 4,678 intensive / 4,683 standard). The paper reports "
-        "no significant differences except statin use (42.6% vs 44.7%, P = 0.04)._\n\n"
-        "| Characteristic | Intensive | Standard |\n"
+    import re as _re_sprint_baseline
+
+    _profile_rows = []
+    for _label, _int_value, _std_value in BASELINE:
+        if any(
+            token in _label
+            for token in (
+                "Age ≥ 75",
+                "Female sex",
+                "Chronic kidney disease",
+                "Cardiovascular disease",
+                "Framingham 10-yr risk",
+            )
+        ):
+            _int_match = _re_sprint_baseline.search(r"([\d.]+)%", _int_value)
+            _std_match = _re_sprint_baseline.search(r"([\d.]+)%", _std_value)
+            if _int_match and _std_match:
+                _profile_rows.append(
+                    {
+                        "label": _label,
+                        "int_pct": float(_int_match.group(1)),
+                        "std_pct": float(_std_match.group(1)),
+                    }
+                )
+    _bars = []
+    for _row in _profile_rows:
+        _bars.append(
+            f"""
+            <div style="display:grid; grid-template-columns:245px minmax(150px,1fr) 48px; gap:9px; align-items:center; margin:7px 0;">
+                <div style="font-size:0.78rem; color:{colors['ink']};">{_row['label']} · {ARMS[0]['arm']}</div>
+                <div style="height:15px; background:{colors['neutral_bg']}; border-radius:3px; overflow:hidden;">
+                    <div style="width:{_row['int_pct']}%; height:100%; background:{colors['intensive']}; border-radius:3px;"></div>
+                </div>
+                <div style="font-size:0.78rem; font-weight:700; color:{colors['intensive']}; text-align:right;">{_row['int_pct']:g}%</div>
+            </div>
+            <div style="display:grid; grid-template-columns:245px minmax(150px,1fr) 48px; gap:9px; align-items:center; margin:7px 0 12px;">
+                <div style="font-size:0.78rem; color:{colors['ink']};">{_row['label']} · {ARMS[1]['arm']}</div>
+                <div style="height:15px; background:{colors['neutral_bg']}; border-radius:3px; overflow:hidden;">
+                    <div style="width:{_row['std_pct']}%; height:100%; background:{colors['standard']}; border-radius:3px;"></div>
+                </div>
+                <div style="font-size:0.78rem; font-weight:700; color:{colors['standard']}; text-align:right;">{_row['std_pct']:g}%</div>
+            </div>
+            """
+        )
+    profile_panel = mo.Html(
+        f"""
+        <div role="img" aria-label="Selected baseline characteristics by randomised arm" style="font-family:{FONT}; width:min(100%, {CHART_W}px); border:1px solid {colors['grid']}; border-radius:10px; background:{colors['paper']}; padding:14px 16px; box-sizing:border-box;">
+            <div style="font-size:0.95rem; font-weight:700; color:{colors['dark']};">The randomised groups had similar baseline profiles</div>
+            <div style="font-size:0.78rem; color:{colors['muted']}; margin:2px 0 12px;">Bars show selected percentages printed in Table 1. Orange and blue retain the randomised-arm mapping.</div>
+            {''.join(_bars)}
+        </div>
+        """
+    )
+    _rows = "\n".join(f"| {label} | {value_int} | {value_std} |" for label, value_int, value_std in BASELINE)
+    baseline_table = mo.md(
+        "| Characteristic | " + ARMS[0]["arm"] + " | " + ARMS[1]["arm"] + " |\n"
         "|:---|:---|:---|\n"
         f"{_rows}"
     )
-    baseline_view = mo.md(baseline_text)
+    baseline_view = mo.vstack(
+        [
+            consort_items(["25"], "Baseline data"),
+            mo.md(
+                f"### Baseline profile\nThe trial randomised **{FLOW['randomized']:,} participants**. "
+                "The source report describes the groups as balanced except for statin use."
+            ),
+            profile_panel,
+            mo.accordion({"Full reported baseline summary": baseline_table}),
+        ],
+        gap=0.5,
+    )
     baseline_view
     return
 
 
 @app.cell
-def _(CHART_W, OUTCOMES, alt, colors, mo, pl, rate_mode, style):
+def _(ARMS, CHART_W, NNT, OUTCOMES, alt, colors, consort_items, mo, pl, rate_mode, style):
     # ---------- PRIMARY OUTCOME: paired annualised rates / counts ----------
-    # Why no icon array: SPRINT's endpoints are time-to-event. Events accrue
-    # unevenly under censoring and the paper reports ANNUALISED rates and
-    # hazard ratios, not fixed-denominator risks. A 10x10 "patients per
-    # hundred" array would imply a common, closed follow-up period the trial
-    # never had. Paired rates and a forest plot fit these data.
-    _chart_outcomes = [o for o in OUTCOMES if o["short"] != "Renal: ≥30% eGFR decline (no baseline CKD)"]
-    _order = [o["short"] for o in sorted(_chart_outcomes, key=lambda o: -o["std_rate"])]
-
+    # SPRINT reports time-to-event endpoints with unequal follow-up. A fixed
+    # denominator icon array would imply a common follow-up period, so this
+    # view uses the paper's annualised rates or raw event counts.
+    _arm_names = [arm["arm"] for arm in ARMS]
+    _chart_outcomes = [outcome for outcome in OUTCOMES if "renal" not in outcome["short"].lower()]
+    _order = [outcome["short"] for outcome in sorted(_chart_outcomes, key=lambda row: -row["std_rate"])]
     _by_rate = rate_mode.value == "Annualised rate (%/yr)"
-    _i_field, _s_field = (("int_rate", "std_rate") if _by_rate else ("int_n", "std_n"))
+    _int_field, _std_field = (("int_rate", "std_rate") if _by_rate else ("int_n", "std_n"))
     _unit = "% per year" if _by_rate else "events"
-
     _pair_rows = [
         {
-            "short": o["short"],
-            "int_v": o[_i_field],
-            "std_v": o[_s_field],
-            "ci": f'HR {o["hr"]} ({o["lo"]}–{o["hi"]})',
+            "short": outcome["short"],
+            "int_v": outcome[_int_field],
+            "std_v": outcome[_std_field],
+            "effect": f'HR {outcome["hr"]} ({outcome["lo"]}–{outcome["hi"]})',
         }
-        for o in _chart_outcomes
+        for outcome in _chart_outcomes
     ]
     _dot_rows = []
-    for o in _chart_outcomes:
-        _dot_rows.append({"short": o["short"], "arm": "Intensive", "v": o[_i_field]})
-        _dot_rows.append({"short": o["short"], "arm": "Standard", "v": o[_s_field]})
-    pairs = pl.DataFrame(_pair_rows)
-    dots = pl.DataFrame(_dot_rows)
-
-    rate_arm_scale = alt.Scale(domain=["Intensive", "Standard"], range=[colors["intensive"], colors["standard"]])
-
-    _r_rule = alt.Chart(pairs).mark_rule(strokeWidth=3, color=colors["grid"]).encode(
+    for outcome in _chart_outcomes:
+        _dot_rows.extend(
+            [
+                {"short": outcome["short"], "arm": _arm_names[0], "v": outcome[_int_field]},
+                {"short": outcome["short"], "arm": _arm_names[1], "v": outcome[_std_field]},
+            ]
+        )
+    _pairs = pl.DataFrame(_pair_rows)
+    _dots = pl.DataFrame(_dot_rows)
+    _arm_scale = alt.Scale(domain=_arm_names, range=[colors["intensive"], colors["standard"]])
+    _rule = alt.Chart(_pairs).mark_rule(strokeWidth=3, color=colors["grid"]).encode(
         y=alt.Y("short:N", sort=_order, title=None),
-        x=alt.X("int_v:Q", title=f'Annualised rate ({_unit})' if _by_rate else "Events during trial (n)",
-                scale=alt.Scale(zero=False)),
+        x=alt.X("int_v:Q", title=f"Annualised rate ({_unit})" if _by_rate else "Events during trial (n)", scale=alt.Scale(zero=False)),
         x2="std_v:Q",
         tooltip=[
             alt.Tooltip("short:N", title="Outcome"),
             alt.Tooltip("int_v:Q", title="Intensive"),
             alt.Tooltip("std_v:Q", title="Standard"),
-            alt.Tooltip("ci:N", title="Effect"),
+            alt.Tooltip("effect:N", title="Effect estimate"),
         ],
     )
-    _pt = alt.Chart(dots).mark_point(size=150, filled=True).encode(
+    _points = alt.Chart(_dots).mark_point(size=150, filled=True).encode(
         y=alt.Y("short:N", sort=_order),
         x=alt.X("v:Q"),
-        color=alt.Color("arm:N", scale=rate_arm_scale, legend=alt.Legend(title="Arm")),
-        tooltip=[
-            alt.Tooltip("short:N", title="Outcome"),
-            alt.Tooltip("arm:N"),
-            alt.Tooltip("v:Q", title=_unit),
-        ],
+        color=alt.Color("arm:N", scale=_arm_scale, legend=alt.Legend(title="Arm")),
+        tooltip=[alt.Tooltip("short:N", title="Outcome"), alt.Tooltip("arm:N", title="Arm"), alt.Tooltip("v:Q", title=_unit)],
     )
-    rates = style(
-        (_r_rule + _pt).properties(
+    rates_chart = style(
+        (_rule + _points).properties(
             width=CHART_W,
             height=260,
             title=alt.TitleParams(
                 "Annualised event rates were lower with intensive control",
                 subtitle=(
-                    "Paired annualised event rates from Table 2. The renal endpoint is excluded because it uses "
-                    "different denominators. The forest plot shows hazard ratios."
+                    "Paired annualised rates from Table 2. The renal endpoint uses different denominators and is shown in the forest plot."
                     if _by_rate
-                    else "Raw event counts from Table 2. Counts do not adjust for unequal person-time; the "
-                    "annualised-rate view is the appropriate comparison."
+                    else "Raw event counts from Table 2. Counts do not adjust for unequal person-time; the annualised-rate view is the appropriate comparison."
                 ),
             ),
         )
     )
-
-    _pr = next(o for o in OUTCOMES if o["short"] == "Primary composite")
-    rates_view = mo.vstack(
+    _primary = next(outcome for outcome in OUTCOMES if outcome["short"] == "Primary composite")
+    primary_view = mo.vstack(
         [
+            consort_items(["26"], "Numbers analysed, outcomes, and estimation"),
             mo.md(
-                """
-                ## Primary outcome, in its native units
-                _CONSORT item 26._
-
-                **Read it as:** Each pair of dots compares an outcome rate in the intensive and standard groups.
-
-                **Why this geometry:** SPRINT reports time-to-event outcomes as annualised rates and hazard ratios.
-                Participants had unequal follow-up, so a fixed-denominator icon array would be misleading.
-                """
+                "### Primary outcome, in its native units\n"
+                "**Read it as:** Each pair of dots compares an outcome value in the intensive and standard groups; the "
+                "grey rule joins the two values.\n\n"
+                "**Why this geometry:** SPRINT reports time-to-event outcomes as annualised rates and hazard ratios. "
+                "Participants had unequal follow-up, so a fixed-denominator icon array would be misleading."
             ),
             rate_mode,
-            mo.ui.altair_chart(rates),
+            mo.ui.altair_chart(rates_chart),
             mo.md(
-                f"**What it says:** SPRINT reported **{_pr['int_n']} vs {_pr['std_n']} primary events as "
-                f"annualised rates ({_pr['int_rate']}% vs {_pr['std_rate']}% per year)** with hazard ratios, not "
-                "clean fixed-denominator risks. The absolute difference was "
-                f"**{_pr['std_rate'] - _pr['int_rate']:.2f} percentage points per year**. The paper reported "
-                "an NNT of 61 over the median 3.26 years."
+                f"**What it says:** The primary composite occurred in **{_primary['int_n']} vs {_primary['std_n']} participants**, "
+                f"with annualised rates of **{_primary['int_rate']}% vs {_primary['std_rate']}% per year**. The absolute "
+                f"difference was **{_primary['std_rate'] - _primary['int_rate']:.2f} percentage points per year**. The hazard "
+                f"ratio was **{_primary['hr']} (95% CI {_primary['lo']}–{_primary['hi']}; P {_primary['p']})**. The paper "
+                f"reported NNT **{NNT['primary']}** over the median follow-up."
             ),
         ],
-        gap=0.35,
+        gap=0.4,
     )
-    rates_view
+    primary_view
     return
 
 
 @app.cell
-def _(CHART_W, OUTCOMES, alt, colors, mo, pl, style):
+def _(CHART_W, HARMS, OUTCOMES, SAE_OVERALL, alt, colors, mo, pl, style):
     # --------------- EFFECT ESTIMATES: forest plot (log HR) ---------------
-    ef = pl.DataFrame(OUTCOMES)
-    order = [o["short"] for o in OUTCOMES]
-
-    kind_scale = alt.Scale(
+    _effect_table = pl.DataFrame(OUTCOMES)
+    _order = [outcome["short"] for outcome in OUTCOMES]
+    _lo_all = min(outcome["lo"] for outcome in OUTCOMES)
+    _hi_all = max(outcome["hi"] for outcome in OUTCOMES)
+    _x_domain = [max(0.25, _lo_all * 0.8), _hi_all * 1.2]
+    _kind_scale = alt.Scale(
         domain=["benefit", "harm", "ns"],
         range=[colors["good"], colors["bad"], colors["muted"]],
     )
-
-    _f_rule = alt.Chart(ef).mark_rule(strokeWidth=2).encode(
-        y=alt.Y("short:N", sort=order, title=None),
-        x=alt.X("lo:Q", scale=alt.Scale(type="log", domain=[0.3, 6]),
-                title="Hazard ratio (log scale) — intensive vs standard"),
+    _rules = alt.Chart(_effect_table).mark_rule(strokeWidth=2).encode(
+        y=alt.Y("short:N", sort=_order, title=None),
+        x=alt.X("lo:Q", scale=alt.Scale(type="log", domain=_x_domain), title="Hazard ratio (log scale) — intensive vs standard"),
         x2="hi:Q",
-        color=alt.Color("kind:N", scale=kind_scale, legend=None),
+        color=alt.Color("kind:N", scale=_kind_scale, legend=None),
     )
-    _f_pt = alt.Chart(ef).mark_point(size=110, filled=True).encode(
-        y=alt.Y("short:N", sort=order),
+    _points = alt.Chart(_effect_table).mark_point(size=110, filled=True).encode(
+        y=alt.Y("short:N", sort=_order),
         x="hr:Q",
-        color=alt.Color("kind:N", scale=kind_scale, legend=alt.Legend(title="Direction")),
+        color=alt.Color("kind:N", scale=_kind_scale, legend=alt.Legend(title="Direction")),
         tooltip=[
             alt.Tooltip("short:N", title="Outcome"),
             alt.Tooltip("hr:Q", title="HR"),
@@ -706,244 +948,146 @@ def _(CHART_W, OUTCOMES, alt, colors, mo, pl, style):
             alt.Tooltip("p:N", title="P"),
         ],
     )
-    _null = alt.Chart(pl.DataFrame({"x": [1.0]})).mark_rule(
-        strokeDash=[5, 4], color=colors["muted"]
-    ).encode(x="x:Q")
-
+    _null = alt.Chart(pl.DataFrame({"x": [1.0]})).mark_rule(strokeDash=[5, 4], color=colors["muted"]).encode(x="x:Q")
     forest = style(
-        (_null + _f_rule + _f_pt).properties(
+        (_null + _rules + _points).properties(
             width=CHART_W,
             height=320,
             title=alt.TitleParams(
                 "Intensive control reduced cardiovascular outcomes and increased renal injury",
-                subtitle=(
-                    "Points show hazard ratios from Table 2; rules show 95% CIs. The dashed line marks HR = 1. "
-                    "The renal estimate comes from the "
-                    "subgroup without baseline CKD."
-                ),
+                subtitle="Points show hazard ratios from Table 2; rules show 95% CIs. The dashed line marks HR = 1. The renal estimate uses the subgroup without baseline CKD.",
             ),
         )
     )
-
     forest_view = mo.vstack(
         [
-            mo.md(
-                """
-                ## Effect estimates
-                _CONSORT item 26. The CIs for death, heart failure, and the primary composite exclude HR = 1.
-                The eGFR-decline CI excludes 1 in the direction of harm._
-                """
-            ),
+            mo.md("### Relative effect estimates\n_The forest plot shows the primary, key secondary, and renal estimates with their uncertainty._"),
             mo.ui.altair_chart(forest),
         ],
-        gap=0.35,
+        gap=0.4,
     )
     forest_view
     return
 
 
 @app.cell
-def _(HARMS, SAE_OVERALL, SAE_RELATED, colors, mo, pill):
-    # ------------------------- HARMS -------------------------
-    _sae_rows = "\n".join(
-        f"| {h['condition']} | {h['int_n']} ({h['int_pct']}%) | {h['std_n']} ({h['std_pct']}%) | P = {h['p']} |"
-        for h in HARMS
-        if h["tier"] == "Serious adverse event"
-    )
-    _ed_rows = "\n".join(
-        f"| {h['condition']} | {h['int_n']} ({h['int_pct']}%) | {h['std_n']} ({h['std_pct']}%) | P = {h['p']} |"
-        for h in HARMS
-        if h["tier"] == "ED visit or SAE"
-    )
-    harms_md = mo.md(
-        "## Harms\n"
-        "_CONSORT items 15 & 27. Serious adverse events (conditions of interest) from Table 3, shown as data._\n\n"
-        f"Overall, a serious adverse event occurred in **{SAE_OVERALL['int_n']:,} intensive participants "
-        f"({SAE_OVERALL['int_pct']}%) vs {SAE_OVERALL['std_n']:,} ({SAE_OVERALL['std_pct']}%)** — HR "
-        f"{SAE_OVERALL['hr']}, P = {SAE_OVERALL['p']}. Overall serious-adverse-event rates were similar. Events judged "
-        f"possibly or definitely related to the intervention were higher (**{SAE_RELATED['int_n']} "
-        f"({SAE_RELATED['int_pct']}%) vs {SAE_RELATED['std_n']} ({SAE_RELATED['std_pct']}%), HR "
-        f"{SAE_RELATED['hr']}, P = {SAE_RELATED['p']}**). By condition:\n\n"
-        "**Serious adverse event**\n\n"
-        "| Condition of interest | Intensive (N = 4,678) | Standard (N = 4,683) | P |\n"
-        "|:---|:---|:---|:---|\n"
-        f"{_sae_rows}\n\n"
-        "**Emergency-department visit or serious adverse event**\n\n"
-        "| Condition of interest | Intensive | Standard | P |\n"
-        "|:---|:---|:---|:---|\n"
-        f"{_ed_rows}\n\n"
-        "Hypotension, syncope, electrolyte abnormalities, and acute kidney injury or failure were all more "
-        "common under intensive control. **Injurious falls were not more common** (2.2% vs 2.3%, P = 0.71 as serious adverse "
-        "events; 7.1% vs 7.1%, P = 0.97 including ED visits)."
-    )
-
-    harms_note = mo.Html(
-        f"""
-        <div style="background:{colors['panel2']}; border-left:4px solid {colors['warn']};
-                    border-radius:8px; padding:12px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
-            <strong>Clinical interpretation:</strong> lower pressures and greater use of diuretics,
-            ACE inhibitors, and ARBs were associated with haemodynamic eGFR decline
-            (HR 3.49 for ≥30% decline in those without baseline CKD), yet clinic-measured orthostatic
-            hypotension was <em>less</em> frequent under intensive control (P = 0.01), and falls showed no
-            increase. {pill("reported")} These harms must be weighed against the mortality benefit (HR 0.73)
-            when selecting and monitoring patients.
-        </div>
-        """
-    )
-    mo.vstack([harms_md, harms_note], gap=0.35)
-    return
-
-
-@app.cell
-def _(TRIAL, colors, mo):
-    # --------------------------- OPEN SCIENCE ---------------------------
-    open_science = mo.Html(
-        f"""
-        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
-            <h2 style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">Open science</h2>
-            <p style="color:{colors['muted']}; margin-top:-0.4rem;">
-                <em>CONSORT 2025 items 2–5 cover registration, protocol access, data sharing, funding, and conflicts.</em>
-            </p>
-            <div style="background:#FFF4EF; border:1px solid #D8D4D7; border-left:4px solid {colors['accent']};
-                        border-radius:10px; padding:10px 14px; margin-bottom:12px; line-height:1.42;">
-                <strong>Stopped early for benefit.</strong> On {TRIAL['stopped']} the NHLBI director accepted the
-                independent DSMB's recommendation to inform investigators and participants and end the
-                blood-pressure intervention, after the primary-outcome monitoring boundary was exceeded at two
-                consecutive interim looks. Early stopping can overestimate effects. SPRINT's Fine–Gray
-                competing-risk sensitivity analysis gave a similar estimate (HR 0.76, 0.64–0.89).
-            </div>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
-                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
-                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Registration (item 2)</div>
-                    <div style="color:{colors['good']}; font-size:1.0rem;">{TRIAL['registration']}</div>
-                </div>
-                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
-                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Protocol & SAP (item 3)</div>
-                    <div style="color:{colors['good']}; font-size:1.0rem;">Protocol public; SAP not stated separately</div>
-                </div>
-                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
-                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Data sharing (item 4)</div>
-                    <div style="color:{colors['bad']}; font-size:1.0rem;">Not addressed (2015)</div>
-                </div>
-                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
-                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Funding & COI (item 5)</div>
-                    <div style="color:{colors['good']}; font-size:1.0rem;">NIH/VA funded; donations & disclosures declared</div>
+def _(ARMS, CHART_W, FONT, HARMS, SAE_OVERALL, SAE_RELATED, colors, consort_items, mo):
+    # ------------------------- HARMS + SECONDARY -------------------------
+    _serious = [harm for harm in HARMS if harm["tier"] == "Serious adverse event"]
+    _arm_specs = [(ARMS[0]["arm"], colors["intensive"]), (ARMS[1]["arm"], colors["standard"])]
+    _blocks = []
+    for harm in _serious:
+        _blocks.append(
+            f"""
+            <div style="padding:8px 0 10px; border-top:1px solid {colors['grid']};">
+                <div style="font-size:0.82rem; font-weight:700; color:{colors['dark']};">{harm['condition']} <span style="font-size:0.76rem; font-weight:400; color:{colors['muted']};">P = {harm['p']}</span></div>
+                <div style="display:grid; gap:5px; margin-top:6px;">
+                    <div style="display:grid; grid-template-columns:150px minmax(120px,1fr) 110px; gap:8px; align-items:center;">
+                        <span style="font-size:0.76rem; color:{colors['ink']};">{_arm_specs[0][0]}</span>
+                        <span style="height:14px; background:{colors['neutral_bg']}; border-radius:3px; overflow:hidden;"><span style="display:block; width:{harm['int_pct']}%; height:100%; background:{_arm_specs[0][1]};"></span></span>
+                        <span style="font-size:0.75rem; color:{_arm_specs[0][1]}; text-align:right;">{harm['int_n']:,} ({harm['int_pct']}%)</span>
+                    </div>
+                    <div style="display:grid; grid-template-columns:150px minmax(120px,1fr) 110px; gap:8px; align-items:center;">
+                        <span style="font-size:0.76rem; color:{colors['ink']};">{_arm_specs[1][0]}</span>
+                        <span style="height:14px; background:{colors['neutral_bg']}; border-radius:3px; overflow:hidden;"><span style="display:block; width:{harm['std_pct']}%; height:100%; background:{_arm_specs[1][1]};"></span></span>
+                        <span style="font-size:0.75rem; color:{_arm_specs[1][1]}; text-align:right;">{harm['std_n']:,} ({harm['std_pct']}%)</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        """
-    )
-    open_science
-    return
-
-
-@app.cell
-def _(CHECKLIST, colors, mo, pill, section):
-    # ---------------- CONSORT 2025 CHECKLIST COVERAGE ----------------
-    _sel = section.value
-    _rows_data = [r for r in CHECKLIST if _sel == "All sections" or r[0] == _sel]
-
-    _counts = {"reported": 0, "partial": 0, "na": 0, "gap": 0}
-    for _r in CHECKLIST:
-        _counts[_r[3]] += 1
-    _covered = _counts["reported"] + _counts["partial"]
-    _top_level_items = len({"".join(ch for ch in row[1] if ch.isdigit()) for row in CHECKLIST})
-
-    _table_rows = "".join(
-        f"""<tr>
-            <td style="padding:6px 10px; color:{colors['muted']}; white-space:nowrap;">{grp}</td>
-            <td style="padding:6px 10px; font-variant-numeric:tabular-nums; color:{colors['ink']};">{num}</td>
-            <td style="padding:6px 10px; color:{colors['ink']};">{topic}</td>
-            <td style="padding:6px 10px;">{pill(status)}</td>
-            <td style="padding:6px 10px; color:{colors['muted']}; font-size:0.85rem;">{note}</td>
-        </tr>"""
-        for grp, num, topic, status, note in _rows_data
-    )
-
-    checklist_html = mo.Html(
+            """
+        )
+    harms_panel = mo.Html(
         f"""
-        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
-            <table style="border-collapse:collapse; width:100%; font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
-                <thead>
-                    <tr style="border-bottom:2px solid {colors['grid']}; text-align:left;
-                               font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:{colors['muted']};">
-                        <th style="padding:6px 10px;">Section</th>
-                        <th style="padding:6px 10px;">Item</th>
-                        <th style="padding:6px 10px;">Topic</th>
-                        <th style="padding:6px 10px;">In SPRINT</th>
-                        <th style="padding:6px 10px;">Where / note</th>
-                    </tr>
-                </thead>
-                <tbody>{_table_rows}</tbody>
-            </table>
+        <div role="img" aria-label="Serious adverse event conditions by randomised arm" style="font-family:{FONT}; width:min(100%, {CHART_W}px); border:1px solid {colors['grid']}; border-radius:10px; background:{colors['paper']}; padding:14px 16px; box-sizing:border-box;">
+            <div style="font-size:0.95rem; font-weight:700; color:{colors['dark']};">Conditions of interest were not equally distributed</div>
+            <div style="font-size:0.78rem; color:{colors['muted']}; margin:2px 0 8px;">Bars show serious-adverse-event percentages from Table 3. Labels retain counts and P values.</div>
+            {''.join(_blocks)}
         </div>
         """
     )
-
-    coverage_note = mo.Html(
-        f"""
-        <div style="background:{colors['panel']}; border:1px solid #D8D4D7; border-radius:10px;
-                    padding:14px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
-            Of the {_top_level_items} top-level CONSORT 2025 items ({len(CHECKLIST)} checklist rows), this
-            2015 paper substantively covers <strong>{_covered} of {len(CHECKLIST)} rows</strong>. The gaps are
-            <strong>data sharing (item 4)</strong> and <strong>patient and public involvement (item 8)</strong>.
-            CONSORT added both expectations after 2015. Partial items on allocation, sequence generation, and
-            the statistical analysis plan are reported in the supplementary appendix.
-        </div>
-        """
+    _all_harms = "\n".join(
+        f"| {harm['tier']} | {harm['condition']} | {harm['int_n']} ({harm['int_pct']}%) | {harm['std_n']} ({harm['std_pct']}%) | P = {harm['p']} |"
+        for harm in HARMS
     )
-
-    checklist_view = mo.vstack(
+    harms_table = mo.md(
+        "| Tier | Condition | " + ARMS[0]["arm"] + " | " + ARMS[1]["arm"] + " | P |\n"
+        "|:---|:---|:---|:---|:---|\n"
+        f"{_all_harms}"
+    )
+    harms_view = mo.vstack(
         [
+            consort_items(["27", "28"], "Harms and ancillary analyses"),
+            mo.md("### Harms and secondary outcomes"),
+            harms_panel,
             mo.md(
-                """
-                ## The CONSORT 2025 checklist, item by item
-                _Filter by section. Each row pairs a checklist item with where SPRINT reports it._
-                """
+                f"Overall serious adverse events occurred in **{SAE_OVERALL['int_n']:,} ({SAE_OVERALL['int_pct']}%)** "
+                f"intensive participants versus **{SAE_OVERALL['std_n']:,} ({SAE_OVERALL['std_pct']}%)** standard participants "
+                f"(HR {SAE_OVERALL['hr']}, P {SAE_OVERALL['p']}). Events judged possibly or definitely related to the "
+                f"intervention were higher (**{SAE_RELATED['int_n']} ({SAE_RELATED['int_pct']}%) vs {SAE_RELATED['std_n']} "
+                f"({SAE_RELATED['std_pct']}%), HR {SAE_RELATED['hr']}, P {SAE_RELATED['p']}**). Hypotension, syncope, "
+                "electrolyte abnormality, and acute kidney injury were more common with intensive control; injurious "
+                "falls and bradycardia were not significantly different."
             ),
-            mo.hstack(
-                [
-                    section,
-                    mo.md(
-                        f"{pill('reported')} {_counts['reported']} &nbsp; {pill('partial')} {_counts['partial']} "
-                        f"&nbsp; {pill('na')} {_counts['na']} &nbsp; {pill('gap')} {_counts['gap']}"
-                    ),
-                ],
-                justify="start",
-                gap=1.5,
-                align="center",
-            ),
-            checklist_html,
-            coverage_note,
+            mo.accordion({"Full reported harms table": harms_table}),
         ],
-        gap=0.4,
+        gap=0.65,
     )
-    checklist_view
+    harms_view
     return
 
 
 @app.cell
-def _(TRIAL, colors, mo):
+def _(CHECKLIST, TRIAL, chapter_header, consort_items, mo):
+    # --------------------------- DISCUSSION ---------------------------
+    _interpretation = next(row[4] for row in CHECKLIST if row[1] == "29")
+    _limitations = next(row[4] for row in CHECKLIST if row[1] == "30")
+    discussion_view = mo.vstack(
+        [
+            chapter_header(
+                "Discussion",
+                "How should the result be interpreted, and which limitations affect its application?",
+            ),
+            consort_items(["29", "30"], "Interpretation and limitations"),
+            mo.md(
+                f"### Interpretation\n\n{_interpretation}. Intensive control reduced major cardiovascular outcomes and all-cause mortality "
+                "in the enrolled population, but the treatment burden included hypotension, electrolyte abnormalities, "
+                "and acute kidney injury.\n\n"
+                f"### Limits\n\n{_limitations}. The trial stopped early for benefit, was open-label, and excluded people with diabetes, "
+                "prior stroke, or other conditions outside its eligibility criteria. Apply the result to similar high-risk "
+                f"adults rather than to every patient with hypertension. Recruitment ran {TRIAL['recruitment']}."
+            ),
+        ],
+        gap=0.7,
+    )
+    discussion_view
+    return
+
+
+@app.cell
+def _(coverage_summary):
+    coverage = coverage_summary()
+    coverage
+    return
+
+
+@app.cell
+def _(NNT, OUTCOMES, TRIAL, colors, mo):
     # ------------------------- PROVENANCE -------------------------
+    _primary = next(outcome for outcome in OUTCOMES if outcome["short"] == "Primary composite")
     provenance = mo.Html(
         f"""
         <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['muted']}; font-size:0.86rem;
                     border-top:1px solid {colors['grid']}; padding-top:12px; line-height:1.5;">
             <strong style="color:{colors['ink']};">Source & provenance.</strong>
             {TRIAL['citation']} DOI <a href="https://doi.org/{TRIAL['doi']}" style="color:{colors['standard']};">{TRIAL['doi']}</a>.
-            Registered as {TRIAL['registration']}.
-            Checklist: Hopewell S, et al. CONSORT 2025 Statement. <em>BMJ</em> 2025;388:e081123.
-            Every figure is rendered from the data literals near the top of this notebook; SPRINT printed event
-            counts alongside annualised rates, so no denominator reconstruction was needed anywhere.
-            The intervention ended <strong>early for benefit on the DSMB's recommendation</strong>, accepted
-            {TRIAL['stopped']} at a median follow-up of {TRIAL['median_fu_years']} years; the primary-outcome
-            figure therefore shows paired <strong>annualised rates and hazard ratios rather than patient-level
-            icon arrays</strong>, because time-to-event endpoints with progressive censoring have no clean
-            fixed denominator for a per-hundred grid (numbers needed to treat are quoted as published: NNT 61,
-            90, and 172 over the median follow-up).
-            Pre-randomisation screening and exclusion counts appear only in Figure 1 (image), which the
-            retrieved full text does not contain; the flow diagram shows that gap rather than guessing.
-            This audit applies CONSORT 2025 retrospectively; the checklist postdates the trial.
+            Registered as {TRIAL['registration']}. Checklist: Hopewell S, et al. CONSORT 2025 Statement.
+            <em>BMJ</em> 2025;388:e081123. The source-data cell near the top transcribes values from the paper's
+            main text, Tables 1–3, and Figures 1–2. SPRINT printed event counts beside annualised rates, so no
+            denominator was reconstructed. The primary endpoint is time-to-event with unequal follow-up; this
+            notebook therefore uses paired annualised rates and hazard ratios rather than fixed-denominator icon
+            arrays. The paper's published NNTs are retained ({NNT['primary']}, {NNT['any_death']}, and {NNT['cv_death']} over
+            the median follow-up). The screening count is not in the retrieved full text and remains visibly empty in
+            the flow diagram. CONSORT 2025 is applied retrospectively; the checklist postdates this 2015 report.
         </div>
         """
     )

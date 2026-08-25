@@ -363,7 +363,8 @@ def _(CHECKLIST, FONT, colors, mo, pill):
             for status, count in counts.items()
             if count
         )
-        fold_title = f"{title or 'Checklist items'} · {len(rows)} items · {status_summary}"
+        item_word = "item" if len(rows) == 1 else "items"
+        fold_title = f"{title or 'Checklist items'} · {len(rows)} {item_word} · {status_summary}"
         rows_html = "".join(
             f"""
             <div style="display:grid; grid-template-columns:minmax(42px,auto) minmax(0,1fr) auto; gap:10px; align-items:start;
@@ -879,6 +880,7 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
 def _(ARMS, CHART_W, SECONDARY, alt, colors, consort_items, mo, pl, style):
     # ------------------------- HARMS + SECONDARY -------------------------
     _outcome_order = ["90-day mortality", "Severe hypoglycaemia"]
+    _arm_names = [arm["arm"] for arm in ARMS]
     _risk_rows = []
     for _arm in ARMS:
         _mortality_risk = 100 * _arm["deaths"] / _arm["n"]
@@ -920,7 +922,7 @@ def _(ARMS, CHART_W, SECONDARY, alt, colors, consort_items, mo, pl, style):
         color=alt.Color(
             "arm:N",
             scale=alt.Scale(
-                domain=["Intensive", "Conventional"],
+                domain=_arm_names,
                 range=[colors["intensive"], colors["conventional"]],
             ),
             title=None,
@@ -934,14 +936,14 @@ def _(ARMS, CHART_W, SECONDARY, alt, colors, consort_items, mo, pl, style):
         ],
     )
     _intensive_labels = alt.Chart(_risks).transform_filter(
-        alt.datum.arm == "Intensive"
+        alt.datum.arm == _arm_names[0]
     ).mark_text(dy=-12, color=colors["intensive"], fontWeight=600).encode(
         y=alt.Y("outcome:N", sort=_outcome_order),
         x="risk:Q",
         text="label:N",
     )
     _conventional_labels = alt.Chart(_risks).transform_filter(
-        alt.datum.arm == "Conventional"
+        alt.datum.arm == _arm_names[1]
     ).mark_text(dy=13, color=colors["conventional"], fontWeight=600).encode(
         y=alt.Y("outcome:N", sort=_outcome_order),
         x="risk:Q",
