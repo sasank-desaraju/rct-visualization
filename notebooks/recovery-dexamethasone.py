@@ -24,21 +24,25 @@ def _():
 
     # ---- Shared visual language (kept close to the site's other notebooks) ----
     colors = {
-        "ink": "#1f2933",
-        "muted": "#65717c",
+        "ink": "#002657",
+        "muted": "#5B6472",
         "paper": "#ffffff",
-        "panel": "#f5f3ef",
-        "panel2": "#e8ece8",
-        "grid": "#dde3e1",
-        "dex": "#b3544c",     # the exposed arm -> clay red (kept red even though beneficial)
-        "usual": "#3f7d78",   # the reference arm -> teal
-        "accent": "#b48b32",
-        "good": "#3f7d78",
-        "warn": "#b48b32",
-        "bad": "#b3544c",
-        "dark": "#263238",
+        "panel": "#F5F7FC",
+        "panel2": "#FFF4EF",
+        "grid": "#C7C9C8",
+        "dex": "#FA4616",     # intervention arm -> UF orange
+        "usual": "#0021A5",   # reference arm -> UF blue
+        "accent": "#F2A900",
+        "good": "#22884C",
+        "warn": "#F2A900",
+        "bad": "#D32737",
+        "good_bg": "#EAF6EE",
+        "warn_bg": "#FFF4D6",
+        "bad_bg": "#FCEAEC",
+        "neutral_bg": "#F0F1F3",
+        "dark": "#002657",
     }
-    FONT = "Georgia, serif"
+    FONT = "Inter, ui-sans-serif, system-ui, sans-serif"
     CHART_W = 600
 
     def style(chart):
@@ -74,7 +78,7 @@ def _():
 
     def card(kicker, big, small, color):
         return f"""
-        <div style="background:#ffffff; border:1px solid #e1ddd4; border-radius:10px; padding:10px 12px;">
+        <div style="background:#ffffff; border:1px solid #D8D4D7; border-radius:10px; padding:10px 12px;">
             <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:{colors['muted']};">{kicker}</div>
             <div style="font-size:1.42rem; color:{color}; margin:1px 0;">{big}</div>
             <div style="font-size:0.86rem; color:{colors['muted']}; line-height:1.28;">{small}</div>
@@ -83,7 +87,7 @@ def _():
     def box(title, n, color, sub=""):
         sub_html = f'<div style="font-size:0.78rem; color:{colors["muted"]}; margin-top:2px;">{sub}</div>' if sub else ""
         return f"""
-        <div style="background:{colors['paper']}; border:1px solid #d9d4ca; border-left:4px solid {color};
+        <div style="background:{colors['paper']}; border:1px solid #D8D4D7; border-left:4px solid {color};
                     border-radius:8px; padding:8px 10px; text-align:center;">
             <div style="font-size:0.92rem; color:{colors['ink']};">{title}</div>
             <div style="font-size:1.25rem; color:{color}; font-weight:600;">n = {n:,}</div>
@@ -92,10 +96,10 @@ def _():
 
     def pill(status):
         spec = {
-            "reported": (colors["good"], "#e7f0ee", "Reported"),
-            "partial": (colors["warn"], "#f5eede", "Partial"),
-            "na": (colors["muted"], "#eceae5", "N/A"),
-            "gap": (colors["bad"], "#f3e2e0", "Not addressed"),
+            "reported": (colors["good"], colors["good_bg"], "Reported"),
+            "partial": (colors["warn"], colors["warn_bg"], "Partial"),
+            "na": (colors["muted"], colors["neutral_bg"], "N/A"),
+            "gap": (colors["bad"], colors["bad_bg"], "Not addressed"),
         }[status]
         fg, bg, label = spec
         return (
@@ -363,27 +367,24 @@ def _(ARMS, FLOW, FONT, TRIAL, colors, card, mo):
 
     hero = mo.Html(
         f"""
-        <div style="background:{colors['panel']}; border:1px solid #ddd8ce; border-radius:14px;
+        <div style="background:{colors['panel']}; border:1px solid #D8D4D7; border-radius:14px;
                     padding:18px 20px; font-family:{FONT}; color:{colors['ink']};">
             <div style="text-transform:uppercase; letter-spacing:0.15em; font-size:0.72rem;
                         color:{colors['muted']}; margin-bottom:0.5rem;">
                 A randomised trial, read through CONSORT 2025 · {TRIAL["comparison"]}
             </div>
             <div style="font-size:1.82rem; line-height:1.12; margin-bottom:0.25rem;">{TRIAL['name']}</div>
-            <div style="font-size:1.0rem; color:#45515b; margin-bottom:0.35rem;">{TRIAL['title']}</div>
-            <div style="max-width:820px; font-size:0.96rem; line-height:1.42; color:#45515b; margin-bottom:0.85rem;">
-                This notebook is not just a visual summary; it is a CONSORT-shaped read of one comparison inside a
-                <strong>platform trial</strong>. RECOVERY randomised hospitalised Covid-19 patients across many treatment
-                domains at once; here only the dexamethasone-versus-usual-care domain is analysed — other domains'
-                arms are never shown. The trial found lower 28-day mortality where it mattered most (invasive
-                ventilation, oxygen), honest uncertainty where it did not (no respiratory support), and became
-                standard of care within a single day.
+            <div style="font-size:1.0rem; color:#343741; margin-bottom:0.35rem;">{TRIAL['title']}</div>
+            <div style="max-width:820px; font-size:0.96rem; line-height:1.42; color:#343741; margin-bottom:0.85rem;">
+                Dexamethasone reduced 28-day mortality in hospitalised patients who needed oxygen or invasive
+                ventilation. The trial did not show benefit in patients who needed no respiratory support.
+                This notebook covers only dexamethasone versus usual care within the RECOVERY platform trial.
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:8px;">
-                {card("Randomised to this contrast", f"{FLOW['randomized']:,}", "2:1 toward usual care · 176 UK NHS organizations", colors["ink"])}
-                {card("Dexamethasone death", f"{_dex_rate:.1f}%", f"{_dex['deaths']:,} of {_dex['n']:,} died by 28 days", colors["dex"])}
-                {card("Usual-care death", f"{_uc_rate:.1f}%", f"{_uc['deaths']:,} of {_uc['n']:,} died by 28 days", colors["usual"])}
-                {card("Absolute benefit", f"–{_ard:.1f} pts", f"RR 0.83 (95% CI 0.75–0.93) · ≈1 death prevented per {_nnt} treated", colors["good"])}
+                {card("Randomised population", f"{FLOW['randomized']:,}", "2:1 toward usual care · 176 UK NHS organisations", colors["ink"])}
+                {card("Intervention: dexamethasone", f"{_dex_rate:.1f}%", f"{_dex['deaths']:,} of {_dex['n']:,} died by 28 days", colors["dex"])}
+                {card("Reference: usual care", f"{_uc_rate:.1f}%", f"{_uc['deaths']:,} of {_uc['n']:,} died by 28 days", colors["usual"])}
+                {card("Main contrast", f"–{_ard:.1f} pts", f"RR 0.83 (95% CI 0.75–0.93) · ≈1 death prevented per {_nnt} treated", colors["good"])}
             </div>
         </div>
         """
@@ -396,16 +397,15 @@ def _(ARMS, FLOW, FONT, TRIAL, colors, card, mo):
 def _(colors, mo):
     consort_blurb = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; color:{colors['ink']}; line-height:1.42;
-                    border:1px solid #ddd8ce; border-left:4px solid {colors['accent']};
-                    border-radius:10px; padding:10px 14px; background:#fffdf8;">
-            <strong>How the CONSORT adherence is made explicit.</strong>
-            Each section below is anchored to checklist items, not just to the paper's narrative order:
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']}; line-height:1.42;
+                    border:1px solid #D8D4D7; border-left:4px solid {colors['accent']};
+                    border-radius:10px; padding:10px 14px; background:#FFF4EF;">
+            <strong>CONSORT map.</strong>
+            Each section names the checklist items it addresses:
             design and eligibility (items 9, 11, 12), intervention specification and delivery (13, 24),
             participant flow (22), baseline balance (25), absolute and relative effects (26), harms (15, 27),
             open-science expectations (2–5), and interpretation/limitations (29–30).
-            The final table is the audit trail: what this remarkably fast 2020 report covers in full,
-            what only partially, and what CONSORT added after the trial was run.
+            The final table separates reported, partial, not-applicable, and missing items.
         </div>
         """
     )
@@ -417,17 +417,16 @@ def _(colors, mo):
 def _(CONTEXT, TRIAL, mo):
     design = mo.md(
         "**The design in one paragraph**\n\n"
-        f"**RECOVERY** is a controlled, **open-label platform randomised trial** evaluating multiple potential "
-        f"treatments for Covid-19 simultaneously across {TRIAL['centers']} NHS organizations in the United Kingdom. "
+        f"**RECOVERY** was a controlled, **open-label platform randomised trial** across {TRIAL['centers']} NHS "
+        "organisations in the United Kingdom. The platform evaluated several Covid-19 treatments at the same time. "
         "Eligible patients had suspected or laboratory-confirmed SARS-CoV-2 infection and no clinician-judged "
         "substantial risk from participation (pregnant or breastfeeding women were eligible). Within each domain, "
-        f"patients were allocated by a concealed web-based system — {CONTEXT['allocation_ratio']} toward usual care — "
-        "and this notebook reads the dexamethasone domain alone: oral or intravenous **dexamethasone 6 mg once daily "
-        "for up to 10 days** versus **usual care alone**, with no placebo and no masking (patients and local staff "
-        "knew the assignment; the endpoint, death, was objective). The primary outcome was all-cause mortality within "
-        "28 days; analyses were intention-to-treat with Cox-regression rate ratios adjusted for age in three "
-        f"categories after chance left the dexamethasone arm 1.1 years older. Recruitment ran {TRIAL['recruitment']} "
-        "and closed early once enrolment exceeded target.\n\n"
+        f"patients were allocated by a concealed web-based system, {CONTEXT['allocation_ratio']}. "
+        "This notebook covers the dexamethasone domain only. It compares oral or intravenous **dexamethasone 6 mg "
+        "once daily for up to 10 days** with **usual care alone**. There was no placebo or masking, but death was "
+        "an objective endpoint. The primary outcome was all-cause mortality within 28 days. The intention-to-treat "
+        "analysis used age-adjusted Cox-regression rate ratios because the dexamethasone group was 1.1 years older "
+        f"on average. Recruitment ran {TRIAL['recruitment']} and stopped after enrolment exceeded the target.\n\n"
         "_CONSORT items 9, 11, 12, 17–21._"
     )
     design
@@ -435,7 +434,7 @@ def _(CONTEXT, TRIAL, mo):
 
 
 @app.cell
-def _(ARMS, CHART_W, alt, colors, mo, pl, style):
+def _(ARMS, CHART_W, FONT, colors, mo):
     # ------------- INTERVENTION DELIVERY: prescribed vs received -------------
     # A drug trial's fidelity display is exposure, not an achieved-vs-target band.
     dex = ARMS[0]
@@ -451,49 +450,49 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style):
             "arm": uc["arm"],
             "kind": "Received dexamethasone anyway",
             "pct": 100 * uc["crossover"] / uc["crossover_n"],
-            "label": f'{uc["crossover"]:,} of {uc["crossover_n"]:,} — crossover contaminates the contrast slightly',
+            "label": f'{uc["crossover"]:,} of {uc["crossover_n"]:,}; crossover reduced between-arm separation',
         },
     ]
-    fidelity_df = pl.DataFrame(fidelity_rows)
+    _rows = []
+    for row in fidelity_rows:
+        _color = colors["dex"] if row["arm"] == "Dexamethasone" else colors["usual"]
+        _rows.append(
+            f"""
+            <div style="display:grid; grid-template-columns:220px minmax(180px,1fr) 52px; gap:10px; align-items:center;">
+                <div style="font-size:0.78rem; color:{colors['ink']};">{row['arm']}: {row['kind']}</div>
+                <div style="height:18px; background:{colors['neutral_bg']}; border-radius:3px; overflow:hidden;">
+                    <div style="width:{row['pct']}%; height:100%; background:{_color}; border-radius:3px;"></div>
+                </div>
+                <div style="font-size:0.8rem; font-weight:700; color:{_color}; text-align:right;">{row['pct']:.1f}%</div>
+            </div>
+            """
+        )
 
-    fidelity_chart = alt.Chart(fidelity_df).mark_bar(size=30, cornerRadius=3).encode(
-        y=alt.Y("arm:N", title=None, sort=["Dexamethasone", "Usual care"]),
-        x=alt.X("pct:Q", scale=alt.Scale(domain=[0, 100]), title="Patients receiving dexamethasone (%)"),
-        color=alt.Color(
-            "arm:N",
-            scale=alt.Scale(domain=["Dexamethasone", "Usual care"], range=[colors["dex"], colors["usual"]]),
-            legend=None,
-        ),
-        tooltip=[
-            alt.Tooltip("arm:N", title="Arm"),
-            alt.Tooltip("kind:N", title="Category"),
-            alt.Tooltip("pct:Q", title="Percent", format=".1f"),
-            alt.Tooltip("label:N"),
-        ],
-    ).properties(
-        width=CHART_W,
-        height=140,
-        title=alt.TitleParams(
-            "One arm took the drug; a slice of the other did too",
-            subtitle="Bar length = share of that arm exposed to dexamethasone · 8% crossover dilutes, it does not erase, the contrast.",
-        ),
+    _fidelity_panel = mo.Html(
+        f"""
+        <div role="img" aria-label="Dexamethasone exposure by randomized arm" style="font-family:{FONT}; width:min(100%, {CHART_W}px); border:1px solid {colors['grid']}; border-radius:10px; background:{colors['paper']}; padding:14px 16px; box-sizing:border-box;">
+            <div style="font-size:0.95rem; font-weight:700; color:{colors['dark']};">Assigned treatment produced different dexamethasone exposure</div>
+            <div style="font-size:0.78rem; color:{colors['muted']}; margin:2px 0 12px;">Orange and blue identify the randomised arms. Each row shows exposure to dexamethasone.</div>
+            <div style="display:grid; gap:9px;">{''.join(_rows)}</div>
+        </div>
+        """
     )
 
     fidelity_view = mo.vstack(
         [
             mo.md(
                 """
-                ## Intervention as specified, and as delivered
-                _CONSORT items 13 & 24 — what was prescribed, what was actually taken, and how clean the contrast stayed._
+                ## Intervention delivery
+                _CONSORT items 13 and 24. The chart compares assigned treatment with treatment received._
                 """
             ),
-            mo.ui.altair_chart(fidelity_chart),
+            _fidelity_panel,
             mo.md(
                 f"""Among patients with a completed follow-up form, **95%** of the dexamethasone arm received at least
                 one dose ({dex['received']:,}/{dex['received_n']:,}), with a median treatment duration of
                 **{dex['median_days']} days (IQR {dex['iqr_lo']}–{dex['iqr_hi']})**. In the usual-care arm,
                 **{uc['crossover']} of {uc['crossover_n']:,} (8%)** received dexamethasone as part of routine clinical
-                care — open-label pragmatism cuts both ways."""
+                care. This crossover reduced the separation between the randomised groups."""
             ),
         ],
         gap=0.35,
@@ -515,7 +514,7 @@ def _(FLOW, box, colors, mo):
 
     flow_html = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; max-width:720px; margin:0 auto;">
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; max-width:720px; margin:0 auto;">
             {box("Recruited into the RECOVERY platform", FLOW["recruited_platform"], colors["dark"],
                  "hospitalised Covid-19, all treatment domains")}
             <div style="display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:8px; margin:2px 0;">
@@ -537,7 +536,7 @@ def _(FLOW, box, colors, mo):
                     {_excl(FLOW["dex_withdrew"], "withdrew consent before follow-up")}
                     {arrow}
                     {box("Analysed for 28-day mortality", FLOW["dex_analyzed"], colors["dex"],
-                         f'{FLOW["dex_second_randomization"]} later re-randomised in another domain — still analysed here as assigned')}
+                         f'{FLOW["dex_second_randomization"]} later re-randomised in another domain; analysed here as assigned')}
                 </div>
                 <div style="display:grid; gap:6px;">
                     {box("Allocated: usual care alone", FLOW["usual_assigned"], colors["usual"])}
@@ -545,7 +544,7 @@ def _(FLOW, box, colors, mo):
                     {_excl(FLOW["usual_withdrew"], "withdrew consent before follow-up")}
                     {arrow}
                     {box("Analysed for 28-day mortality", FLOW["usual_analyzed"], colors["usual"],
-                         f'{FLOW["usual_second_randomization"]} later re-randomised in another domain — still analysed here as assigned')}
+                         f'{FLOW["usual_second_randomization"]} later re-randomised in another domain; analysed here as assigned')}
                 </div>
             </div>
         </div>
@@ -557,8 +556,7 @@ def _(FLOW, box, colors, mo):
             mo.md(
                 """
                 ## Participant flow
-                _CONSORT item 22 — rebuilt from Figure 1's counts. The platform's funnel narrows to the one
-                comparison this notebook reads._
+                _CONSORT item 22. The diagram reconstructs the dexamethasone comparison from Figure 1._
                 """
             ),
             flow_html,
@@ -610,7 +608,7 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
         df = pl.DataFrame(rows)
         status_scale = alt.Scale(
             domain=["Died by 28 days", "Alive at day 28"],
-            range=[colors[color_key], "#e7e2d8"],
+            range=[colors[color_key], colors["neutral_bg"]],
         )
         chart = alt.Chart(df).mark_square(size=150, cornerRadius=2).encode(
             x=alt.X("col:O", axis=None),
@@ -635,9 +633,9 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
         [
             mo.md(
                 """
-                ## Primary outcome — death by day 28, in absolute terms
-                _CONSORT item 26 asks for the **absolute** effect first. Each square is one patient per hundred;
-                the two fewer shaded squares on the left are what a 6-milligram tablet bought across the whole cohort._
+                ## Primary outcome: 28-day mortality
+                _CONSORT item 26. Each square represents one patient per 100. The dexamethasone array has about
+                two fewer death squares than the usual-care array._
                 """
             ),
             mo.hstack(
@@ -650,7 +648,7 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
             ),
             mo.md(
                 f"""**{overall['dex_events']}/{overall['dex_n']:,} ({dex_rate:.1f}%)** died with dexamethasone versus
-                **{overall['uc_events']:,}/{overall['uc_n']:,} ({uc_rate:.1f}%)** with usual care — an absolute reduction
+                **{overall['uc_events']:,}/{overall['uc_n']:,} ({uc_rate:.1f}%)** with usual care. The absolute reduction
                 of **{uc_rate - dex_rate:.1f} percentage points** (age-adjusted rate ratio {overall['rr']},
                 95% CI {overall['lo']}–{overall['hi']}; P&lt;0.001)."""
             ),
@@ -723,7 +721,7 @@ def _(ABS_REDUCTION, CHART_W, CONTEXT, EFFECTS, alt, colors, mo, pl, style):
             x2="hi:Q",
             color=alt.Color(
                 "crosses_null:N",
-                scale=alt.Scale(domain=["yes", "no"], range=[colors["muted"], colors["accent"]]),
+                scale=alt.Scale(domain=["yes", "no"], range=[colors["muted"], colors["good"]]),
                 legend=None,
             ),
             tooltip=[
@@ -736,8 +734,16 @@ def _(ABS_REDUCTION, CHART_W, CONTEXT, EFFECTS, alt, colors, mo, pl, style):
     )
     _rr_pt = (
         alt.Chart(rr_df)
-        .mark_point(size=130, filled=True, color=colors["accent"])
-        .encode(y=alt.Y("group:N", sort=sub_order), x="rr:Q")
+        .mark_point(size=130, filled=True)
+        .encode(
+            y=alt.Y("group:N", sort=sub_order),
+            x="rr:Q",
+            color=alt.Color(
+                "crosses_null:N",
+                scale=alt.Scale(domain=["yes", "no"], range=[colors["muted"], colors["good"]]),
+                legend=None,
+            ),
+        )
     )
     _null = (
         alt.Chart(pl.DataFrame({"x": [1.0]}))
@@ -752,9 +758,14 @@ def _(ABS_REDUCTION, CHART_W, CONTEXT, EFFECTS, alt, colors, mo, pl, style):
         [
             mo.md(
                 """
-                ## The signature figure — mortality by level of respiratory support at randomization
-                _CONSORT items 26 & 28. Left: paired absolute risks per stratum. Right: age-adjusted rate ratios;
-                gold marks mean the interval excludes 1, grey means it crosses 1._
+                ## Mortality by respiratory support at randomisation
+                _CONSORT items 26 and 28._
+
+                **Read it as:** The left panel shows absolute mortality in each randomised group. The right panel
+                shows age-adjusted rate ratios and 95% CIs. Green marks identify CIs that exclude 1.
+
+                **Why this geometry:** The paired panels show both the absolute risk within each respiratory-support
+                stratum and the precision of the relative effect.
                 """
             ),
             mo.hstack(
@@ -766,7 +777,7 @@ def _(ABS_REDUCTION, CHART_W, CONTEXT, EFFECTS, alt, colors, mo, pl, style):
                                 height=190,
                                 title=alt.TitleParams(
                                     "Absolute mortality by stratum",
-                                    subtitle="Dot = arm's death rate · dotted line links the pair.",
+                                    subtitle="Each dot shows an arm's death rate. The dotted line links the two arms.",
                                 ),
                             )
                         ),
@@ -777,8 +788,8 @@ def _(ABS_REDUCTION, CHART_W, CONTEXT, EFFECTS, alt, colors, mo, pl, style):
                                 width=CHART_W // 2 + 40,
                                 height=190,
                                 title=alt.TitleParams(
-                                    "Benefit where intervals sit left of 1",
-                                    subtitle="Gold = CI excludes 1 · grey = CI includes 1 (uncertain).",
+                                    "Rate ratios by respiratory support",
+                                    subtitle="Green marks show CIs that exclude 1. Grey marks show CIs that include 1.",
                                 ),
                             )
                         ),
@@ -788,19 +799,19 @@ def _(ABS_REDUCTION, CHART_W, CONTEXT, EFFECTS, alt, colors, mo, pl, style):
                 gap=0.5,
             ),
             mo.md(
-                f"""The gradient is the trial's mechanistic heart. Among patients already on **invasive mechanical
+                f"""**What it says:** Treatment effect differed by respiratory support at entry. Among patients already on **invasive mechanical
                 ventilation**, mortality fell from **{EFFECTS[1]['uc_events']}/{EFFECTS[1]['uc_n']} ({100 * EFFECTS[1]['uc_events'] / EFFECTS[1]['uc_n']:.1f}%)**
-                to **{EFFECTS[1]['dex_events']}/{EFFECTS[1]['dex_n']} ({100 * EFFECTS[1]['dex_events'] / EFFECTS[1]['dex_n']:.1f}%)** — rate ratio {EFFECTS[1]['rr']}
+                to **{EFFECTS[1]['dex_events']}/{EFFECTS[1]['dex_n']} ({100 * EFFECTS[1]['dex_events'] / EFFECTS[1]['dex_n']:.1f}%)**. The rate ratio was {EFFECTS[1]['rr']}
                 (95% CI {EFFECTS[1]['lo']}–{EFFECTS[1]['hi']}), an age-adjusted **{ABS_REDUCTION[0][1]} percentage-point**
                 reduction (95% CI {ABS_REDUCTION[0][2]}–{ABS_REDUCTION[0][3]}). With **oxygen only**, the fall was smaller:
                 {EFFECTS[2]['dex_events']}/{EFFECTS[2]['dex_n']} ({100 * EFFECTS[2]['dex_events'] / EFFECTS[2]['dex_n']:.1f}%)
-                vs {EFFECTS[2]['uc_events']}/{EFFECTS[2]['uc_n']} ({100 * EFFECTS[2]['uc_events'] / EFFECTS[2]['uc_n']:.1f}%) — RR {EFFECTS[2]['rr']}
+                vs {EFFECTS[2]['uc_events']}/{EFFECTS[2]['uc_n']} ({100 * EFFECTS[2]['uc_events'] / EFFECTS[2]['uc_n']:.1f}%). The rate ratio was {EFFECTS[2]['rr']}
                 (95% CI {EFFECTS[2]['lo']}–{EFFECTS[2]['hi']}), a {ABS_REDUCTION[1][1]}-point reduction
                 (95% CI {ABS_REDUCTION[1][2]}–{ABS_REDUCTION[1][3]}). But among patients needing **no respiratory
-                support**, the point estimate flips: {EFFECTS[3]['dex_events']}/{EFFECTS[3]['dex_n']} ({100 * EFFECTS[3]['dex_events'] / EFFECTS[3]['dex_n']:.1f}%)
-                vs {EFFECTS[3]['uc_events']}/{EFFECTS[3]['uc_n']} ({100 * EFFECTS[3]['uc_events'] / EFFECTS[3]['uc_n']:.1f}%) — RR {EFFECTS[3]['rr']},
-                95% CI {EFFECTS[3]['lo']}–{EFFECTS[3]['hi']}. That interval **includes 1**: consistent with no effect,
-                            and the paper notes results were compatible with possible harm here. The chi-square test for trend
+                support**, the point estimate was {EFFECTS[3]['dex_events']}/{EFFECTS[3]['dex_n']} ({100 * EFFECTS[3]['dex_events'] / EFFECTS[3]['dex_n']:.1f}%)
+                vs {EFFECTS[3]['uc_events']}/{EFFECTS[3]['uc_n']} ({100 * EFFECTS[3]['uc_events'] / EFFECTS[3]['uc_n']:.1f}%). The rate ratio was {EFFECTS[3]['rr']}
+                (95% CI {EFFECTS[3]['lo']}–{EFFECTS[3]['hi']}). This CI includes 1, so the data were compatible
+                with no effect or possible harm. The chi-square test for trend
                 across the three strata was {CONTEXT["trend_chi2"]}."""
             ),
         ],
@@ -861,7 +872,7 @@ def _(CHART_W, EFFECTS, SECONDARY, alt, colors, mo, pl, style):
         x2="hi:Q",
         color=alt.Color(
             "kind:N",
-            scale=alt.Scale(domain=["benefit", "uncertain"], range=[colors["dex"], colors["muted"]]),
+            scale=alt.Scale(domain=["benefit", "uncertain"], range=[colors["good"], colors["muted"]]),
             legend=None,
         ),
         tooltip=[
@@ -874,7 +885,7 @@ def _(CHART_W, EFFECTS, SECONDARY, alt, colors, mo, pl, style):
     _pt = alt.Chart(ef).mark_point(size=110, filled=True).encode(
         y=alt.Y("outcome:N", sort=order),
         x="rr:Q",
-        color=alt.Color("kind:N", scale=alt.Scale(domain=["benefit", "uncertain"], range=[colors["dex"], colors["muted"]]), legend=None),
+        color=alt.Color("kind:N", scale=alt.Scale(domain=["benefit", "uncertain"], range=[colors["good"], colors["muted"]]), legend=None),
         tooltip=[
             alt.Tooltip("outcome:N", title="Outcome"),
             alt.Tooltip("rr:Q", title="Ratio"),
@@ -889,8 +900,8 @@ def _(CHART_W, EFFECTS, SECONDARY, alt, colors, mo, pl, style):
             width=CHART_W,
             height=230,
             title=alt.TitleParams(
-                "Every mortality interval favours dexamethasone except the stratum that didn't need oxygen",
-                subtitle="Clay = CI excludes 1 · grey = CI includes 1. Ratios are age-adjusted; <1 favours dexamethasone for every row shown.",
+                "Benefit varied by respiratory support",
+                subtitle="Green marks show CIs that exclude 1. Grey marks show CIs that include 1. Ratios are age-adjusted.",
             ),
         )
     )
@@ -901,8 +912,8 @@ def _(CHART_W, EFFECTS, SECONDARY, alt, colors, mo, pl, style):
                 """
                 ## Effect estimates across outcomes
                 _CONSORT item 26. Primary outcome and its respiratory-support subgroups, plus the Table 2
-                secondary outcomes with usable intervals. Discharge &gt; 1 also favours dexamethasone (more
-                patients home by day 28); the two grey rows keep the trial honest._
+                secondary outcomes with usable intervals. For discharge, a ratio above 1 means that more
+                patients were home by day 28. Grey rows have CIs that include 1._
                 """
             ),
             mo.ui.altair_chart(forest),
@@ -922,11 +933,10 @@ def _(SECONDARY, colors, mo):
     harms_md = mo.md(
         "## Harms, secondary outcomes, and what this preliminary report does not say\n"
         "_CONSORT items 15 &amp; 27 (harms) and 26 (secondary outcomes)._\n\n"
-        "**Death was the primary outcome**, so the harm ledger is partly built into the endpoint itself: "
-        "no signal of excess non-fatal harm emerged, and the drug shortened hospital stay. But this is a "
-        "**preliminary report** written at pandemic speed, and its harm reporting is thin — there is no "
-        "adverse-event table, no secondary-infection count, no hyperglycaemia tally despite dexamethasone's "
-        "known metabolic effects. Later follow-up papers had to fill that space.\n\n"
+        "**Death was the primary outcome**, so fatal harms were part of the primary analysis. The report found "
+        "no excess non-fatal harm and a shorter hospital stay. However, this **preliminary report** did not include "
+        "an adverse-event table or counts for secondary infection and hyperglycaemia. Later reports provided "
+        "additional safety detail.\n\n"
         "**Secondary outcomes** (Table 2):\n\n"
         "| Outcome | Dexamethasone | Usual care | Ratio (95% CI) |\n"
         "|:---|:---|:---|:---|\n"
@@ -940,12 +950,10 @@ def _(SECONDARY, colors, mo):
     harms_note = mo.Html(
         f"""
         <div style="background:{colors['panel2']}; border-left:4px solid {colors['good']};
-                    border-radius:8px; padding:12px 16px; font-family:Georgia, serif; color:{colors['ink']};">
-            <strong>Why it matters:</strong> dexamethasone reversed a decade of guideline pessimism about
-            corticosteroids in viral pneumonia within a single day of announcement. The mechanism reads straight
-            off the subgroup gradient: benefit concentrates exactly where Covid-19 is dominated by
-            inflammatory lung injury (ventilation, oxygen), and disappears where early viral replication,
-            which steroids can prolong, is the main event. The right drug for the right stage of the disease.
+                    border-radius:8px; padding:12px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
+            <strong>Clinical interpretation:</strong> benefit was concentrated in patients who needed invasive
+            ventilation or oxygen. The trial did not show benefit in patients who needed no respiratory support.
+            The findings support dexamethasone for hypoxaemic Covid-19, not for patients without an oxygen need.
         </div>
         """
     )
@@ -958,26 +966,25 @@ def _(TRIAL, colors, mo):
     # --------------------------- OPEN SCIENCE ---------------------------
     open_science = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; color:{colors['ink']};">
-            <h2 style="font-family:Georgia, serif;">Open science</h2>
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
+            <h2 style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">Open science</h2>
             <p style="color:{colors['muted']}; margin-top:-0.4rem;">
-                <em>CONSORT 2025's open-science section (items 2–5) — where a 2020 pandemic trial scores better
-                than most of its predecessors.</em>
+                <em>CONSORT 2025 items 2–5 cover registration, protocol access, data sharing, funding, and conflicts.</em>
             </p>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Registration (item 2)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">{TRIAL['registrations']}</div>
                 </div>
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Protocol &amp; SAP (item 3)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">NEJM.org + recoverytrial.net</div>
                 </div>
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Data sharing (item 4)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">Statement published with article</div>
                 </div>
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Funding &amp; COI (item 5)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">UKRI/NIHR grant; no funder role; disclosures filed</div>
                 </div>
@@ -1014,8 +1021,8 @@ def _(CHECKLIST, colors, mo, pill, section):
 
     checklist_html = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif;">
-            <table style="border-collapse:collapse; width:100%; font-family:Georgia, serif;">
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
+            <table style="border-collapse:collapse; width:100%; font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
                 <thead>
                     <tr style="border-bottom:2px solid {colors['grid']}; text-align:left;
                                font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:{colors['muted']};">
@@ -1034,15 +1041,13 @@ def _(CHECKLIST, colors, mo, pill, section):
 
     coverage_note = mo.Html(
         f"""
-        <div style="background:{colors['panel']}; border:1px solid #ddd8ce; border-radius:10px;
-                    padding:14px 16px; font-family:Georgia, serif; color:{colors['ink']};">
+        <div style="background:{colors['panel']}; border:1px solid #D8D4D7; border-radius:10px;
+                    padding:14px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
             Of the <strong>{_top_level_items} top-level CONSORT 2025 items ({len(CHECKLIST)} checklist rows)</strong>,
-            this 2020 report substantively covers <strong>{_covered} of {len(CHECKLIST)} rows</strong>. The one outright
-            gap — <strong>patient &amp; public involvement (item 8)</strong> — is an expectation CONSORT added after the
-            trial ran; the partials cluster where a preliminary report written in 100 days had to defer detail
-            (adverse-event definitions and tables to later follow-up papers) or where openness was structural
-            (an unmasked design has no blinding mechanics to describe). Reading this landmark against the new
-            checklist is less an audit of the trial than a snapshot of how reporting norms moved.
+            this 2020 report substantively covers <strong>{_covered} of {len(CHECKLIST)} rows</strong>. The only gap is
+            <strong>patient and public involvement (item 8)</strong>, which CONSORT added after the trial. Partial
+            items reflect limited adverse-event detail in the preliminary report and the absence of blinding in
+            the open-label design.
         </div>
         """
     )
@@ -1082,7 +1087,7 @@ def _(TRIAL, colors, mo):
     # ------------------------- PROVENANCE -------------------------
     provenance = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; color:{colors['muted']}; font-size:0.86rem;
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['muted']}; font-size:0.86rem;
                     border-top:1px solid {colors['grid']}; padding-top:12px; line-height:1.5;">
             <strong style="color:{colors['ink']};">Source &amp; provenance.</strong>
             The RECOVERY Collaborative Group. Dexamethasone in Hospitalized Patients with Covid-19 —
@@ -1095,7 +1100,7 @@ def _(TRIAL, colors, mo):
             dexamethasone arm, 26 for the 25.7% usual-care arm). Absolute differences in the hero and waffle
             captions are crude (unadjusted) differences computed from counts; the paper's age-adjusted absolute
             reductions (12.3 and 4.2 points) are shown separately and labelled as such. CONSORT 2025 is applied
-            here as a modern reading lens — it postdates this 2020 report. RECOVERY is a platform trial: this
+            here retrospectively; it postdates this 2020 report. RECOVERY is a platform trial: this
             notebook reads only the dexamethasone-vs-usual-care comparison and visualises no other domain's arms.
         </div>
         """

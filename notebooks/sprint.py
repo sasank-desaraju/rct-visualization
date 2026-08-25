@@ -24,21 +24,25 @@ def _():
 
     # ---- Shared visual language (kept close to the site's other notebooks) ----
     colors = {
-        "ink": "#1f2933",
-        "muted": "#65717c",
+        "ink": "#002657",
+        "muted": "#5B6472",
         "paper": "#ffffff",
-        "panel": "#f5f3ef",
-        "panel2": "#e8ece8",
-        "grid": "#dde3e1",
-        "intensive": "#b3544c",  # the exposed (intensive) arm -> clay red
-        "standard": "#3f7d78",   # the reference (standard) arm -> teal
-        "accent": "#b48b32",
-        "good": "#3f7d78",
-        "warn": "#b48b32",
-        "bad": "#b3544c",
-        "dark": "#263238",
+        "panel": "#F5F7FC",
+        "panel2": "#FFF4EF",
+        "grid": "#C7C9C8",
+        "intensive": "#FA4616",  # intervention arm -> UF orange
+        "standard": "#0021A5",   # reference arm -> UF blue
+        "accent": "#F2A900",
+        "good": "#22884C",
+        "warn": "#F2A900",
+        "bad": "#D32737",
+        "good_bg": "#EAF6EE",
+        "warn_bg": "#FFF4D6",
+        "bad_bg": "#FCEAEC",
+        "neutral_bg": "#F0F1F3",
+        "dark": "#002657",
     }
-    FONT = "Georgia, serif"
+    FONT = "Inter, ui-sans-serif, system-ui, sans-serif"
     CHART_W = 600
 
     def style(chart):
@@ -74,7 +78,7 @@ def _():
 
     def card(kicker, big, small, color):
         return f"""
-        <div style="background:#ffffff; border:1px solid #e1ddd4; border-radius:10px; padding:10px 12px;">
+        <div style="background:#ffffff; border:1px solid #D8D4D7; border-radius:10px; padding:10px 12px;">
             <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:{colors['muted']};">{kicker}</div>
             <div style="font-size:1.42rem; color:{color}; margin:1px 0;">{big}</div>
             <div style="font-size:0.86rem; color:{colors['muted']}; line-height:1.28;">{small}</div>
@@ -83,7 +87,7 @@ def _():
     def box(title, n, color, sub=""):
         sub_html = f'<div style="font-size:0.78rem; color:{colors["muted"]}; margin-top:2px;">{sub}</div>' if sub else ""
         return f"""
-        <div style="background:{colors['paper']}; border:1px solid #d9d4ca; border-left:4px solid {color};
+        <div style="background:{colors['paper']}; border:1px solid #D8D4D7; border-left:4px solid {color};
                     border-radius:8px; padding:8px 10px; text-align:center;">
             <div style="font-size:0.92rem; color:{colors['ink']};">{title}</div>
             <div style="font-size:1.25rem; color:{color}; font-weight:600;">n = {n:,}</div>
@@ -92,10 +96,10 @@ def _():
 
     def pill(status):
         spec = {
-            "reported": (colors["good"], "#e7f0ee", "Reported"),
-            "partial": (colors["warn"], "#f5eede", "Partial"),
-            "na": (colors["muted"], "#eceae5", "N/A"),
-            "gap": (colors["bad"], "#f3e2e0", "Not addressed"),
+            "reported": (colors["good"], colors["good_bg"], "Reported"),
+            "partial": (colors["warn"], colors["warn_bg"], "Partial"),
+            "na": (colors["muted"], colors["neutral_bg"], "N/A"),
+            "gap": (colors["bad"], colors["bad_bg"], "Not addressed"),
         }[status]
         fg, bg, label = spec
         return (
@@ -324,36 +328,33 @@ def _(CHECKLIST, mo):
 
 
 @app.cell
-def _(FLOW, NNT, OUTCOMES, TRIAL, colors, card, mo):
+def _(FLOW, FONT, NNT, OUTCOMES, TRIAL, colors, card, mo):
     # ---------------------------- HERO ----------------------------
     _pr = next(o for o in OUTCOMES if o["short"] == "Primary composite")
     _ard = _pr["int_rate"] - _pr["std_rate"]
 
     hero = mo.Html(
         f"""
-        <div style="background:{colors['panel']}; border:1px solid #ddd8ce; border-radius:14px;
-                    padding:18px 20px; font-family:{colors['ink']}; color:{colors['ink']};">
+        <div style="background:{colors['panel']}; border:1px solid #D8D4D7; border-radius:14px;
+                    padding:18px 20px; font-family:{FONT}; color:{colors['ink']};">
             <div style="text-transform:uppercase; letter-spacing:0.15em; font-size:0.72rem;
                         color:{colors['muted']}; margin-bottom:0.5rem;">
                 A randomised trial, read through CONSORT 2025
             </div>
             <div style="font-size:1.82rem; line-height:1.12; margin-bottom:0.25rem;">{TRIAL['name']}</div>
-            <div style="font-size:1.0rem; color:#45515b; margin-bottom:0.35rem;">{TRIAL['title']}</div>
-            <div style="max-width:820px; font-size:0.96rem; line-height:1.42; color:#45515b; margin-bottom:0.85rem;">
-                This notebook is a CONSORT-shaped read of SPRINT, the trial that moved the systolic blood-pressure
-                target. Adults at high cardiovascular risk but without diabetes were randomised to a target of
-                &lt;120 or &lt;140 mm Hg. Targeting &lt;120 cut fatal and nonfatal major cardiovascular events by a
-                quarter and all-cause death by 27% — so convincing that the data and safety monitoring board's
-                recommendation to stop early was accepted on {TRIAL['stopped']}, at a median follow-up of
-                {TRIAL['median_fu_years']} of the planned {TRIAL['planned_fu_years']} years. The price was a higher
-                rate of some serious adverse events. Every section below is anchored to checklist items and every
-                number traces to the data cell at the top.
+            <div style="font-size:1.0rem; color:#343741; margin-bottom:0.35rem;">{TRIAL['title']}</div>
+            <div style="max-width:820px; font-size:0.96rem; line-height:1.42; color:#343741; margin-bottom:0.85rem;">
+                SPRINT compared systolic blood-pressure targets below 120 and 140 mm Hg in adults at high
+                cardiovascular risk without diabetes. Intensive control reduced the primary cardiovascular
+                outcome and all-cause mortality. The intervention stopped early on {TRIAL['stopped']} after a
+                median {TRIAL['median_fu_years']} years of follow-up. Some serious adverse events were more common
+                with intensive control.
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:8px;">
-                {card("Randomised", f"{FLOW['randomized']:,}", "4,678 intensive &lt;120 · 4,683 standard &lt;140 mm Hg · 102 sites", colors["ink"])}
-                {card("Primary outcome — intensive", f"{_pr['int_rate']}%/yr", f"{_pr['int_n']} events · HR {_pr['hr']} ({_pr['lo']}–{_pr['hi']}), P {_pr['p']}", colors["intensive"])}
-                {card("Primary outcome — standard", f"{_pr['std_rate']}%/yr", f"{_pr['std_n']} events over median {TRIAL['median_fu_years']} yr", colors["standard"])}
-                {card("Absolute benefit", f"{_ard:.2f} pts/yr", f"NNT {NNT['primary']} over median {TRIAL['median_fu_years']} years (as published)", colors["accent"])}
+                {card("Randomised population", f"{FLOW['randomized']:,}", "4,678 intensive &lt;120 · 4,683 standard &lt;140 mm Hg · 102 sites", colors["ink"])}
+                {card("Intervention: intensive target", f"{_pr['int_rate']}%/yr", f"{_pr['int_n']} events · HR {_pr['hr']} ({_pr['lo']}–{_pr['hi']}), P {_pr['p']}", colors["intensive"])}
+                {card("Reference: standard target", f"{_pr['std_rate']}%/yr", f"{_pr['std_n']} events over median {TRIAL['median_fu_years']} yr", colors["standard"])}
+                {card("Main contrast", f"{_ard:.2f} pts/yr", f"NNT {NNT['primary']} over median {TRIAL['median_fu_years']} years (as published)", colors["good"])}
             </div>
         </div>
         """
@@ -366,16 +367,15 @@ def _(FLOW, NNT, OUTCOMES, TRIAL, colors, card, mo):
 def _(colors, mo):
     consort_blurb = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; color:{colors['ink']}; line-height:1.42;
-                    border:1px solid #ddd8ce; border-left:4px solid {colors['accent']};
-                    border-radius:10px; padding:10px 14px; background:#fffdf8;">
-            <strong>How the CONSORT adherence is made explicit.</strong>
-            Each section below is anchored to checklist items, not just to the paper's narrative order:
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']}; line-height:1.42;
+                    border:1px solid #D8D4D7; border-left:4px solid {colors['accent']};
+                    border-radius:10px; padding:10px 14px; background:#FFF4EF;">
+            <strong>CONSORT map.</strong>
+            Each section names the checklist items it addresses:
             design and eligibility (items 9, 11, 12), intervention specification and delivery (13, 24),
             participant flow (22), baseline balance (25), absolute and relative effects (26), harms (15, 27),
             open-science expectations (2–5), and interpretation/limitations (29–30).
-            The final table is the audit trail, showing what SPRINT reports in full, what lives only in the
-            supplementary appendix, and what modern CONSORT expects that a 2015 paper never had to provide.
+            The final table separates reported, partial, not-applicable, and missing items.
         </div>
         """
     )
@@ -462,10 +462,10 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style):
             width=CHART_W,
             height=170,
             title=alt.TitleParams(
-                "Two targets, a real separation",
+                "The assigned targets produced sustained blood-pressure separation",
                 subtitle=(
-                    "Shaded band = everything below each arm's systolic target ceiling (protocol sets no lower "
-                    "bound) · circle = achieved mean at 1 year · diamond = mean over the trial."
+                    "The shaded band ends at the target ceiling; the protocol set no lower bound. "
+                    "The circle shows the 1-year mean. The diamond shows the trial mean."
                 ),
             ),
         )
@@ -476,19 +476,18 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style):
         [
             mo.md(
                 """
-                ## Interventions & separation achieved
-                _CONSORT items 13 & 24 — the intervention as specified, and as actually delivered._
+                ## Intervention delivery
+                _CONSORT items 13 and 24. The chart compares target systolic pressure with achieved pressure._
                 """
             ),
             mo.ui.altair_chart(interventions),
             mo.md(
-                f"The strategies separated quickly and stayed separated: at 1 year the achieved mean systolic BP was "
+                f"At 1 year, mean systolic pressure was "
                 f"**{_int['achieved_1yr']} mm Hg** under intensive control versus **{_std['achieved_1yr']} mm Hg** "
-                f"under standard care — a **{_std['achieved_1yr'] - _int['achieved_1yr']:.1f} mm Hg** difference, "
-                f"sustained as **{_int['achieved_mean']} vs {_std['achieved_mean']} mm Hg** across the whole "
-                f"follow-up. The cost was medication burden: **{_int['meds']} vs {_std['meds']}** antihypertensive "
-                f"agents per patient on average (1-year diastolic means: 68.7 vs 76.3 mm Hg). The contrast being "
-                f"tested was real, which is what makes the outcome signal credible."
+                f"under standard care, a **{_std['achieved_1yr'] - _int['achieved_1yr']:.1f} mm Hg** difference. "
+                f"The difference persisted across follow-up (**{_int['achieved_mean']} vs {_std['achieved_mean']} "
+                f"mm Hg**). Participants used **{_int['meds']} vs {_std['meds']}** antihypertensive agents per "
+                f"patient on average. The 1-year diastolic means were 68.7 and 76.3 mm Hg."
             ),
         ],
         gap=0.35,
@@ -518,7 +517,7 @@ def _(FLOW, box, colors, mo):
 
     flow_html = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; max-width:720px; margin:0 auto;">
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; max-width:720px; margin:0 auto;">
             {_screened}
             <div style="text-align:center; color:{colors['muted']}; font-size:1.1rem; margin:2px 0;">↓</div>
             {box("Randomised", FLOW["randomized"], colors["accent"], "November 2010 – March 2013")}
@@ -544,7 +543,7 @@ def _(FLOW, box, colors, mo):
             mo.md(
                 """
                 ## Participant flow
-                _CONSORT item 22 — rebuilt from the counts. The main text reports no post-randomisation
+                _CONSORT item 22. The diagram uses the reported counts. The main text reports no post-randomisation
                 exclusions: everyone randomised was analysed as assigned. Pre-randomisation screening counts
                 live in Figure 1 of the paper, which the retrieved full text does not include, so that box is
                 left visibly empty rather than guessed._
@@ -565,8 +564,7 @@ def _(BASELINE, mo):
     baseline_text = (
         "## Baseline characteristics\n"
         "_CONSORT item 25. Highlights from Table 1 (N = 4,678 intensive / 4,683 standard). The paper reports "
-        "no significant differences except statin use (42.6% vs 44.7%, P = 0.04) — the cohorts are twins, so "
-        "the outcome contrast is unlikely to be confounding._\n\n"
+        "no significant differences except statin use (42.6% vs 44.7%, P = 0.04)._\n\n"
         "| Characteristic | Intensive | Standard |\n"
         "|:---|:---|:---|\n"
         f"{_rows}"
@@ -583,7 +581,7 @@ def _(CHART_W, OUTCOMES, alt, colors, mo, pl, rate_mode, style):
     # unevenly under censoring and the paper reports ANNUALISED rates and
     # hazard ratios, not fixed-denominator risks. A 10x10 "patients per
     # hundred" array would imply a common, closed follow-up period the trial
-    # never had. Paired rates + a forest plot are the honest shapes here.
+    # never had. Paired rates and a forest plot fit these data.
     _chart_outcomes = [o for o in OUTCOMES if o["short"] != "Renal: ≥30% eGFR decline (no baseline CKD)"]
     _order = [o["short"] for o in sorted(_chart_outcomes, key=lambda o: -o["std_rate"])]
 
@@ -636,13 +634,13 @@ def _(CHART_W, OUTCOMES, alt, colors, mo, pl, rate_mode, style):
             width=CHART_W,
             height=260,
             title=alt.TitleParams(
-                "Every endpoint leans toward intensive control",
+                "Annualised event rates were lower with intensive control",
                 subtitle=(
-                    "Paired annualised event rates from Table 2 (renal endpoint excluded: different denominators — "
-                    "participants without baseline CKD). Time-to-event endpoints: see the forest plot for HRs."
+                    "Paired annualised event rates from Table 2. The renal endpoint is excluded because it uses "
+                    "different denominators. The forest plot shows hazard ratios."
                     if _by_rate
-                    else "Raw event counts from Table 2. Counts ignore unequal person-time — the annualised-rate "
-                    "view is the fairer comparison."
+                    else "Raw event counts from Table 2. Counts do not adjust for unequal person-time; the "
+                    "annualised-rate view is the appropriate comparison."
                 ),
             ),
         )
@@ -654,20 +652,22 @@ def _(CHART_W, OUTCOMES, alt, colors, mo, pl, rate_mode, style):
             mo.md(
                 """
                 ## Primary outcome, in its native units
-                _CONSORT item 26 asks for absolute AND relative effect. Each pair of dots is one outcome; the
-                intensive dot sits left of the standard dot wherever intensive wins._
+                _CONSORT item 26._
+
+                **Read it as:** Each pair of dots compares an outcome rate in the intensive and standard groups.
+
+                **Why this geometry:** SPRINT reports time-to-event outcomes as annualised rates and hazard ratios.
+                Participants had unequal follow-up, so a fixed-denominator icon array would be misleading.
                 """
             ),
             rate_mode,
             mo.ui.altair_chart(rates),
             mo.md(
-                f"**Why no icon array here:** SPRINT reported **{_pr['int_n']} vs {_pr['std_n']} primary events as "
+                f"**What it says:** SPRINT reported **{_pr['int_n']} vs {_pr['std_n']} primary events as "
                 f"annualised rates ({_pr['int_rate']}% vs {_pr['std_rate']}% per year)** with hazard ratios, not "
-                "clean fixed-denominator risks. Patients entered over three years and were censored progressively, "
-                "so any 10×10 \u201cpatients per hundred\u201d grid would imply a closed follow-up period the trial "
-                "did not have. The absolute difference is real but time-indexed: "
-                f"**{_pr['std_rate'] - _pr['int_rate']:.2f} percentage points per year**, worth **NNT 61 over the "
-                "median 3.26 years** as the paper itself prints it."
+                "clean fixed-denominator risks. The absolute difference was "
+                f"**{_pr['std_rate'] - _pr['int_rate']:.2f} percentage points per year**. The paper reported "
+                "an NNT of 61 over the median 3.26 years."
             ),
         ],
         gap=0.35,
@@ -715,10 +715,10 @@ def _(CHART_W, OUTCOMES, alt, colors, mo, pl, style):
             width=CHART_W,
             height=320,
             title=alt.TitleParams(
-                "Benefit on the endpoints that kill; one harm to weigh",
+                "Intensive control reduced cardiovascular outcomes and increased renal injury",
                 subtitle=(
-                    "Hazard ratios with 95% CI, Table 2. Dashed line = HR 1 (no effect); intervals left of it "
-                    "favour intensive control, right of it favour standard. The renal estimate comes from the "
+                    "Points show hazard ratios from Table 2; rules show 95% CIs. The dashed line marks HR = 1. "
+                    "The renal estimate comes from the "
                     "subgroup without baseline CKD."
                 ),
             ),
@@ -730,8 +730,8 @@ def _(CHART_W, OUTCOMES, alt, colors, mo, pl, style):
             mo.md(
                 """
                 ## Effect estimates
-                _CONSORT item 26 — relative effects with precision. Death, heart failure, and the primary
-                composite exclude HR = 1; the eGFR-decline signal excludes it in the other direction._
+                _CONSORT item 26. The CIs for death, heart failure, and the primary composite exclude HR = 1.
+                The eGFR-decline CI excludes 1 in the direction of harm._
                 """
             ),
             mo.ui.altair_chart(forest),
@@ -760,7 +760,7 @@ def _(HARMS, SAE_OVERALL, SAE_RELATED, colors, mo, pill):
         "_CONSORT items 15 & 27. Serious adverse events (conditions of interest) from Table 3, shown as data._\n\n"
         f"Overall, a serious adverse event occurred in **{SAE_OVERALL['int_n']:,} intensive participants "
         f"({SAE_OVERALL['int_pct']}%) vs {SAE_OVERALL['std_n']:,} ({SAE_OVERALL['std_pct']}%)** — HR "
-        f"{SAE_OVERALL['hr']}, P = {SAE_OVERALL['p']}: the *net* safety balance was even. Events judged "
+        f"{SAE_OVERALL['hr']}, P = {SAE_OVERALL['p']}. Overall serious-adverse-event rates were similar. Events judged "
         f"possibly or definitely related to the intervention were higher (**{SAE_RELATED['int_n']} "
         f"({SAE_RELATED['int_pct']}%) vs {SAE_RELATED['std_n']} ({SAE_RELATED['std_pct']}%), HR "
         f"{SAE_RELATED['hr']}, P = {SAE_RELATED['p']}**). By condition:\n\n"
@@ -773,22 +773,20 @@ def _(HARMS, SAE_OVERALL, SAE_RELATED, colors, mo, pill):
         "|:---|:---|:---|:---|\n"
         f"{_ed_rows}\n\n"
         "Hypotension, syncope, electrolyte abnormalities, and acute kidney injury or failure were all more "
-        "common under intensive control. **Injurious falls were not** — the feared harm of aggressive "
-        "treatment in older adults simply did not materialise (2.2% vs 2.3%, P = 0.71 as serious adverse "
+        "common under intensive control. **Injurious falls were not more common** (2.2% vs 2.3%, P = 0.71 as serious adverse "
         "events; 7.1% vs 7.1%, P = 0.97 including ED visits)."
     )
 
     harms_note = mo.Html(
         f"""
         <div style="background:{colors['panel2']}; border-left:4px solid {colors['warn']};
-                    border-radius:8px; padding:12px 16px; font-family:Georgia, serif; color:{colors['ink']};">
-            <strong>Why it matters:</strong> the kidney signal is the mechanistic tell. More diuretics,
-            ACE inhibitors, and ARBs at lower pressures produced a reversible haemodynamic eGFR decline
+                    border-radius:8px; padding:12px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
+            <strong>Clinical interpretation:</strong> lower pressures and greater use of diuretics,
+            ACE inhibitors, and ARBs were associated with haemodynamic eGFR decline
             (HR 3.49 for ≥30% decline in those without baseline CKD), yet clinic-measured orthostatic
             hypotension was <em>less</em> frequent under intensive control (P = 0.01), and falls showed no
-            increase. The harms are real, specific, and largely biochemical — {pill("reported")} against a
-            mortality benefit of HR 0.73, they change the conversation from "whether" to "for whom and how
-            carefully".
+            increase. {pill("reported")} These harms must be weighed against the mortality benefit (HR 0.73)
+            when selecting and monitoring patients.
         </div>
         """
     )
@@ -801,34 +799,33 @@ def _(TRIAL, colors, mo):
     # --------------------------- OPEN SCIENCE ---------------------------
     open_science = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; color:{colors['ink']};">
-            <h2 style="font-family:Georgia, serif;">Open science</h2>
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
+            <h2 style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">Open science</h2>
             <p style="color:{colors['muted']}; margin-top:-0.4rem;">
-                <em>CONSORT 2025's newest section (items 2–5) — and SPRINT's defining governance moment.</em>
+                <em>CONSORT 2025 items 2–5 cover registration, protocol access, data sharing, funding, and conflicts.</em>
             </p>
-            <div style="background:#fffdf8; border:1px solid #ddd8ce; border-left:4px solid {colors['accent']};
+            <div style="background:#FFF4EF; border:1px solid #D8D4D7; border-left:4px solid {colors['accent']};
                         border-radius:10px; padding:10px 14px; margin-bottom:12px; line-height:1.42;">
                 <strong>Stopped early for benefit.</strong> On {TRIAL['stopped']} the NHLBI director accepted the
                 independent DSMB's recommendation to inform investigators and participants and end the
                 blood-pressure intervention, after the primary-outcome monitoring boundary was exceeded at two
-                consecutive interim looks. Beneficence done right — with the honest caveat that early stops can
-                exaggerate effects; SPRINT's own Fine–Gray competing-risk sensitivity analysis was virtually
-                unchanged (HR 0.76, 0.64–0.89).
+                consecutive interim looks. Early stopping can overestimate effects. SPRINT's Fine–Gray
+                competing-risk sensitivity analysis gave a similar estimate (HR 0.76, 0.64–0.89).
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Registration (item 2)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">{TRIAL['registration']}</div>
                 </div>
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Protocol & SAP (item 3)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">Protocol public; SAP not stated separately</div>
                 </div>
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Data sharing (item 4)</div>
                     <div style="color:{colors['bad']}; font-size:1.0rem;">Not addressed (2015)</div>
                 </div>
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Funding & COI (item 5)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">NIH/VA funded; donations & disclosures declared</div>
                 </div>
@@ -865,8 +862,8 @@ def _(CHECKLIST, colors, mo, pill, section):
 
     checklist_html = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif;">
-            <table style="border-collapse:collapse; width:100%; font-family:Georgia, serif;">
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
+            <table style="border-collapse:collapse; width:100%; font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
                 <thead>
                     <tr style="border-bottom:2px solid {colors['grid']}; text-align:left;
                                font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:{colors['muted']};">
@@ -885,15 +882,13 @@ def _(CHECKLIST, colors, mo, pill, section):
 
     coverage_note = mo.Html(
         f"""
-        <div style="background:{colors['panel']}; border:1px solid #ddd8ce; border-radius:10px;
-                    padding:14px 16px; font-family:Georgia, serif; color:{colors['ink']};">
+        <div style="background:{colors['panel']}; border:1px solid #D8D4D7; border-radius:10px;
+                    padding:14px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
             Of the {_top_level_items} top-level CONSORT 2025 items ({len(CHECKLIST)} checklist rows), this
-            2015 paper substantively covers <strong>{_covered} of {len(CHECKLIST)} rows</strong>. What is missing is
-            instructive: <strong>data sharing (item 4)</strong> and <strong>patient &amp; public involvement
-            (item 8)</strong> are expectations CONSORT <em>added after</em> 2015, and the handful of
-            <em>partial</em> rows — allocation concealment, sequence generation, the statistical analysis plan —
-            are details SPRINT delegated to its supplementary appendix rather than omitted. Reading a landmark
-            against a newer checklist is less an audit of the trial than a picture of how reporting norms moved.
+            2015 paper substantively covers <strong>{_covered} of {len(CHECKLIST)} rows</strong>. The gaps are
+            <strong>data sharing (item 4)</strong> and <strong>patient and public involvement (item 8)</strong>.
+            CONSORT added both expectations after 2015. Partial items on allocation, sequence generation, and
+            the statistical analysis plan are reported in the supplementary appendix.
         </div>
         """
     )
@@ -932,7 +927,7 @@ def _(TRIAL, colors, mo):
     # ------------------------- PROVENANCE -------------------------
     provenance = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; color:{colors['muted']}; font-size:0.86rem;
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['muted']}; font-size:0.86rem;
                     border-top:1px solid {colors['grid']}; padding-top:12px; line-height:1.5;">
             <strong style="color:{colors['ink']};">Source & provenance.</strong>
             {TRIAL['citation']} DOI <a href="https://doi.org/{TRIAL['doi']}" style="color:{colors['standard']};">{TRIAL['doi']}</a>.
@@ -948,7 +943,7 @@ def _(TRIAL, colors, mo):
             90, and 172 over the median follow-up).
             Pre-randomisation screening and exclusion counts appear only in Figure 1 (image), which the
             retrieved full text does not contain; the flow diagram shows that gap rather than guessing.
-            CONSORT 2025 is applied here as a modern reading lens — it postdates the 2015 trial.
+            This audit applies CONSORT 2025 retrospectively; the checklist postdates the trial.
         </div>
         """
     )

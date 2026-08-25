@@ -4,7 +4,7 @@ description: >-
   Author a marimo notebook that reads a randomized controlled trial through the
   CONSORT 2025 checklist. Use when building a visual, auditable trial summary
   from a paper (PDF or verified public sources) for the rct-visualization repo.
-version: 1.2.0
+version: 1.3.0
 license: MIT
 metadata:
   hermes:
@@ -49,41 +49,60 @@ writing anything; your notebook should feel like it belongs next to it.
    The checklist table ends with a sentence on what the gap pattern says about
    how reporting norms moved.
 
-## The remarkable bar
+## Reading and writing standard
 
-A notebook is not finished when it has a title, a few charts, and a working
-WASM export. It earns attention by making the trial easier to think with:
+Use the Google Developer Documentation Style Guide, GitHub's guidance for clear
+change descriptions, and ASD-STE100 Simplified Technical English for notebook
+headings, prose, captions, labels, and callouts. These standards should make the
+writing easier to read without removing scientific detail or uncertainty.
 
-- **One evidence spine:** state the clinical decision, eligible population,
-  randomized contrast, primary outcome, uncertainty, and principal harm/benefit
-  before adding secondary detail.
-- **One memory figure:** choose the visual that makes the central result hard to
-  forget (NICE-SUGAR's 100-person mortality arrays; SPRINT/ISCHEMIA's temporal
-  risk curves or rate comparison when fixed denominators would mislead).
-- **One honest surprise:** make the result falsifiable and specific, not a
-  generic title such as "trial results visualized." The hero should let a reader
-  repeat the main conclusion in one sentence.
-- **Earned interactivity:** every control changes a meaningful view (units,
-  CONSORT section, subgroup, time horizon); do not add widgets as decoration.
-- **Visible limits:** missing data, post-randomization exclusions, open-label
-  design, platform-trial scope, and endpoint definitions should be readable at
-  the moment they matter, not buried only in a footer.
+- Put the clinical question and the main result first. Do not begin with a meta-
+  introduction such as "This notebook is not just...".
+- Use short, complete sentences with a clear subject and verb. Prefer active
+  voice, present tense, common words, and one main idea per sentence.
+- Use one term for one concept. Define an abbreviation or technical term when it
+  first appears. Do not replace a precise endpoint term with a vague synonym.
+- Avoid hype, vague praise, idioms, decorative metaphors, rhetorical questions,
+  forced contrasts, long `-ing` clauses, and abstract claims about importance.
+- Avoid em dashes in reusable prose. Use a period, comma, colon, or parentheses
+  when it makes the sentence clearer.
+- State who did what, when the actor matters. State the result and its limits in
+  the same passage. Do not make a result sound more certain to make the prose
+  shorter.
+- For each primary figure, write the caption in this order: what the marks show,
+  why this chart type fits the endpoint, and what conclusion or uncertainty the
+  reader should take from it.
+- Keep headings descriptive and in sentence case. Use bold for real emphasis,
+  not as a visual substitute for structure.
 
-The technical quality bar is in service of this reading experience: a beautiful
-but generic dashboard is a failed notebook, while a restrained notebook that
-makes one difficult trial unmistakable is a success.
+Before the verification gate, read the hero, section introductions, chart
+subtitles, callouts, and provenance footer as prose. Remove filler and repeated
+claims, then check that every clinical number still comes from the data cell.
+
+The notebook should have one evidence spine: clinical decision, eligible
+population, randomized contrast, primary outcome, uncertainty, and principal
+harm or benefit. Choose one memory figure that makes that result easy to recall,
+but keep the figure native to the endpoint. Every interactive control must change
+an analysis view, not decorate the page. Show missing data, exclusions,
+open-label design, platform scope, and endpoint definitions where they matter.
 
 ## Notebook structure (in this order)
 
 1. PEP 723 header: `requires-python >=3.12`; deps exactly
    `altair==6.1.0`, `marimo`, `polars==1.40.0`.
-2. Shared-visual-language cell: the `colors` dict, `FONT = "Georgia, serif"`,
-   `CHART_W = 600`, and helpers `style()`, `card()`, `box()`, `pill()` — copy
-   them verbatim from the exemplar so all notebooks in the repo look related.
-   Arm colors: harmful/exposed arm `#b3544c` (clay), reference/control arm
-   `#3f7d78` (teal), accent `#b48b32`. If the trial's "intensive" arm turned out
-   BENEFICIAL, keep red=exposed-arm but retitle the narrative around benefit;
-   do not silently swap colors mid-notebook.
+2. Shared-visual-language cell: the `colors` dict,
+   `FONT = "Inter, ui-sans-serif, system-ui, sans-serif"`, `CHART_W = 600`, and
+   helpers `style()`, `card()`, `box()`, `pill()` — copy them verbatim from the
+   exemplar so all notebooks in the repo look related.
+   Use the UF orange/blue system: core orange `#FA4616` for the exposed or
+   intervention arm, core blue `#0021A5` for the reference or control arm, dark
+   blue `#002657` for primary text, and Alachua gold `#F2A900` for emphasis.
+   Use Gator green `#22884C` for benefit, Bottlebrush red `#D32737` for harm,
+   and cool gray `#C7C9C8` for neutral elements. Use `#EAF6EE`, `#FFF4D6`,
+   `#FCEAEC`, and `#F0F1F3` as the matching benefit, warning, harm, and neutral
+   background tokens. Keep arm colors tied to the randomized assignment, not
+   to whether the result is beneficial. If an intervention arm is beneficial,
+   it stays orange.
 3. Data cell(s) — the single source of truth (principle 1).
 4. CONSORT checklist cell: a list of tuples
    `(section, item_id, topic, status, note)` covering all 30 top-level items of
@@ -201,7 +220,15 @@ uv run python /tmp/export_check.py
 
 - `EXPORT_OK` proves the file parses and cells compile.
 - Executing the exported script proves every cell runs top-to-bottom with no
-  NameError/marimo dependency errors (charts render as Altair specs; that is fine).
+  NameError/marimo dependency errors.
+- Export a no-code HTML app and inspect the rendered output in a browser or
+  screenshot. A valid Altair spec and a successful export do not prove that the
+  browser painted every mark.
+- If a small two-to-four-row `mo.ui.altair_chart` bar panel hydrates as axes
+  without marks in HTML or WASM, keep the reported data unchanged and replace
+  that panel with a tokenized native `mo.Html` horizontal bar display. Include
+  explicit labels and percentages plus `role="img"` and an `aria-label`, then
+  repeat the screenshot and WASM checks.
 - If `uv` is unavailable, use `pip install altair==6.1.0 polars==1.40.0 marimo`
   into a venv; the gate is execution, not the toolchain.
 

@@ -24,21 +24,25 @@ def _():
 
     # ---- Shared visual language (kept close to the site's other notebooks) ----
     colors = {
-        "ink": "#1f2933",
-        "muted": "#65717c",
+        "ink": "#002657",
+        "muted": "#5B6472",
         "paper": "#ffffff",
-        "panel": "#f5f3ef",
-        "panel2": "#e8ece8",
-        "grid": "#dde3e1",
-        "intensive": "#b3544c",   # the harmful arm -> clay red
-        "conventional": "#3f7d78",  # the reference arm -> teal
-        "accent": "#b48b32",
-        "good": "#3f7d78",
-        "warn": "#b48b32",
-        "bad": "#b3544c",
-        "dark": "#263238",
+        "panel": "#F5F7FC",
+        "panel2": "#FFF4EF",
+        "grid": "#C7C9C8",
+        "intensive": "#FA4616",   # intervention arm -> UF orange
+        "conventional": "#0021A5",  # reference arm -> UF blue
+        "accent": "#F2A900",
+        "good": "#22884C",
+        "warn": "#F2A900",
+        "bad": "#D32737",
+        "good_bg": "#EAF6EE",
+        "warn_bg": "#FFF4D6",
+        "bad_bg": "#FCEAEC",
+        "neutral_bg": "#F0F1F3",
+        "dark": "#002657",
     }
-    FONT = "Georgia, serif"
+    FONT = "Inter, ui-sans-serif, system-ui, sans-serif"
     CHART_W = 600
 
     def style(chart):
@@ -74,7 +78,7 @@ def _():
 
     def card(kicker, big, small, color):
         return f"""
-        <div style="background:#ffffff; border:1px solid #e1ddd4; border-radius:10px; padding:10px 12px;">
+        <div style="background:#ffffff; border:1px solid #D8D4D7; border-radius:10px; padding:10px 12px;">
             <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:{colors['muted']};">{kicker}</div>
             <div style="font-size:1.42rem; color:{color}; margin:1px 0;">{big}</div>
             <div style="font-size:0.86rem; color:{colors['muted']}; line-height:1.28;">{small}</div>
@@ -83,7 +87,7 @@ def _():
     def box(title, n, color, sub=""):
         sub_html = f'<div style="font-size:0.78rem; color:{colors["muted"]}; margin-top:2px;">{sub}</div>' if sub else ""
         return f"""
-        <div style="background:{colors['paper']}; border:1px solid #d9d4ca; border-left:4px solid {color};
+        <div style="background:{colors['paper']}; border:1px solid #D8D4D7; border-left:4px solid {color};
                     border-radius:8px; padding:8px 10px; text-align:center;">
             <div style="font-size:0.92rem; color:{colors['ink']};">{title}</div>
             <div style="font-size:1.25rem; color:{color}; font-weight:600;">n = {n:,}</div>
@@ -92,10 +96,10 @@ def _():
 
     def pill(status):
         spec = {
-            "reported": (colors["good"], "#e7f0ee", "Reported"),
-            "partial": (colors["warn"], "#f5eede", "Partial"),
-            "na": (colors["muted"], "#eceae5", "N/A"),
-            "gap": (colors["bad"], "#f3e2e0", "Not addressed"),
+            "reported": (colors["good"], colors["good_bg"], "Reported"),
+            "partial": (colors["warn"], colors["warn_bg"], "Partial"),
+            "na": (colors["muted"], colors["neutral_bg"], "N/A"),
+            "gap": (colors["bad"], colors["bad_bg"], "Not addressed"),
         }[status]
         fg, bg, label = spec
         return (
@@ -282,26 +286,24 @@ def _(ARMS, FLOW, FONT, TRIAL, colors, card, mo):
 
     hero = mo.Html(
         f"""
-        <div style="background:{colors['panel']}; border:1px solid #ddd8ce; border-radius:14px;
+        <div style="background:{colors['panel']}; border:1px solid #D8D4D7; border-radius:14px;
                     padding:18px 20px; font-family:{FONT}; color:{colors['ink']};">
             <div style="text-transform:uppercase; letter-spacing:0.15em; font-size:0.72rem;
                         color:{colors['muted']}; margin-bottom:0.5rem;">
                 A randomised trial, read through CONSORT 2025
             </div>
             <div style="font-size:1.82rem; line-height:1.12; margin-bottom:0.25rem;">{TRIAL['name']}</div>
-            <div style="font-size:1.0rem; color:#45515b; margin-bottom:0.35rem;">{TRIAL['title']}</div>
-            <div style="max-width:820px; font-size:0.96rem; line-height:1.42; color:#45515b; margin-bottom:0.85rem;">
-                This notebook is not just a visual summary; it is a CONSORT-shaped read of NICE-SUGAR.
-                The trial is mapped to the 2025 checklist from title and registration through flow,
-                intervention fidelity, baseline balance, effect estimates, harms, interpretation, and gaps.
-                That structure makes the central lesson harder to miss: intensive glucose control moved the
-                surrogate in the intended direction, but increased 90-day mortality.
+            <div style="font-size:1.0rem; color:#343741; margin-bottom:0.35rem;">{TRIAL['title']}</div>
+            <div style="max-width:820px; font-size:0.96rem; line-height:1.42; color:#343741; margin-bottom:0.85rem;">
+                Intensive glucose control reached the lower glucose target but increased 90-day mortality.
+                This notebook uses CONSORT 2025 to show how the trial was designed, delivered, analysed,
+                and reported.
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:8px;">
-                {card("Randomised", f"{FLOW['randomized']:,}", "critically ill adults, 42 ICUs", colors["ink"])}
-                {card("Intensive death", f"{_int_rate:.1f}%", f"{_int['deaths']:,} of {_int['n']:,} with 90-day outcome · target 81–108 mg/dL", colors["intensive"])}
-                {card("Conventional death", f"{_conv_rate:.1f}%", f"{_conv['deaths']:,} of {_conv['n']:,} with 90-day outcome · target ≤180 mg/dL", colors["conventional"])}
-                {card("Absolute harm", f"+{_ard:.1f} pts", f"1 extra death per {_nnh} treated (NNH)", colors["bad"])}
+                {card("Randomised population", f"{FLOW['randomized']:,}", "critically ill adults, 42 ICUs", colors["ink"])}
+                {card("Intervention: intensive control", f"{_int_rate:.1f}%", f"{_int['deaths']:,} of {_int['n']:,} with 90-day outcome · target 81–108 mg/dL", colors["intensive"])}
+                {card("Reference: conventional control", f"{_conv_rate:.1f}%", f"{_conv['deaths']:,} of {_conv['n']:,} with 90-day outcome · target ≤180 mg/dL", colors["conventional"])}
+                {card("Main contrast", f"+{_ard:.1f} pts", f"1 extra death per {_nnh} treated (NNH)", colors["bad"])}
             </div>
         </div>
         """
@@ -314,16 +316,15 @@ def _(ARMS, FLOW, FONT, TRIAL, colors, card, mo):
 def _(colors, mo):
     consort_blurb = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; color:{colors['ink']}; line-height:1.42;
-                    border:1px solid #ddd8ce; border-left:4px solid {colors['accent']};
-                    border-radius:10px; padding:10px 14px; background:#fffdf8;">
-            <strong>How the CONSORT adherence is made explicit.</strong>
-            Each section below is anchored to checklist items, not just to the paper's narrative order:
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']}; line-height:1.42;
+                    border:1px solid #D8D4D7; border-left:4px solid {colors['accent']};
+                    border-radius:10px; padding:10px 14px; background:#FFF4EF;">
+            <strong>CONSORT map.</strong>
+            Each section names the checklist items it addresses:
             design and eligibility (items 9, 11, 12), intervention specification and delivery (13, 24),
             participant flow (22), baseline balance (25), absolute and relative effects (26), harms (15, 27),
             open-science expectations (2–5), and interpretation/limitations (29–30).
-            The final table is the audit trail, showing what NICE-SUGAR reports, what is partial, and what
-            modern CONSORT adds beyond the 2009 article.
+            The final table separates reported, partial, not-applicable, and missing items.
         </div>
         """
     )
@@ -402,8 +403,8 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style, units):
             width=CHART_W,
             height=170,
             title=alt.TitleParams(
-                "Two targets, a real-world gap",
-                subtitle="Shaded bar = protocol target range · dot = time-weighted achieved mean glucose.",
+                "The assigned targets produced different glucose levels",
+                subtitle="The shaded bar shows the protocol target. The dot shows the time-weighted achieved mean.",
             ),
         )
     )
@@ -412,16 +413,16 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style, units):
         [
             mo.md(
                 """
-                ## Interventions & separation achieved
-                _CONSORT items 13 & 24 — the intervention as specified, and as actually delivered._
+                ## Intervention delivery
+                _CONSORT items 13 and 24. The chart compares the protocol targets with achieved glucose._
                 """
             ),
             units,
             mo.ui.altair_chart(interventions),
             mo.md(
                 "Insulin was given to **97%** of the intensive arm versus **69%** of the conventional arm. "
-                "The achieved means (115 vs 144 mg/dL) confirm the two arms truly separated — the contrast being "
-                "tested was real, which is what makes the mortality signal credible."
+                "The achieved means (115 vs 144 mg/dL) show that treatment delivery produced different "
+                "glucose levels in the two groups."
             ),
         ],
         gap=0.35,
@@ -437,7 +438,7 @@ def _(FLOW, box, colors, mo):
 
     flow_html = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; max-width:720px; margin:0 auto;">
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; max-width:720px; margin:0 auto;">
             {box("Assessed for eligibility", FLOW["screened"], colors["dark"])}
             <div style="display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:8px; margin:2px 0;">
                 <div style="text-align:center; color:{colors['muted']}; font-size:1.1rem;">↓</div>
@@ -472,7 +473,7 @@ def _(FLOW, box, colors, mo):
             mo.md(
                 """
                 ## Participant flow
-                _CONSORT item 22 — the diagram every trial report should carry, rebuilt here from the counts._
+                _CONSORT item 22. The diagram reconstructs participant flow from the reported counts._
                 """
             ),
             flow_html,
@@ -522,7 +523,7 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style):
         df, died = _waffle_df(arm, rate, color_key)
         status_scale = alt.Scale(
             domain=["Died by 90 days", "Survived"],
-            range=[colors[color_key], "#e7e2d8"],
+            range=[colors[color_key], colors["neutral_bg"]],
         )
         chart = alt.Chart(df).mark_square(size=150, cornerRadius=2).encode(
             x=alt.X("col:O", axis=None),
@@ -548,9 +549,13 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style):
         [
             mo.md(
                 """
-                ## Primary outcome — 90-day death, in absolute terms
-                _CONSORT item 26 asks for the **absolute** effect, not just the ratio. Each square is one patient
-                per hundred; the extra shaded squares on the left are the cost of intensive control._
+                ## Primary outcome: 90-day mortality
+                _CONSORT item 26._
+
+                **Read it as:** Each square represents one patient per 100. Filled squares represent death.
+
+                **Why this geometry:** The trial reports 90-day mortality with fixed group denominators, so a
+                10×10 array gives a valid absolute-risk comparison.
                 """
             ),
             mo.hstack(
@@ -562,8 +567,8 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style):
                 gap=0.6,
             ),
             mo.md(
-                f"**{_int['deaths']:,}/{_int['n']:,} ({_int_rate:.1f}%)** died with intensive control versus "
-                f"**{_conv['deaths']:,}/{_conv['n']:,} ({_conv_rate:.1f}%)** with conventional control — an absolute "
+                f"**What it says:** **{_int['deaths']:,}/{_int['n']:,} ({_int_rate:.1f}%)** died with intensive control versus "
+                f"**{_conv['deaths']:,}/{_conv['n']:,} ({_conv_rate:.1f}%)** with conventional control. The absolute "
                 f"increase of **{_int_rate - _conv_rate:.1f} percentage points** (P = 0.02)."
             ),
         ],
@@ -579,13 +584,13 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
     ef = pl.DataFrame(EFFECTS)
     order = [e["outcome"] for e in EFFECTS]
 
-    _rule = alt.Chart(ef).mark_rule(strokeWidth=2, color=colors["intensive"]).encode(
+    _rule = alt.Chart(ef).mark_rule(strokeWidth=2, color=colors["bad"]).encode(
         y=alt.Y("outcome:N", sort=order, title=None),
         x=alt.X("lo:Q", scale=alt.Scale(type="log", domain=[0.9, 30]),
                 title="Odds ratio (log scale) — intensive vs conventional"),
         x2="hi:Q",
     )
-    _pt = alt.Chart(ef).mark_point(size=110, filled=True, color=colors["intensive"]).encode(
+    _pt = alt.Chart(ef).mark_point(size=110, filled=True, color=colors["bad"]).encode(
         y=alt.Y("outcome:N", sort=order),
         x="or:Q",
         tooltip=[
@@ -604,8 +609,8 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
             width=CHART_W,
             height=170,
             title=alt.TitleParams(
-                "Everything points the same way — toward harm",
-                subtitle="Odds ratios with 95% CI. The dashed line is OR = 1 (no effect); all intervals sit to its right.",
+                "Intensive control increased mortality and severe hypoglycaemia",
+                subtitle="Points show odds ratios; rules show 95% CIs. The dashed line marks OR = 1.",
             ),
         )
     )
@@ -615,8 +620,7 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
             mo.md(
                 """
                 ## Effect estimates
-                _CONSORT item 26 — relative effects with precision. Both the mortality signal and the
-                hypoglycaemia harm exclude OR = 1._
+                _CONSORT item 26. The 95% CIs for mortality and severe hypoglycaemia exclude OR = 1._
                 """
             ),
             mo.ui.altair_chart(forest),
@@ -636,23 +640,22 @@ def _(ARMS, SECONDARY, colors, mo, pill):
         ## Harms & secondary outcomes
         _CONSORT items 15 & 27 (harms) and 26 (secondary outcomes)._
 
-        The mechanism of harm is visible in the safety data: **severe hypoglycaemia** (≤40 mg/dL) struck
+        **Severe hypoglycaemia** (≤40 mg/dL) occurred in
         **{_int['hypo']} patients ({_int['hypo_pct']}%)** on intensive control versus **{_conv['hypo']}
-        ({_conv['hypo_pct']}%)** on conventional control — a roughly **15-fold** increase.
+        ({_conv['hypo_pct']}%)** on conventional control, about **15 times** as often.
 
-        Every prespecified **secondary outcome** showed no significant between-group difference:
-        {", ".join(SECONDARY[:-1])}, and {SECONDARY[-1].lower()}. The trial's story is carried entirely by the
-        primary mortality endpoint and the hypoglycaemia harm.
+        No prespecified **secondary outcome** showed a significant between-group difference:
+        {", ".join(SECONDARY[:-1])}, and {SECONDARY[-1].lower()}.
         """
     )
 
     harms_note = mo.Html(
         f"""
         <div style="background:{colors['panel2']}; border-left:4px solid {colors['bad']};
-                    border-radius:8px; padding:12px 16px; font-family:Georgia, serif; color:{colors['ink']};">
-            <strong>Why it matters:</strong> a therapy can move a surrogate (blood glucose) in the "right"
-            direction and still kill more patients. NICE-SUGAR is the trial that made "normalise the number"
-            stop being the goal in the ICU. {pill("reported")} harms were reported systematically.
+                    border-radius:8px; padding:12px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
+            <strong>Clinical interpretation:</strong> blood glucose is a surrogate outcome. Intensive control
+            lowered glucose but increased mortality. {pill("reported")} The report also quantified severe
+            hypoglycaemia.
         </div>
         """
     )
@@ -665,25 +668,25 @@ def _(TRIAL, colors, mo):
     # --------------------------- OPEN SCIENCE ---------------------------
     open_science = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; color:{colors['ink']};">
-            <h2 style="font-family:Georgia, serif;">Open science</h2>
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
+            <h2 style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">Open science</h2>
             <p style="color:{colors['muted']}; margin-top:-0.4rem;">
-                <em>CONSORT 2025's newest section (items 2–5) — the part a 2009 trial only half satisfies.</em>
+                <em>CONSORT 2025 items 2–5 cover registration, protocol access, data sharing, funding, and conflicts.</em>
             </p>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Registration (item 2)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">{TRIAL['registration']}</div>
                 </div>
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Protocol & SAP (item 3)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">Published separately</div>
                 </div>
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Data sharing (item 4)</div>
                     <div style="color:{colors['bad']}; font-size:1.0rem;">Not addressed (2009)</div>
                 </div>
-                <div style="background:#fff; border:1px solid #e1ddd4; border-radius:10px; padding:12px 14px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
                     <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Funding & COI (item 5)</div>
                     <div style="color:{colors['good']}; font-size:1.0rem;">Disclosed; no funder role</div>
                 </div>
@@ -720,8 +723,8 @@ def _(CHECKLIST, colors, mo, pill, section):
 
     checklist_html = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif;">
-            <table style="border-collapse:collapse; width:100%; font-family:Georgia, serif;">
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
+            <table style="border-collapse:collapse; width:100%; font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
                 <thead>
                     <tr style="border-bottom:2px solid {colors['grid']}; text-align:left;
                                font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:{colors['muted']};">
@@ -740,13 +743,13 @@ def _(CHECKLIST, colors, mo, pill, section):
 
     coverage_note = mo.Html(
         f"""
-        <div style="background:{colors['panel']}; border:1px solid #ddd8ce; border-radius:10px;
-                    padding:14px 16px; font-family:Georgia, serif; color:{colors['ink']};">
+        <div style="background:{colors['panel']}; border:1px solid #D8D4D7; border-radius:10px;
+                    padding:14px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
             Of the {_top_level_items} top-level CONSORT 2025 items ({len(CHECKLIST)} checklist rows), this
-            2009 paper substantively covers <strong>{_covered} of {len(CHECKLIST)} rows</strong>. The clearest gaps — <strong>data sharing (item 4)</strong> and
-            <strong>patient &amp; public involvement (item 8)</strong> — are exactly the expectations CONSORT
-            <em>added after</em> 2009. Reading an old landmark against a new checklist is less an audit of the
-            trial than a picture of how reporting norms moved.
+            2009 paper substantively covers <strong>{_covered} of {len(CHECKLIST)} rows</strong>. The gaps are
+            <strong>data sharing (item 4)</strong> and <strong>patient and public involvement (item 8)</strong>.
+            CONSORT added both expectations after 2009. This retrospective audit shows how reporting
+            requirements changed.
         </div>
         """
     )
@@ -785,7 +788,7 @@ def _(TRIAL, colors, mo):
     # ------------------------- PROVENANCE -------------------------
     provenance = mo.Html(
         f"""
-        <div style="font-family:Georgia, serif; color:{colors['muted']}; font-size:0.86rem;
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['muted']}; font-size:0.86rem;
                     border-top:1px solid {colors['grid']}; padding-top:12px; line-height:1.5;">
             <strong style="color:{colors['ink']};">Source & provenance.</strong>
             {TRIAL['citation']} DOI <a href="https://doi.org/{TRIAL['doi']}" style="color:{colors['conventional']};">{TRIAL['doi']}</a>.
@@ -793,7 +796,7 @@ def _(TRIAL, colors, mo):
             Every figure is rendered from the data literals near the top of this notebook. Where the paper
             reported only percentages, denominators were reconstructed so the arithmetic reproduces the
             published rates (e.g. 829/3,010 = 27.5%); the icon array rounds each rate to the nearest whole
-            square. CONSORT 2025 is applied here as a modern reading lens — it postdates the 2009 trial.
+            square. This audit applies CONSORT 2025 retrospectively; the checklist postdates the trial.
         </div>
         """
     )
