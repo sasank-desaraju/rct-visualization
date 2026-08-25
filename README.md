@@ -1,35 +1,24 @@
-# rct-visualization
+# RCT Visualization
 
 Landmark randomized controlled trials, made easier to read.
 
-Reading a trial straight from the journal is hard work. One article carries the
-design, the population, the comparison, the outcomes, and every caveat, mostly in
-long paragraphs and footnoted tables. Specialists learn to mine it. Most other
-readers bounce off.
+Randomized Controlled Trials (RCT) are the gold standard of medical evidence for new interventions.
+However, their dense journal articles can be difficult to read.
+This repository is about reproducible visual artifacts of RCTs.
 
-Each notebook here rebuilds one published trial as a reactive
-[marimo](https://marimo.io) notebook, laid out along
-[CONSORT 2025](https://pubmed.ncbi.nlm.nih.gov/40228833/), the reporting standard
-for randomized trials. The same evidence arrives as a sequence of figures: the
-question, who was studied, what was compared, the result, and how much
-uncertainty is left. Every number is transcribed from the paper and carries its
-source in a comment beside it, so the visual version stays true to the original.
+Each example notebook here rebuilds one published trial as a reactive [marimo](https://marimo.io) notebook,
+structured using the [CONSORT 2025](https://pubmed.ncbi.nlm.nih.gov/40228833/) reporting standard for randomized trials.
 
-It is a method, not a chart gallery: a repeatable way to take a dense paper and
-turn it into something a much wider audience can actually get through.
+## Examples
 
-## The four trials
 
-The same method holds whether the trial says yes, no, or "it caused harm." That
-is the point. Read across these four and the shape of the evidence, not the
-headline, is what you remember.
 
 | Trial | Clinical question | Headline result (from the notebook) |
 |---|---|---|
 | [**NICE-SUGAR**](notebooks/nice-sugar.py) (NEJM 2009) | In critically ill adults, does tight glucose control (81–108 mg/dL) beat conventional control? | It caused harm. 90-day mortality 27.5% vs 24.9%, odds ratio 1.14 (95% CI 1.02–1.28). Severe hypoglycemia 6.8% vs 0.5%. |
 | [**RECOVERY · Dexamethasone**](notebooks/recovery-dexamethasone.py) (NEJM 2020) | In hospitalized Covid-19 patients, does dexamethasone reduce 28-day death? | Yes, but only for the sick end. Overall rate ratio 0.83 (0.75–0.93); 0.64 (0.51–0.81) on ventilation; 1.19 (0.91–1.55) on no oxygen. |
 | [**SPRINT**](notebooks/sprint.py) (NEJM 2015) | Does a systolic target below 120 mm Hg beat below 140 in high-risk adults? | Yes, and it stopped early. Primary composite hazard ratio 0.75 (0.64–0.89); all-cause death 0.73 (0.60–0.90). |
-| [**ISCHEMIA**](notebooks/ischemia.py) (NEJM 2020) | In stable coronary disease, does an initial invasive strategy beat a conservative one? | No clear difference. Primary composite hazard ratio 0.93 (0.80–1.08), p = 0.34. |
+| [**ISCHEMIA**](notebooks/ischemia.py) (NEJM 2020) | In stable coronary disease, does an initial invasive strategy (surgery) beat a conservative one? | No clear difference. Primary composite hazard ratio 0.93 (0.80–1.08), p = 0.34. |
 
 Each headline above is one line from a notebook that walks you through the full
 result. Open any notebook to read the question, the population, the comparison,
