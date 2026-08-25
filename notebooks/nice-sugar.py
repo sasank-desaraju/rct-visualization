@@ -13,7 +13,6 @@ import marimo
 __generated_with = "0.17.8"
 app = marimo.App(width="medium")
 
-
 @app.cell
 def _():
     import altair as alt
@@ -109,7 +108,6 @@ def _():
 
     return CHART_W, FONT, alt, box, card, colors, mo, pill, pl, style
 
-
 @app.cell
 def _():
     # =====================================================================
@@ -198,14 +196,13 @@ def _():
     ]
     return ARMS, BASELINE, EFFECTS, FLOW, SECONDARY, TRIAL
 
-
 @app.cell
 def _():
     # ------------------------------------------------------------------
     # CONSORT 2025 checklist (Hopewell S, et al. BMJ 2025;388:e081123),
     # each item paired with how NICE-SUGAR (2009) reports it.
     # status: reported | partial | na | gap
-    # group is the top-level CONSORT section used by the section filter.
+    # group is the visible top-level CONSORT chapter used by the inline reader.
     # ------------------------------------------------------------------
     CHECKLIST = [
         ("Title and abstract", "1a", "Identification as a randomised trial", "reported", "“Randomised” stated in title & abstract"),
@@ -253,23 +250,16 @@ def _():
     ]
     return (CHECKLIST,)
 
-
 @app.cell
-def _(CHECKLIST, mo):
-    # Interactive controls — always shown (works in script/run/edit modes).
+def _(mo):
+    # Interactive control used by the intervention-delivery figure.
     units = mo.ui.radio(
         options=["mg/dL", "mmol/L"],
         value="mg/dL",
         label="Glucose units",
         inline=True,
     )
-    section = mo.ui.dropdown(
-        options=["All sections"] + list(dict.fromkeys(row[0] for row in CHECKLIST)),
-        value="All sections",
-        label="CONSORT section",
-    )
-    return section, units
-
+    return (units,)
 
 @app.cell
 def _(ARMS, FLOW, FONT, TRIAL, colors, card, mo):
@@ -311,32 +301,201 @@ def _(ARMS, FLOW, FONT, TRIAL, colors, card, mo):
     hero
     return
 
+@app.cell
+def _(CHECKLIST, FONT, colors, mo, pill):
+    # Shared inline CONSORT reader. The checklist guides the visible notebook.
+    _section_order = [
+        "Title and abstract",
+        "Open science",
+        "Introduction",
+        "Methods",
+        "Results",
+        "Discussion",
+    ]
+
+    def _slug(section_name):
+        return section_name.lower().replace(" ", "-").replace("&", "and")
+
+    def _section_rows(section_name):
+        return [row for row in CHECKLIST if row[0] == section_name]
+
+    def _status_counts(rows):
+        counts = {"reported": 0, "partial": 0, "na": 0, "gap": 0}
+        for row in rows:
+            counts[row[3]] += 1
+        return counts
+
+    def chapter_header(section_name, intro):
+        rows = _section_rows(section_name)
+        counts = _status_counts(rows)
+        status_html = " ".join(
+            f"{pill(status)} <span style='color:{colors['muted']}; font-size:0.78rem; margin-right:8px;'>{count}</span>"
+            for status, count in counts.items()
+            if count
+        )
+        return mo.Html(
+            f"""
+            <div id="{_slug(section_name)}" style="scroll-margin-top:24px; border-top:1px solid {colors['grid']}; padding-top:18px; font-family:{FONT};">
+                <div style="display:flex; justify-content:space-between; gap:16px; align-items:flex-start; flex-wrap:wrap;">
+                    <div>
+                        <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:{colors['muted']};">CONSORT 2025 chapter</div>
+                        <h2 style="font-family:{FONT}; color:{colors['dark']}; margin:2px 0 4px;">{section_name}</h2>
+                        <div style="color:{colors['muted']}; max-width:760px; line-height:1.42;">{intro}</div>
+                    </div>
+                    <div style="display:flex; align-items:center; flex-wrap:wrap; gap:4px; padding-top:4px;">{status_html}</div>
+                </div>
+            </div>
+            """
+        )
+
+    def consort_items(item_ids, title=""):
+        wanted = set(item_ids)
+        rows = [row for row in CHECKLIST if row[1] in wanted]
+        title_html = (
+            f'<h3 style="font-family:{FONT}; color:{colors["dark"]}; margin:0 0 8px; font-size:1.02rem;">{title}</h3>'
+            if title
+            else ""
+        )
+        rows_html = "".join(
+            f"""
+            <div style="display:grid; grid-template-columns:minmax(42px,auto) minmax(0,1fr) auto; gap:10px; align-items:start;
+                        padding:9px 0; border-top:1px solid {colors['grid']};">
+                <div style="font-size:0.78rem; font-weight:700; color:{colors['dark']}; padding-top:2px;">{item}</div>
+                <div>
+                    <div style="font-size:0.88rem; font-weight:650; color:{colors['ink']};">{topic}</div>
+                    <div style="font-size:0.82rem; color:{colors['muted']}; line-height:1.38; margin-top:2px;">{note}</div>
+                </div>
+                <div>{pill(status)}</div>
+            </div>
+            """
+            for _section, item, topic, status, note in rows
+        )
+        return mo.Html(
+            f"""
+            <div style="font-family:{FONT}; background:{colors['paper']}; border:1px solid {colors['grid']};
+                        border-radius:10px; padding:11px 14px;">{title_html}{rows_html}</div>
+            """
+        )
+
+    def section_nav():
+        nav_items = []
+        for section_name in _section_order:
+            rows = _section_rows(section_name)
+            counts = _status_counts(rows)
+            covered = counts["reported"] + counts["partial"]
+            gap_text = f", {counts['gap']} gap" if counts["gap"] else ""
+            nav_items.append(
+                f"[{section_name}](#{_slug(section_name)}) ({covered}/{len(rows)} covered{gap_text})"
+            )
+        return mo.md("**Read the trial by CONSORT section**\n\n" + " · ".join(nav_items))
+
+    def coverage_summary():
+        counts = _status_counts(CHECKLIST)
+        covered = counts["reported"] + counts["partial"]
+        top_level = len({"".join(ch for ch in row[1] if ch.isdigit()) for row in CHECKLIST})
+        gaps = [f"item {row[1]} ({row[2].lower()})" for row in CHECKLIST if row[3] == "gap"]
+        return mo.Html(
+            f"""
+            <div style="font-family:{FONT}; background:{colors['panel']}; border:1px solid {colors['grid']};
+                        border-radius:10px; padding:14px 16px; color:{colors['ink']};">
+                <h2 style="font-family:{FONT}; margin:0 0 6px; color:{colors['dark']};">Coverage summary</h2>
+                <div style="margin-bottom:8px;">
+                    {pill('reported')} {counts['reported']} &nbsp; {pill('partial')} {counts['partial']} &nbsp;
+                    {pill('na')} {counts['na']} &nbsp; {pill('gap')} {counts['gap']}
+                </div>
+                Of the <strong>{top_level} top-level CONSORT 2025 items ({len(CHECKLIST)} reporting rows)</strong>,
+                the 2009 report substantively covers <strong>{covered} rows</strong>. The gaps are
+                <strong>{' and '.join(gaps)}</strong>. Both expectations became standard after this trial was published.
+                See <a href="#open-science">Open science</a> for item 4 and <a href="#methods">Methods</a> for item 8;
+                the complete evidence appears inline across the six chapters above.
+            </div>
+            """
+        )
+
+    return chapter_header, consort_items, coverage_summary, section_nav
 
 @app.cell
-def _(colors, mo):
-    consort_blurb = mo.Html(
+def _(section_nav):
+    navigator = section_nav()
+    navigator
+    return
+
+@app.cell
+def _(chapter_header, consort_items, mo):
+    title_abstract_view = mo.vstack(
+        [
+            chapter_header(
+                "Title and abstract",
+                "Can a reader identify the study as randomised and understand its design, participants, interventions, and main result from the title and abstract?",
+            ),
+            consort_items(["1a", "1b"]),
+        ],
+        gap=0.35,
+    )
+    title_abstract_view
+    return
+
+@app.cell
+def _(TRIAL, chapter_header, colors, consort_items, mo):
+    # --------------------------- OPEN SCIENCE ---------------------------
+    open_science_cards = mo.Html(
         f"""
-        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']}; line-height:1.42;
-                    border:1px solid #D8D4D7; border-left:4px solid {colors['accent']};
-                    border-radius:10px; padding:10px 14px; background:#FFF4EF;">
-            <strong>CONSORT map.</strong>
-            Each section names the checklist items it addresses:
-            design and eligibility (items 9, 11, 12), intervention specification and delivery (13, 24),
-            participant flow (22), baseline balance (25), absolute and relative effects (26), harms (15, 27),
-            open-science expectations (2–5), and interpretation/limitations (29–30).
-            The final table separates reported, partial, not-applicable, and missing items.
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
+                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Registration (item 2)</div>
+                    <div style="color:{colors['good']}; font-size:1.0rem;">{TRIAL['registration']}</div>
+                </div>
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
+                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Protocol & SAP (item 3)</div>
+                    <div style="color:{colors['good']}; font-size:1.0rem;">Published separately</div>
+                </div>
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
+                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Data sharing (item 4)</div>
+                    <div style="color:{colors['bad']}; font-size:1.0rem;">Not addressed (2009)</div>
+                </div>
+                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
+                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Funding & COI (item 5)</div>
+                    <div style="color:{colors['good']}; font-size:1.0rem;">Disclosed; no funder role</div>
+                </div>
+            </div>
         </div>
         """
     )
-    consort_blurb
+    open_science_view = mo.vstack(
+        [
+            chapter_header(
+                "Open science",
+                "Registration, protocol access, data availability, funding, and conflicts determine whether readers can audit and reuse the trial.",
+            ),
+            consort_items(["2", "3", "4", "5a", "5b"]),
+            open_science_cards,
+        ],
+        gap=0.35,
+    )
+    open_science_view
     return
 
+@app.cell
+def _(chapter_header, consort_items, mo):
+    introduction_view = mo.vstack(
+        [
+            chapter_header(
+                "Introduction",
+                "Why was the trial needed, and which benefit and harm question did the investigators test?",
+            ),
+            consort_items(["6", "7"]),
+        ],
+        gap=0.35,
+    )
+    introduction_view
+    return
 
 @app.cell
-def _(TRIAL, mo):
+def _(TRIAL, chapter_header, consort_items, mo):
     design = mo.md(
         f"""
-        ## The design in one paragraph
+        ### Trial design in one paragraph
 
         **{TRIAL['name']}** was a multicentre, parallel-group, **open-label** randomised controlled trial with
         blinded, objective outcome ascertainment (all-cause death). Adults expected to need **≥3 days** of intensive
@@ -344,16 +503,91 @@ def _(TRIAL, mo):
         *intensive* glucose control (target **81–108 mg/dL**) or *conventional* control (target **≤180 mg/dL**), both
         delivered by intravenous insulin. The analysis was **intention-to-treat**. Recruitment ran {TRIAL['recruitment']}
         across {TRIAL['centers']} ICUs ({TRIAL['geography']}).
-
-        _CONSORT items 1, 9, 11, 12, 17–21._
         """
     )
-    design
+    methods_view = mo.vstack(
+        [
+            chapter_header(
+                "Methods",
+                "How was the trial planned, who was eligible, what care was assigned, and how were bias and uncertainty handled?",
+            ),
+            consort_items(["8", "9", "10", "11", "12a", "12b"], "Design, setting, and participants"),
+            design,
+            consort_items(["13", "14", "15"], "Interventions, outcomes, and harms assessment"),
+            consort_items(
+                ["16a", "16b", "17a", "17b", "18", "19", "20a", "20b", "21a", "21b", "21c", "21d"],
+                "Sample size, randomisation, masking, and analysis",
+            ),
+        ],
+        gap=0.45,
+    )
+    methods_view
     return
 
+@app.cell
+def _(chapter_header):
+    results_header = chapter_header(
+        "Results",
+        "Who entered the trial, what treatment they received, and what benefits, harms, and uncertainties were observed?",
+    )
+    results_header
+    return
 
 @app.cell
-def _(ARMS, CHART_W, alt, colors, mo, pl, style, units):
+def _(FLOW, box, colors, consort_items, mo):
+    # ----------------------- CONSORT FLOW DIAGRAM -----------------------
+    arrow = f'<div style="text-align:center; color:{colors["muted"]}; font-size:1.1rem; line-height:1;">↓</div>'
+
+    flow_html = mo.Html(
+        f"""
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; max-width:720px; margin:0 auto;">
+            {box("Assessed for eligibility", FLOW["screened"], colors["dark"])}
+            <div style="display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:8px; margin:2px 0;">
+                <div style="text-align:center; color:{colors['muted']}; font-size:1.1rem;">↓</div>
+                <div style="border-left:2px dashed {colors['grid']}; padding-left:12px;">
+                    {box("Excluded", FLOW["excluded_before"], colors["muted"], "not eligible or no consent")}
+                </div>
+            </div>
+            {box("Randomised", FLOW["randomized"], colors["accent"])}
+            {arrow}
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                <div style="display:grid; gap:6px;">
+                    {box("Allocated: intensive control", FLOW["int_assigned"], colors["intensive"])}
+                    {arrow}
+                    {box("Excluded from analysis", FLOW["int_excluded"], colors["muted"], "withdrew consent / no primary data")}
+                    {arrow}
+                    {box("Analysed for primary outcome", FLOW["int_analyzed"], colors["intensive"])}
+                </div>
+                <div style="display:grid; gap:6px;">
+                    {box("Allocated: conventional control", FLOW["conv_assigned"], colors["conventional"])}
+                    {arrow}
+                    {box("Excluded from analysis", FLOW["conv_excluded"], colors["muted"], "withdrew consent / no primary data")}
+                    {arrow}
+                    {box("Analysed for primary outcome", FLOW["conv_analyzed"], colors["conventional"])}
+                </div>
+            </div>
+        </div>
+        """
+    )
+
+    flow_view = mo.vstack(
+        [
+            consort_items(["22a", "22b", "23a", "23b"], "Participant flow and recruitment"),
+            mo.md(
+                """
+                ### Participant flow
+                _The diagram reconstructs participant flow from the reported counts._
+                """
+            ),
+            flow_html,
+        ],
+        gap=0.35,
+    )
+    flow_view
+    return
+
+@app.cell
+def _(ARMS, CHART_W, alt, colors, consort_items, mo, pl, style, units):
     # ------------- INTERVENTIONS: target bands + achieved mean -------------
     factor = 1.0 if units.value == "mg/dL" else 1 / 18.0
     unit = units.value
@@ -411,10 +645,11 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style, units):
 
     interventions_view = mo.vstack(
         [
+            consort_items(["24a", "24b"], "Intervention delivery and concomitant care"),
             mo.md(
                 """
-                ## Intervention delivery
-                _CONSORT items 13 and 24. The chart compares the protocol targets with achieved glucose._
+                ### Intervention delivery
+                _The chart compares the protocol targets with achieved glucose._
                 """
             ),
             units,
@@ -430,78 +665,26 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style, units):
     interventions_view
     return
 
-
 @app.cell
-def _(FLOW, box, colors, mo):
-    # ----------------------- CONSORT FLOW DIAGRAM -----------------------
-    arrow = f'<div style="text-align:center; color:{colors["muted"]}; font-size:1.1rem; line-height:1;">↓</div>'
-
-    flow_html = mo.Html(
-        f"""
-        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; max-width:720px; margin:0 auto;">
-            {box("Assessed for eligibility", FLOW["screened"], colors["dark"])}
-            <div style="display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:8px; margin:2px 0;">
-                <div style="text-align:center; color:{colors['muted']}; font-size:1.1rem;">↓</div>
-                <div style="border-left:2px dashed {colors['grid']}; padding-left:12px;">
-                    {box("Excluded", FLOW["excluded_before"], colors["muted"], "not eligible or no consent")}
-                </div>
-            </div>
-            {box("Randomised", FLOW["randomized"], colors["accent"])}
-            {arrow}
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-                <div style="display:grid; gap:6px;">
-                    {box("Allocated: intensive control", FLOW["int_assigned"], colors["intensive"])}
-                    {arrow}
-                    {box("Excluded from analysis", FLOW["int_excluded"], colors["muted"], "withdrew consent / no primary data")}
-                    {arrow}
-                    {box("Analysed for primary outcome", FLOW["int_analyzed"], colors["intensive"])}
-                </div>
-                <div style="display:grid; gap:6px;">
-                    {box("Allocated: conventional control", FLOW["conv_assigned"], colors["conventional"])}
-                    {arrow}
-                    {box("Excluded from analysis", FLOW["conv_excluded"], colors["muted"], "withdrew consent / no primary data")}
-                    {arrow}
-                    {box("Analysed for primary outcome", FLOW["conv_analyzed"], colors["conventional"])}
-                </div>
-            </div>
-        </div>
-        """
-    )
-
-    flow_view = mo.vstack(
-        [
-            mo.md(
-                """
-                ## Participant flow
-                _CONSORT item 22. The diagram reconstructs participant flow from the reported counts._
-                """
-            ),
-            flow_html,
-        ],
-        gap=0.35,
-    )
-    flow_view
-    return
-
-
-@app.cell
-def _(BASELINE, mo):
+def _(BASELINE, consort_items, mo):
     # --------------------------- BASELINE ---------------------------
     _rows = "\n".join(f"| {label} | {value} |" for label, value in BASELINE)
     baseline_text = (
-        "## Baseline characteristics\n"
-        "_CONSORT item 25. Overall cohort (n = 6,104); the trial reported the two groups were well balanced._\n\n"
+        "### Baseline characteristics\n"
+        "_Overall cohort (n = 6,104); the trial reported that the groups were well balanced._\n\n"
         "| Characteristic | Value |\n"
         "|:---|:---|\n"
         f"{_rows}"
     )
-    baseline_view = mo.md(baseline_text)
+    baseline_view = mo.vstack(
+        [consort_items(["25"], "Baseline data"), mo.md(baseline_text)],
+        gap=0.35,
+    )
     baseline_view
     return
 
-
 @app.cell
-def _(ARMS, CHART_W, alt, colors, mo, pl, style):
+def _(ARMS, CHART_W, alt, colors, consort_items, mo, pl, style):
     # ---------- PRIMARY OUTCOME: absolute risk as an icon array ----------
     # Each square = one patient per 100. Died squares are filled first.
     def _waffle_df(arm, rate, color_key):
@@ -547,11 +730,10 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style):
 
     waffle_view = mo.vstack(
         [
+            consort_items(["26"], "Numbers analysed, outcomes, and estimation"),
             mo.md(
                 """
-                ## Primary outcome: 90-day mortality
-                _CONSORT item 26._
-
+                ### Primary outcome: 90-day mortality
                 **Read it as:** Each square represents one patient per 100. Filled squares represent death.
 
                 **Why this geometry:** The trial reports 90-day mortality with fixed group denominators, so a
@@ -576,7 +758,6 @@ def _(ARMS, CHART_W, alt, colors, mo, pl, style):
     )
     waffle_view
     return
-
 
 @app.cell
 def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
@@ -619,8 +800,8 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
         [
             mo.md(
                 """
-                ## Effect estimates
-                _CONSORT item 26. The 95% CIs for mortality and severe hypoglycaemia exclude OR = 1._
+                ### Relative effect estimates
+                _The 95% CIs for mortality and severe hypoglycaemia exclude OR = 1._
                 """
             ),
             mo.ui.altair_chart(forest),
@@ -630,15 +811,14 @@ def _(CHART_W, EFFECTS, alt, colors, mo, pl, style):
     forest_view
     return
 
-
 @app.cell
-def _(ARMS, SECONDARY, colors, mo, pill):
+def _(ARMS, SECONDARY, colors, consort_items, mo, pill):
     # ------------------------- HARMS + SECONDARY -------------------------
     _int, _conv = ARMS[0], ARMS[1]
     harms_md = mo.md(
         f"""
-        ## Harms & secondary outcomes
-        _CONSORT items 15 & 27 (harms) and 26 (secondary outcomes)._
+        ### Harms and secondary outcomes
+        _The report gives severe-hypoglycaemia counts and prespecified secondary outcomes._
 
         **Severe hypoglycaemia** (≤40 mg/dL) occurred in
         **{_int['hypo']} patients ({_int['hypo_pct']}%)** on intensive control versus **{_conv['hypo']}
@@ -659,129 +839,41 @@ def _(ARMS, SECONDARY, colors, mo, pill):
         </div>
         """
     )
-    mo.vstack([harms_md, harms_note], gap=0.35)
+    mo.vstack([consort_items(["27", "28"], "Harms and ancillary analyses"), harms_md, harms_note], gap=0.35)
     return
 
-
 @app.cell
-def _(TRIAL, colors, mo):
-    # --------------------------- OPEN SCIENCE ---------------------------
-    open_science = mo.Html(
+def _(chapter_header, colors, consort_items, mo):
+    discussion_note = mo.Html(
         f"""
-        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
-            <h2 style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">Open science</h2>
-            <p style="color:{colors['muted']}; margin-top:-0.4rem;">
-                <em>CONSORT 2025 items 2–5 cover registration, protocol access, data sharing, funding, and conflicts.</em>
-            </p>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
-                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
-                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Registration (item 2)</div>
-                    <div style="color:{colors['good']}; font-size:1.0rem;">{TRIAL['registration']}</div>
-                </div>
-                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
-                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Protocol & SAP (item 3)</div>
-                    <div style="color:{colors['good']}; font-size:1.0rem;">Published separately</div>
-                </div>
-                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
-                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Data sharing (item 4)</div>
-                    <div style="color:{colors['bad']}; font-size:1.0rem;">Not addressed (2009)</div>
-                </div>
-                <div style="background:#fff; border:1px solid #D8D4D7; border-radius:10px; padding:12px 14px;">
-                    <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:{colors['muted']};">Funding & COI (item 5)</div>
-                    <div style="color:{colors['good']}; font-size:1.0rem;">Disclosed; no funder role</div>
-                </div>
-            </div>
+        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif; background:{colors['panel2']};
+                    border-left:4px solid {colors['bad']}; border-radius:8px; padding:12px 16px; color:{colors['ink']};">
+            <strong>Interpretation.</strong> Intensive glucose control lowered the surrogate measure but increased
+            mortality, so the trial supports conventional rather than intensive control in this population.
+            The open-label design, use of a single glucose-control algorithm, and participating ICU settings limit
+            how broadly the result can be generalized.
         </div>
         """
     )
-    open_science
-    return
-
-
-@app.cell
-def _(CHECKLIST, colors, mo, pill, section):
-    # ---------------- CONSORT 2025 CHECKLIST COVERAGE ----------------
-    _sel = section.value
-    _rows_data = [r for r in CHECKLIST if _sel == "All sections" or r[0] == _sel]
-
-    _counts = {"reported": 0, "partial": 0, "na": 0, "gap": 0}
-    for _r in CHECKLIST:
-        _counts[_r[3]] += 1
-    _covered = _counts["reported"] + _counts["partial"]
-    _top_level_items = len({"".join(ch for ch in row[1] if ch.isdigit()) for row in CHECKLIST})
-
-    _table_rows = "".join(
-        f"""<tr>
-            <td style="padding:6px 10px; color:{colors['muted']}; white-space:nowrap;">{grp}</td>
-            <td style="padding:6px 10px; font-variant-numeric:tabular-nums; color:{colors['ink']};">{num}</td>
-            <td style="padding:6px 10px; color:{colors['ink']};">{topic}</td>
-            <td style="padding:6px 10px;">{pill(status)}</td>
-            <td style="padding:6px 10px; color:{colors['muted']}; font-size:0.85rem;">{note}</td>
-        </tr>"""
-        for grp, num, topic, status, note in _rows_data
-    )
-
-    checklist_html = mo.Html(
-        f"""
-        <div style="font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
-            <table style="border-collapse:collapse; width:100%; font-family:Inter, ui-sans-serif, system-ui, sans-serif;">
-                <thead>
-                    <tr style="border-bottom:2px solid {colors['grid']}; text-align:left;
-                               font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:{colors['muted']};">
-                        <th style="padding:6px 10px;">Section</th>
-                        <th style="padding:6px 10px;">Item</th>
-                        <th style="padding:6px 10px;">Topic</th>
-                        <th style="padding:6px 10px;">In NICE-SUGAR</th>
-                        <th style="padding:6px 10px;">Where / note</th>
-                    </tr>
-                </thead>
-                <tbody>{_table_rows}</tbody>
-            </table>
-        </div>
-        """
-    )
-
-    coverage_note = mo.Html(
-        f"""
-        <div style="background:{colors['panel']}; border:1px solid #D8D4D7; border-radius:10px;
-                    padding:14px 16px; font-family:Inter, ui-sans-serif, system-ui, sans-serif; color:{colors['ink']};">
-            Of the {_top_level_items} top-level CONSORT 2025 items ({len(CHECKLIST)} checklist rows), this
-            2009 paper substantively covers <strong>{_covered} of {len(CHECKLIST)} rows</strong>. The gaps are
-            <strong>data sharing (item 4)</strong> and <strong>patient and public involvement (item 8)</strong>.
-            CONSORT added both expectations after 2009. This retrospective audit shows how reporting
-            requirements changed.
-        </div>
-        """
-    )
-
-    checklist_view = mo.vstack(
+    discussion_view = mo.vstack(
         [
-            mo.md(
-                """
-                ## The CONSORT 2025 checklist, item by item
-                _Filter by section. Each row pairs a checklist item with where NICE-SUGAR reports it._
-                """
+            chapter_header(
+                "Discussion",
+                "How should the result be interpreted, and which limitations affect its application?",
             ),
-            mo.hstack(
-                [
-                    section,
-                    mo.md(
-                        f"{pill('reported')} {_counts['reported']} &nbsp; {pill('partial')} {_counts['partial']} "
-                        f"&nbsp; {pill('na')} {_counts['na']} &nbsp; {pill('gap')} {_counts['gap']}"
-                    ),
-                ],
-                justify="start",
-                gap=1.5,
-                align="center",
-            ),
-            checklist_html,
-            coverage_note,
+            consort_items(["29", "30"]),
+            discussion_note,
         ],
-        gap=0.4,
+        gap=0.35,
     )
-    checklist_view
+    discussion_view
     return
 
+@app.cell
+def _(coverage_summary):
+    coverage = coverage_summary()
+    coverage
+    return
 
 @app.cell
 def _(TRIAL, colors, mo):
@@ -802,7 +894,6 @@ def _(TRIAL, colors, mo):
     )
     provenance
     return
-
 
 if __name__ == "__main__":
     app.run()

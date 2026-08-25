@@ -4,7 +4,7 @@ description: >-
   Author a marimo notebook that reads a randomized controlled trial through the
   CONSORT 2025 checklist. Use when building a visual, auditable trial summary
   from a paper (PDF or verified public sources) for the rct-visualization repo.
-version: 1.3.0
+version: 1.4.0
 license: MIT
 metadata:
   hermes:
@@ -46,8 +46,9 @@ writing anything; your notebook should feel like it belongs next to it.
    data (counts/rates), not adjectives.
 6. **CONSORT 2025 as lens, not judge.** For pre-2025 trials, note that newer
    items (e.g. patient & public involvement, data sharing) postdate the report.
-   The checklist table ends with a sentence on what the gap pattern says about
-   how reporting norms moved.
+   Each inline item states what was reported, what was partial or absent, and
+   why it matters. The final coverage summary explains what the gap pattern says
+   about how reporting norms moved.
 
 ## Reading and writing standard
 
@@ -86,7 +87,25 @@ but keep the figure native to the endpoint. Every interactive control must chang
 an analysis view, not decorate the page. Show missing data, exclusions,
 open-label design, platform scope, and endpoint definitions where they matter.
 
-## Notebook structure (in this order)
+## Notebook structure
+
+The visible notebook uses the same six top-level CONSORT chapters in every
+trial: **Title and abstract**, **Open science**, **Introduction**, **Methods**,
+**Results**, and **Discussion**. The hero and a compact section navigator may
+precede these chapters.
+
+The checklist is the notebook's guide, not an audit appended to the end. Each
+chapter begins with a compact status summary. Render each checklist item where
+the reader encounters its evidence, with the item number, topic, status pill,
+and a direct statement of what the trial reports or does not report. Place
+figures beside the items they clarify. CONSORT determines the reading order;
+clinical importance determines visual weight.
+
+Do not duplicate all rows in a second full checklist table at the end. A short
+final coverage summary may report totals, gaps, and how reporting expectations
+changed, but it should link back to the inline items.
+
+Implementation components:
 
 1. PEP 723 header: `requires-python >=3.12`; deps exactly
    `altair==6.1.0`, `marimo`, `polars==1.40.0`.
@@ -144,8 +163,11 @@ open-label design, platform scope, and endpoint definitions where they matter.
     the data structures + a "Why it matters" callout tying mechanism to outcome.
 14. Open science cell (items 2–5): registration, protocol/SAP, data sharing,
     funding/COI as a small card grid.
-15. Checklist table cell: filterable by section (the dropdown), pill-coded
-    statuses, running counts of each status, closing coverage paragraph.
+15. Inline checklist views: within each CONSORT chapter, show a section-level
+    count strip plus compact item rows with `(item_id, topic, status, note)`.
+    Keep the evidence statement visible. Use expansion only for secondary source
+    detail, not for the core answer. The final coverage summary shows totals and
+    gaps without repeating the full checklist.
 16. Provenance footer cell: citation with DOI link, CONSORT 2025 citation
     (Hopewell S, et al. BMJ 2025;388:e081123), reconstruction disclosures, and
     the lens-not-judge caveat when applicable.
